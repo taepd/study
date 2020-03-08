@@ -12,7 +12,7 @@ public class temp {
 		System.out.println(Arrays.toString(arr2));
 		
 		a aa = new a();
-		aa.aaa
+		aa.a
 		
 		
 	}
