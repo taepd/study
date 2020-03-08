@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <title>WEB1 - Welcome</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <h1><a href="index.html">WEB</a></h1>
+  <!-- 토글 글로벌 제어를 위해 class 와querySelectorAll()을 활용하기 위해
+  querySelectorAll()을 이용해 class"night_day"를 list화 하고, 이를 변수
+  night_day_all을 주어 while문을 활용해 적용함.. 너무 비효율적임 -->
+  <input class="night_day" type="button" value="night" onclick="
+    var target=document.querySelector('body')
+    if(document.querySelector('.night_day').value === 'night'){
+      target.style.backgroundColor='black';
+      target.style.color='white';
+      var night_day_all = document.querySelectorAll('.night_day');
+      var i = 0;
+        while(i < night_day_all.length){
+          night_day_all[i].value='day';
+          i = i + 1;
+        }
+      }
+    else {
+      target.style.backgroundColor='white';
+      target.style.color='black';
+      var night_day_all = document.querySelectorAll('.night_day');
+      var i = 0;
+        while(i < night_day_all.length){
+          night_day_all[i].value='night';
+          i = i + 1;
+        }
+    }
+  ">
+
+    <li><a href="1.html">HTML</a></li>
+    <li><a href="2.html">CSS</a></li>
+    <li><a href="3.html">JavaScript</a></li>
+  </ol>
+  <h2>WEB</h2>
+  <p>The World Wide Web (abbreviated WWW or the Web) is an information space where documents and other web resources are identified by Uniform Resource Locators (URLs), interlinked by hypertext links, and can be accessed via the Internet.[1] English scientist Tim Berners-Lee invented the World Wide Web in 1989. He wrote the first web browser computer program in 1990 while employed at CERN in Switzerland.[2][3] The Web browser was released outside of CERN in 1991, first to other research institutions starting in January 1991 and to the general public on the Internet in August 1991.
+  </p>
+  <input class="night_day" type="button" value="night" onclick="
+    var target=document.querySelector('body')
+    if(document.querySelector('.night_day').value === 'night'){
+      target.style.backgroundColor='black';
+      target.style.color='white';
+      document.querySelector('.night_day').value ='day';
+      this.value ='day'}
+    else {
+      target.style.backgroundColor='white';
+      target.style.color='black';
+      document.querySelector('.night_day').value ='night';
+      this.value='night'
+    }
+  ">
+</body>
+  </html>

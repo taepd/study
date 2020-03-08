@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Object</h1>
+    <h2>Wrtie & Read</h2>
+    <script>
+      var pokemon = {          //객체 생성. 변수 선언하고 중괄호(object literal)로 묶고 (배열은 대괄호)
+        "번개" : "피카츄",      //  "번개"는 key, : 뒤 "피카츄"는 정보
+        "불" : "파이리"
+      };
+      document.write("번개 : "+pokemon.번개+"<br>");
+      document.write("불 : "+pokemon.불+"<br>");
+      pokemon.물 = "꼬부기";            // 객체에 정보 추가 방법
+      document.write("물 : "+pokemon.물+"<br>");
+      pokemon["진화 번개"] = "라이츄";  //'객체.' 다음엔 띄어쓰기가 안된다. 이럴 때는 .이 아닌 배열 호출([]) 이용
+      document.write("진화 번개 : "+pokemon["진화 번개"]+"<br>");
+    </script>
+
+    <h2>Iterate</h2>
+    <script>
+      for(var key in pokemon) {
+        document.write(key+' : '+pokemon[key]+'<br>');
+      }
+    </script>
+    <h2>Property & Method</h2>
+    <script>
+      pokemon.showAll = function(){  //함수를 이렇게 정의할 수 도 있음
+        for (var key in this){
+          document.write(key+' : '+this[key]+'<br>')
+        }
+      }
+      pokemon.showAll();
+    </script>
+
+  </body>
+</html>

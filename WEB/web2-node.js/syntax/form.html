@@ -1,0 +1,13 @@
+<form action="http://localhost:3000/create_process"
+method="post">
+<p><input type="text" name="title" placeholder="title"></p>
+<p>
+  <textarea name="description" placeholder="description"></textarea>
+</p>
+<p>
+  <input type="submit">
+</p>
+</form>
+
+<!-- 사용자가 정보를 서버로 보낼 때는 내용이 절대 노출되어서는 안됨.
+  이를 위해 method="post"를 통해 내용을 숨기고 url을 노출할 수 있음-->

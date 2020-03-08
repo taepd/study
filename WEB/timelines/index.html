@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>TIMELINES</title>
+    <link rel="shortcut icon" type="image/x-icon" href="timelines.ico">
+    <!-- 저작권 멘트 넣어야 <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
+    <link rel="stylesheet" href="style.css">
+    <script>
+      function LinksSetColor(color){
+        var alist = document.querySelectorAll('a');
+        var i = 0
+        while(i < alist.length){
+        alist[i].style.color = color ;
+        i = i + 1;
+        }
+      }
+      function BodySetColor(color){
+        document.querySelector('body').style.color = color;
+      }
+      function nightDayHandler(self){
+        var target = document.querySelector('body');
+        if(self.value === 'night'){
+          target.style.backgroundColor='black'
+          BodySetColor('white');
+          self.value = 'day';
+          LinksSetColor('powderblue');
+          }
+        else {
+          target.style.backgroundColor='white'
+          BodySetColor('black');
+          self.value = 'night';
+          LinksSetColor('blue');
+          }
+        }
+      </script>
+  </head>
+  <body>
+    <h1><a href="index.html">TIMELINES</a>
+      <input id="night_day" type="button" value="night" onclick="nightDayHandler(this)">
+    </h1>
+      <div id="grid">
+          <ol>
+            <li><a href="1.html">TIMELINES란?</a></li>
+            <li><a href="2.html">공사중1</a></li>
+            <li><a href="3.html">공사중2</a></li>
+          </ol>
+        <div id=article>
+          <p> 타임라인즈 만들기 프로젝트. 과연 언제 완성될 것인가.</p>
+       </div>
+      </div>
+  </body>
+</html>
