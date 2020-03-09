@@ -46,18 +46,20 @@ public class Ex02_Arrays_Quiz {
         //3. 과목의 평균
         //단 2,3 문제는 하나의 for으로 해결하세요
         
-        //1. 총 과목 수
-        System.out.println("총 과목수: "+jumsu.length);
-        
-        //2. 과목의 합
+
         for(int i=0;i<jumsu.length;i++) {
             sum+=jumsu[i];
+            
+            if(i==jumsu.length-1) {
+            average = (float)sum/jumsu.length;
+            }
         }
-        System.out.println("과목의 합: "+sum);
+
+
+        System.out.printf("총과목수[%d], 총점[%d], 평균[%f]\n",jumsu.length,sum,average);
         
-        //3. 과목의 평균
-        average = (float)sum/jumsu.length;
-        System.out.println("과목의 평균: "+average);
+        
+        
         
 
         
