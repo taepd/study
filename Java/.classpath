@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="새 폴더"/>
+	<classpathentry kind="src" path="생활코딩/Data and Operation"/>
+	<classpathentry kind="src" path="생활코딩/HelloWorld"/>
+	<classpathentry kind="src" path="생활코딩/MyApp"/>
+	<classpathentry kind="src" path="생활코딩/Programming"/>
+	<classpathentry kind="src" path="Ex01_Basic/src"/>
+	<classpathentry kind="src" path="Ex02_Scope_location/src"/>
+	<classpathentry kind="src" path="Ex03_OOP_Basic/src"/>
+	<classpathentry kind="src" path="Ex04_Array/src"/>
+	<classpathentry kind="output" path="Ex01_Basic/bin"/>
+</classpath>
