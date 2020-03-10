@@ -1,18 +1,18 @@
-import java.util.Arrays;
-
-class a {
-	 private int a;
+class temp {
+    public static void main(String args[]) {
+        Child c = new Child();
+        c.method();
+    }
 }
-public class temp {
-	public static void main(String[] args) {
-		
-		
-		int[] arr = {0,1,2,3,4};
-		int[] arr2 = Arrays.copyOf(arr, 3);
-		System.out.println(Arrays.toString(arr2));
-		
-		a aa = new a();
-		
-		
-	}
+
+class Parent { int x=10; }       //super.x
+
+class Child extends Parent {
+    int x=20;                          //this.x
+
+    void method() {
+        System.out.println("x=" + x);
+        System.out.println("this.x=" + this.x);
+        System.out.println("super.x="+ super.x);
+    }
 }
