@@ -46,7 +46,8 @@
 //추상화, 일반화, 공통
 class Shape {
     String color = "gold";
-    void draw() { //공통 기능
+
+    void draw() { // 공통 기능
         System.out.println("그리다");
     }
 }
@@ -55,12 +56,14 @@ class Shape {
 class Point {
     int x;
     int y;
-    Point(){
-        this(1,1);
+
+    Point() {
+        this(1, 1);
     }
-    Point(int x, int y){
-        this.x=x;
-        this.y=y;
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }
 
@@ -75,72 +78,127 @@ class Point {
 class Circle extends Shape {
     Point point;
     int r;
-    
-    Circle(){
+
+    Circle() {
 //        this.point = new Point(10,15);
 //        this.r = 10;
-        this(10, new Point(10,15));  //두 번째 매개변수로 new 생성자를 쓰는 것 Today Point.
+        this(10, new Point(10, 15)); // 두 번째 매개변수로 new 생성자를 쓰는 것 Today Point.
     }
-    Circle(int r, Point point){
-        this.r =r;
-        this.point = point;  //주소값 할당
+
+    Circle(int r, Point point) {
+        this.r = r;
+        this.point = point; // 주소값 할당
     }
 }
+
 //문제 2)
 //삼각형 클래스를 만드세요
 //정의) 삼각형은 3개의 점과 색과  그리고 그리다라는 기능을 가지고 있다
 //Shape, point 제공 받아요
 //hint) (x,y)  (x,y)  (x,y) 3개의 좌표값 
 //default 로 그릴 수 있고 , 3개의 좌표값을 받아서 그릴 수 있다
-class Triangle extends Shape{
+class Triangle extends Shape {
     Point point1;
     Point point2;
     Point point3;
-    
-    Triangle(){
-        this(new Point(0,0),new Point(1,1),new Point(2,2));
-        
+
+    Triangle() {
+        this(new Point(0, 0), new Point(1, 1), new Point(2, 2));
+
     }
-    
-    Triangle(Point point1,Point point2,Point point3){
+
+    Triangle(Point point1, Point point2, Point point3) {
         this.point1 = point1;
         this.point2 = point2;
         this.point3 = point3;
     }
+
+    // 구체화, 특수화
+    // 추가적인 기능
+    void trianglePoint() {
+        System.out.printf("꼭지점1: (%d,%d), 꼭지점2: (%d,%d), 꼭지점3: (%d,%d)%n", point1.x, point1.y, point2.x, point2.y,
+                point3.x, point3.y);
+    }
 }
 
+class Triangle2 extends Shape {
+    Point[] pointArray;
 
+    Triangle2() {
+//            pointArray = new Point[3];
+//            pointArray[0] = new Point(10,20);
+//            pointArray[1] = new Point(30,40);
+//            pointArray[2] = new Point(50,60);
+//            pointArray = {new Point(10,20),new Point(30,40),new Point(50,60)};  세 번째 방식은 선언과 할당을 동시에 하지 않으면 에러남
+        this(new Point[] { new Point(10, 20), new Point(30, 40), new Point(50, 60) });
+    }
 
+    Triangle2(Point[] pointArray) {
+        this.pointArray = pointArray;
+    }
 
+    // 구체화, 특수화
+    // 추가적인 기능
+    void triangle2Point() {
+        for (Point point : this.pointArray) {   //this가 없어도 상관없지 않은지?
+            System.out.printf("point : (%d,%d)\t", point.x, point.y);
+            System.out.println();
+        }
+    }
+}
+
+//사각형 만들어 보세요
+
+class Square extends Shape {
+    Point[] squarePointArr;
+    
+    Square(){
+        this(new Point[] {new Point(0,0),new Point(1,1),new Point(2,2),new Point(3,3)});
+    }
+    Square(Point[] squarePointArr) {
+        this.squarePointArr = squarePointArr;
+        
+    }
+}
 
 public class Ex02_Inherit_Composition {
     public static void main(String[] args) {
-        
+
         Circle circle = new Circle();
-        System.out.printf("반지름: %d / 점: (%d,%d)\n",circle.r,circle.point.x,circle.point.y);
-        System.out.println("부모: "+circle.color);
+        System.out.printf("반지름: %d / 점: (%d,%d)\n", circle.r, circle.point.x, circle.point.y);
+        System.out.println("부모: " + circle.color);
         circle.draw();
-        
-        Circle circle2 = new Circle(20, new Point(2,5));
-        System.out.printf("반지름: %d / 점: (%d,%d)\n",circle2.r,circle2.point.x,circle2.point.y);
-        System.out.println("부모: "+circle2.color);
+
+        Circle circle2 = new Circle(20, new Point(2, 5));
+        System.out.printf("반지름: %d / 점: (%d,%d)\n", circle2.r, circle2.point.x, circle2.point.y);
+        System.out.println("부모: " + circle2.color);
         circle2.draw();
-        
+
         Triangle triangle = new Triangle();
-        System.out.printf("꼭지점1: (%d,%d), 꼭지점2: (%d,%d), 꼭지점3: (%d,%d)%n",triangle.point1.x,triangle.point1.y,
-                triangle.point2.x,triangle.point2.y,triangle.point3.x,triangle.point3.y);
+        triangle.trianglePoint();
+        System.out.println("색상: " + triangle.color);
         triangle.draw();
-        
-        Triangle triangle2 = new Triangle(new Point(3,3),new Point(4,4),new Point(5,5));
-        System.out.printf("꼭지점1: (%d,%d), 꼭지점2: (%d,%d), 꼭지점3: (%d,%d)%n",triangle2.point1.x,triangle2.point1.y,
-                triangle2.point2.x,triangle2.point2.y,triangle2.point3.x,triangle2.point3.y);
+
+        Triangle triangle1 = new Triangle(new Point(3, 3), new Point(4, 4), new Point(5, 5));
+        triangle1.trianglePoint();
+        triangle1.color = "coral blue";
+        System.out.println("색상: " + triangle1.color);
+        triangle1.draw();
+
+        Triangle2 triangle2 = new Triangle2();
+        triangle2.triangle2Point();
+        System.out.println("색상: " + triangle2.color);
         triangle2.draw();
-                
+
+        Triangle2 triangle3 = new Triangle2(new Point[] { new Point(3, 3), new Point(4, 4), new Point(5, 5) });
+        triangle3.triangle2Point();
+        triangle3.color = "coral blue";
+        System.out.println("색상: " + triangle3.color);
+        triangle3.draw();
         
+
         
-        
-        
-        
+
     }
 
 }
