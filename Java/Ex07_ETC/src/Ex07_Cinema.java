@@ -7,15 +7,19 @@ import java.util.Scanner;
 기능 기본적으로 넣어서 만드세요*/
 
 public class Ex07_Cinema {
-	static Scanner sc = new Scanner(System.in);
-	static String[][] seat;
-	static String[][] seatWithCustomerName;
-	static String customerName;
+	
+	private static String[][] seat;
+	private static String[][] seatWithCustomerName;
+	private static String customerName;
+	
+	public Scanner sc;
+	
 
 	public Ex07_Cinema() {
 
 		seat = new String[3][5];
 		seatWithCustomerName = new String[3][5];
+		sc = new Scanner(System.in);
 
 		// 좌석 리셋
 		for (int i = 0; i < seat.length; i++) {
@@ -35,37 +39,38 @@ public class Ex07_Cinema {
 
 	// 초기 메뉴
 
-	int displayMenu() {
-		System.out.println();
-		System.out.println("**********************");
-		System.out.println("*****영화 예매 시스템*****");
-		System.out.println("**********************");
-		System.out.println("1. 예매하기");
-		System.out.println();
-		System.out.println("2. 예매조회");
-		System.out.println();
-		System.out.println("3. 예매취소");
-		System.out.println();
-
+	int displayMenu() {		
 		int menu = 0;
 		do {
 			try {
+				System.out.println();
+				System.out.println("**********************");
+				System.out.println("*****영화 예매 시스템*****");
+				System.out.println("**********************");
+				System.out.println("1. 예매하기");
+				System.out.println();
+				System.out.println("2. 예매조회");
+				System.out.println();
+				System.out.println("3. 예매취소");
+				System.out.println();
 				menu = Integer.parseInt(sc.nextLine());
 				if (1 <= menu && menu <= 3) {
-					break;
+					return menu;
 				} else {
 					throw new Exception("메뉴 선택 번호가 잘못 되었습니다");
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
+				System.out.println("<입력 오류>");
 				System.out.println("1~3번의 메뉴 중 하나를 선택하세요");
 			}
 		} while (true);
-		return menu;
+		
 	}
 
 	// 좌석정보 보여주기
 	void showSeat() {
+		System.out.println();
 		System.out.println("*********좌석 현황**********");
 		for (int i = 0; i < seat.length; i++) {
 			for (int j = 0; j < seat[i].length; j++) {
@@ -79,34 +84,35 @@ public class Ex07_Cinema {
 
 	void nameInput() {
 
-		System.out.println("예매를 위해 고객명을 입력해주세요. 예)홍길동");
-		customerName = sc.nextLine();
+		
 	}
 
 	void reservation() {
 		int row = 0;
 		int col = 0;
+		String inputSeatNumber;
 		outer: while (true) {
 
-			nameInput();
+			System.out.println("예매를 위해 고객명을 입력해주세요. 예)홍길동");
+			customerName = sc.nextLine();
 
 			// 좌석 선택하기
 			while (true) {
-				String input;
+				
 				outer4: do {
 					try {
 						showSeat();
 						System.out.println("좌석을 선택해주세요. 예)1-1");
 						System.out.println("이미 예매된 좌석은 \"예매\"라고 표시됩니다.");
-						input = sc.nextLine();
-						String[] inputArray = input.split("-");
+						inputSeatNumber = sc.nextLine();
+						String[] inputArray = inputSeatNumber.split("-");
 						row = (Integer.parseInt(inputArray[0])) - 1;
 						col = (Integer.parseInt(inputArray[1])) - 1;
 
 						for (int i = 0; i < seat.length; i++) {
 							for (int j = 0; j < seat[i].length; j++) {
 
-								if (seat[i][j].contentEquals(input)) {
+								if (seat[i][j].contentEquals(inputSeatNumber)) {
 									break outer4;
 								} else if (seat[i][j].contentEquals("예매")) {
 									break outer4;
@@ -114,11 +120,12 @@ public class Ex07_Cinema {
 
 							}
 						}
-						throw new Exception("입력 오류");
+						throw new Exception("<입력 가능한 범위 초과>");
 
 					} catch (Exception e) {
 						System.out.println(e.getMessage());
-						System.out.println("좌석 입력 형식이 잘못되었습니다.");
+						System.out.println("좌석 입력 형식이 잘못되었습니다. 다시 입력해주세요.");
+						System.out.println();
 					}
 				} while (true);
 
@@ -126,28 +133,33 @@ public class Ex07_Cinema {
 					System.out.println("예약 가능합니다. 예약하시겠습니까?");
 
 					outer2: do {
-						System.out.println("네(1), 아니오(2)중 하나를 입력해주세요.");
-						int choice = 0;
-						choice = Integer.parseInt(sc.nextLine());
+						System.out.println("네(1), 아니오(2), 초기화면(0)중 하나를 입력해주세요.");
+						
 						try {
-							if (choice == 1 || choice == 2) {
+							int choice = 0;
+							choice = Integer.parseInt(sc.nextLine());
+							if (choice == 1 || choice == 2 || choice ==0) {
 								if (choice == 1) {
 									seat[row][col] = "예매";
 									seatWithCustomerName[row][col] = customerName;
 									System.out.println();
 									System.out.printf("예약이 완료되었습니다. %s고객님이 선택하신 좌석은 %s입니다. 감사합니다.\n\n", customerName,
-											input);
+											inputSeatNumber);
 									break outer;
-								} else {
+								} else if(choice==0) {
+									break outer;
+								}
+								else {
 
 									break outer2;
 								}
 
 							} else
-								throw new Exception("잘못 입력하였습니다. 다시 입력해 주세요.");
+								throw new Exception("<입력 범위 초과>");
 
 						} catch (Exception e) {
 							System.out.println(e.getMessage());
+							System.out.println("잘못 입력하였습니다. 다시 입력해 주세요.");
 
 						}
 					} while (true);
@@ -215,11 +227,14 @@ public class Ex07_Cinema {
 							break outer2;
 						}
 
-					} else
-						throw new Exception("잘못 입력하였습니다. 다시 입력해 주세요.");
+					} else 
+						throw new Exception("<입력 범위 초과>");
+					
 
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
+					System.out.println("잘못 입력하였습니다. 다시 입력해 주세요.");
+					System.out.println();
 
 				}
 			} while (true);
