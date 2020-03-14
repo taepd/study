@@ -30,9 +30,7 @@ public class Ex07_Cinema {
 				reservationNumberArr[i][j] = 0;
 			}
 		}
-
 	}
-
 	// 초기 메뉴
 
 	int displayMenu() {
@@ -196,8 +194,7 @@ public class Ex07_Cinema {
 							if (reservationNumberArr[i][j] == Integer.parseInt(reservationNumber)) {
 								System.out.println();
 								//예매된 좌석엔 이미 "예매"라 입력되어 있으므로 i,j를 활용해서 예매좌석을 알려준다
-								System.out.printf("고객님이 예매하신 좌석은 %s입니다.\n\n", (i + 1) + "-" + (j + 1),  
-										(i + 1) + "-" + (j + 1));
+								System.out.printf("고객님이 예매하신 좌석은 %s입니다.\n\n", (i + 1) + "-" + (j + 1));
 								return true;
 							}
 						}
