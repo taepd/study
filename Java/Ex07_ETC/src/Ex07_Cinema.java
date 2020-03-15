@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class Ex07_Cinema {
 
-	private static String[][] seat; // 좌석 배열. 공석일 땐 좌석명이, 예매된 자리일 땐 "예매"가 입력됨
+	private static String[][] seatArr; // 좌석 배열. 공석일 땐 좌석명이, 예매된 자리일 땐 "예매"가 입력됨
 	private static int[][] reservationNumberArr; // 예매번호 배열. 해당 자리가 예매가 되면 예매번호가 입력됨
-	private static String reservationNumber; // 예매번호 변수
+	private String reservationNumber; // 예매번호 변수
 
 	public Scanner sc;
 
@@ -19,14 +19,14 @@ public class Ex07_Cinema {
 	}
 
 	public Ex07_Cinema(int row, int col) {    // 행과 열을 매개변수로 갖는 생성자
-		seat = new String[row][col];
+		seatArr = new String[row][col];
 		reservationNumberArr = new int[row][col];
 		sc = new Scanner(System.in);
 
 		// 좌석과 예매번호 초기화
-		for (int i = 0; i < seat.length; i++) {
-			for (int j = 0; j < seat[i].length; j++) {
-				seat[i][j] = (i + 1) + "-" + (j + 1);
+		for (int i = 0; i < seatArr.length; i++) {
+			for (int j = 0; j < seatArr[i].length; j++) {
+				seatArr[i][j] = (i + 1) + "-" + (j + 1);
 				reservationNumberArr[i][j] = 0;
 			}
 		}
@@ -63,13 +63,13 @@ public class Ex07_Cinema {
 	}
 
 	// 좌석정보 보여주기
-	void showSeat() {
+	void showseatArr() {
 		System.out.println();
 		System.out.println("*********좌석 현황**********");
 		
 		
-		for (int i = 0; i < seat.length; i++) {
-			for (int j = 0; j < seat[i].length; j++) {
+		for (int i = 0; i < seatArr.length; i++) {
+			for (int j = 0; j < seatArr[i].length; j++) {
 				System.out.printf("[%s]", reservationNumberArr[i][j] == 0 ? (i + 1) + "-" + (j + 1) : "예매");
 			}
 			System.out.println();
@@ -81,7 +81,7 @@ public class Ex07_Cinema {
 	void reservation() {
 		int row = 0;
 		int col = 0;
-		String inputSeatNumber;   //사용자에게 좌석번호를 입력받는 변수
+		String inputseatArrNumber;   //사용자에게 좌석번호를 입력받는 변수
 
 		outer: while (true) {
 			// 좌석 선택하기
@@ -90,17 +90,17 @@ public class Ex07_Cinema {
 				//예외처리
 				outer2: do {
 					try {
-						showSeat();
+						showseatArr();
 						System.out.println("좌석을 선택해주세요. 예)1-1");
 						System.out.println("이미 예매된 좌석은 \"예매\"라고 표시됩니다.");
-						inputSeatNumber = sc.nextLine();
-						String[] inputArray = inputSeatNumber.split("-");  //입력받은 좌석값을 스플릿으로 잘라 배열을 만든다
+						inputseatArrNumber = sc.nextLine();
+						String[] inputArray = inputseatArrNumber.split("-");  //입력받은 좌석값을 스플릿으로 잘라 배열을 만든다
 						row = (Integer.parseInt(inputArray[0])) - 1;		//배열 index값은 0부터 시작하므로 입력받은 좌석번호에서 1씩 빼준다
 						col = (Integer.parseInt(inputArray[1])) - 1;
 						//개선된 for문 사용
-						for(String[] arr : seat) {
+						for(String[] arr : seatArr) {
 							for(String str : arr) {
-								if (str.contentEquals(inputSeatNumber)) {  //사용자 입력 좌석번호와 일치하는 좌석이 있으면 예외처리를 위한 do while문 탈출
+								if (str.contentEquals(inputseatArrNumber)) {  //사용자 입력 좌석번호와 일치하는 좌석이 있으면 예외처리를 위한 do while문 탈출
 									break outer2;
 								} else if (str.contentEquals("예매")) {	//예매인 경우도 예외처리를 위한 do while문 탈출
 									break outer2;
@@ -108,11 +108,11 @@ public class Ex07_Cinema {
 							}
 						}	
 						//일반 for문 사용
-//						for (int i = 0; i < seat.length; i++) {
-//							for (int j = 0; j < seat[i].length; j++) {
-//								if (seat[i][j].contentEquals(inputSeatNumber)) {  //사용자 입력 좌석번호와 일치하는 좌석이 있으면 예외처리를 위한 do while문 탈출
+//						for (int i = 0; i < seatArr.length; i++) {
+//							for (int j = 0; j < seatArr[i].length; j++) {
+//								if (seatArr[i][j].contentEquals(inputseatArrNumber)) {  //사용자 입력 좌석번호와 일치하는 좌석이 있으면 예외처리를 위한 do while문 탈출
 //									break outer2;
-//								} else if (seat[i][j].contentEquals("예매")) {	//예매인 경우도 예외처리를 위한 do while문 탈출
+//								} else if (seatArr[i][j].contentEquals("예매")) {	//예매인 경우도 예외처리를 위한 do while문 탈출
 //									break outer2;
 //								}
 //
@@ -129,7 +129,7 @@ public class Ex07_Cinema {
 				
 			
 				//예외처리를 정상통과한 요청에 대해 예매 진행
-				if (!seat[row][col].contentEquals("예매")) {     // 좌석이 예매된 좌석인지 아닌지 검사
+				if (!seatArr[row][col].contentEquals("예매")) {     // 좌석이 예매된 좌석인지 아닌지 검사
 					System.out.println("예매 가능합니다. 예매하시겠습니까?");
 					//예매 진행에 대한 예외처리
 					outer3: do {
@@ -140,10 +140,10 @@ public class Ex07_Cinema {
 							choice = Integer.parseInt(sc.nextLine());
 							if (choice == 1 || choice == 2 || choice == 0) {    // 1, 2, 0 이외의 입력을 예외처리 해준다
 								if (choice == 1) {
-									seat[row][col] = "예매";
+									seatArr[row][col] = "예매";
 									int hash = (int) ((Math.random() * 90000000) + 10000000);  //총 8자리 예매번호를 랜덤 생성
-									for (int i = 0; i < seat.length; i++) {
-										for (int j = 0; j < seat[i].length; j++) {		// 예매번호 중복 제거
+									for (int i = 0; i < seatArr.length; i++) {
+										for (int j = 0; j < seatArr[i].length; j++) {		// 예매번호 중복 제거
 											if (reservationNumberArr[i][j] == hash) {
 												hash = (int) ((Math.random() * 3));
 												i = -1;
@@ -154,7 +154,7 @@ public class Ex07_Cinema {
 									reservationNumberArr[row][col] = hash;
 									System.out.println();
 									System.out.printf("예매가 완료되었습니다.\n예매한 좌석번호:[%s]/ 예매번호:[%s]\n감사합니다.\n",
-											inputSeatNumber, reservationNumberArr[row][col]);
+											inputseatArrNumber, reservationNumberArr[row][col]);
 									break outer;
 								} else if (choice == 0) {
 									break outer;
@@ -189,8 +189,8 @@ public class Ex07_Cinema {
 				if (reservationNumber.contentEquals("")) {
 					System.out.println("잘못 입력하셨습니다.");
 				} else {
-					for (int i = 0; i < seat.length; i++) {
-						for (int j = 0; j < seat[i].length; j++) {
+					for (int i = 0; i < seatArr.length; i++) {
+						for (int j = 0; j < seatArr[i].length; j++) {
 							if (reservationNumberArr[i][j] == Integer.parseInt(reservationNumber)) {
 								System.out.println();
 								//예매된 좌석엔 이미 "예매"라 입력되어 있으므로 i,j를 활용해서 예매좌석을 알려준다
@@ -224,11 +224,11 @@ public class Ex07_Cinema {
 					if (choice == 1 || choice == 2) {
 						if (choice == 1) {
 
-							outer2: for (int i = 0; i < seat.length; i++) {
-								for (int j = 0; j < seat[i].length; j++) {
+							outer2: for (int i = 0; i < seatArr.length; i++) {
+								for (int j = 0; j < seatArr[i].length; j++) {
 									if (reservationNumberArr[i][j] == Integer.parseInt(reservationNumber)) {
 										reservationNumberArr[i][j] = 0; 			//좌석의 예매번호를 초기화
-										seat[i][j] = (i + 1) + "-" + (j + 1);       //좌석의 이름을 초기화
+										seatArr[i][j] = (i + 1) + "-" + (j + 1);       //좌석의 이름을 초기화
 										break outer2;
 									}
 								}
