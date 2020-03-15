@@ -145,7 +145,7 @@ public class Ex07_Cinema {
 									for (int i = 0; i < seatArr.length; i++) {
 										for (int j = 0; j < seatArr[i].length; j++) {		// 예매번호 중복 제거
 											if (reservationNumberArr[i][j] == hash) {
-												hash = (int) ((Math.random() * 3));
+												hash = (int) ((Math.random() * 90000000) + 10000000);
 												i = -1;
 												break;
 											}
