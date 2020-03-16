@@ -31,6 +31,37 @@ public class Ex07_Cinema {
 			}
 		}
 	}
+	
+	//프로그램 메인 구조
+	
+	void program() {
+    	while (true) {
+            switch (this.displayMenu()) {
+            case 1: {
+                this.reservation();
+                break;
+            }
+            case 2: {
+                this.reservationInquiry();
+                break;
+            }
+            case 3: {
+                this.canclation();
+                break;
+            }
+    
+            }
+    
+        }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	// 초기 메뉴
 
 	int displayMenu() {
@@ -254,24 +285,7 @@ public class Ex07_Cinema {
 
 		Ex07_Cinema cinema = new Ex07_Cinema(4, 5);   //오버로딩 생성자를 이용해 영화관 좌석을 커스텀할 수 있다
 
-		while (true) {
-			switch (cinema.displayMenu()) {
-			case 1: {
-				cinema.reservation();
-				break;
-			}
-			case 2: {
-				cinema.reservationInquiry();
-				break;
-			}
-			case 3: {
-				cinema.canclation();
-				break;
-			}
-
-			}
-
-		}
+		cinema.program();
 
 	}
 
