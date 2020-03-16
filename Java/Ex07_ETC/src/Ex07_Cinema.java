@@ -34,8 +34,8 @@ public class Ex07_Cinema {
 	
 	//프로그램 메인 구조
 	
-	void program() {
-    	while (true) {
+	 void program() {
+	        while (true) {
             switch (this.displayMenu()) {
             case 1: {
                 this.reservation();
@@ -48,6 +48,9 @@ public class Ex07_Cinema {
             case 3: {
                 this.canclation();
                 break;
+            }
+            case 4: {
+                System.exit(0);
             }
     
             }
@@ -78,8 +81,10 @@ public class Ex07_Cinema {
 				System.out.println();
 				System.out.println("3. 예매취소");
 				System.out.println();
+				System.out.println("4. 시스템 종료");
+                System.out.println();
 				menu = Integer.parseInt(sc.nextLine());
-				if (1 <= menu && menu <= 3) {
+				if (1 <= menu && menu <= 4) {
 					return menu;
 				} else {
 					throw new Exception("메뉴 선택 번호가 잘못 되었습니다");
