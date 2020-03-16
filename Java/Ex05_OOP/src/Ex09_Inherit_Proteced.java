@@ -13,10 +13,12 @@ class Ostrich extends Bird{
     void run() {
         System.out.println("run ^^");
     }
+    
+  
 
     @Override
     protected void moveFast() {    //public과 다르게 자손클래스에서 오버라이딩하지 않으면 사용하지 못한다.
-//        super.moveFast();
+        super.moveFast();
         run();
     }
     

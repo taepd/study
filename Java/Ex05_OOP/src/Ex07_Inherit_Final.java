@@ -13,7 +13,7 @@
  *           public static final void print(){}  >> 공유자원, 공통함수, 오버라이딩 불가
  *  상수: public final String KIND="heart"  //상수
 */
-
+    
 class Vcard {
 //    final String KIND;   //상수는 초기화가 꼭 필요(기본값 초기화 안됨)
     final String KIND = "heart";
@@ -26,7 +26,7 @@ class Vcard {
 }
 
 //Vcard 카드 53장을 만들면 모든 카드 모양은 KIND>> heart
-//혹시 53장의 카드 KIND 다 다르게 만들어지면 바꾸지 않게
+//혹시 53장의 카드 KIND 다 다르게. 만들어지면 바뀌지 않게
 
 class Vcard2{
     final String KIND;
