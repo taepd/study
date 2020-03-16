@@ -17,7 +17,7 @@ class Ostrich extends Bird{
   
 
     @Override
-    protected void moveFast() {    //public과 다르게 자손클래스에서 오버라이딩하지 않으면 사용하지 못한다.
+    protected void moveFast() {    //public과 다르게 자손클래스에서 오버라이딩하지 않으면 다른 클래스에서 사용하지 못한다.
         super.moveFast();
         run();
     }
