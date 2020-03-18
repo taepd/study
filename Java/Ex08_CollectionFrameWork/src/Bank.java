@@ -1,15 +1,18 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Bank {
 	private ArrayList<Account> accounts; // 계좌(0개 이상)
 	private int totalAccount; // 총 계좌수
-
+	private HashSet<String> accountNoSet;
+	
 	Scanner sc = new Scanner(System.in);
 
 	Bank() {
 		accounts = new ArrayList<Account>();
 		totalAccount = 0;
+		this.accountNoSet = new HashSet<String>();
 
 	}
 
@@ -69,6 +72,17 @@ public class Bank {
 		System.out.printf("총 계좌수는 %d개입니다.\n", totalAccount);
 		return totalAccount;
 	}
+	
+	// 로그인용 계좌를 찾는다(계좌번호로)
+		public Account login(String accountNo) {
+			for (Account acc : accounts) {
+				if (acc.getAccountNo().equals(accountNo)) {
+					return acc;
+				}
+			}
+			System.out.println("해당 계좌번호와 일치하는 계좌가 없습니다.");
+			return null;
+		}
 
 	// 프로그램 메인 구조
 
@@ -99,8 +113,13 @@ public class Bank {
 				System.out.println("**계좌 생성**");
 				System.out.println("이름을 입력해주세요");
 				String name = sc.nextLine();
-				System.out.println("계좌번호를 입력해주세요");
-				String accountNo = sc.nextLine();
+				String accountNo="";
+				while(true) {
+				accountNo = (int)((Math.random() * 90000000) + 10000000)+"";
+				if(!accountNoSet.contains(accountNo)) {
+					break;
+				}				
+				}
 				addAccount(accountNo, name);
 				break;
 			}
@@ -143,8 +162,10 @@ public class Bank {
 	void programA() {
 		System.out.println("계좌번호를 입력해주세요");
 		String accountNo = sc.nextLine();
-		outer: while (true) {
-			if (getAccount(accountNo) != null) {
+		System.out.println("이름을 입력해주세요");
+		String name = sc.nextLine();
+		if (login(accountNo).getName().equals(name)) {
+			outer: while (true) {
 				switch (this.displayMenuA()) {
 				case 1: {
 					System.out.println("**입금**");
@@ -158,7 +179,6 @@ public class Bank {
 					System.out.println("출금액을 입력해주세요");
 					long amount = Integer.parseInt(sc.nextLine());
 					getAccount(accountNo).withdraw(amount);
-
 					break;
 				}
 				case 3: {
@@ -179,8 +199,10 @@ public class Bank {
 				}
 
 				}
-			}
 
+			}
+		}else {
+			System.out.println("일치하는 정보가 없습니다.");
 		}
 	}
 
