@@ -47,7 +47,6 @@ public class Bank {
 			if (acc.getName().equals(name)) {
 				list.add(acc);
 			}
-
 		}
 		if (list.size() != 0) {
 			System.out.printf("소유자명:%s 와(과) 일치하는 계좌 발견.\n", name);

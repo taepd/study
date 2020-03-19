@@ -20,8 +20,9 @@ public class MyStack {
     }
     
     public boolean isEmpty() {
-        if(top<=-1) return true;
-        else return false;
+//        if(top<=-1) return true;
+//        else return false;
+        return(top<=-1);   //이렇게 해도 작동한다. return 에도 값이 될 수 있는 식을 넣을 수 있다.
     }
     
     public boolean full() {

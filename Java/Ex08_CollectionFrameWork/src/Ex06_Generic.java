@@ -10,7 +10,7 @@ import java.util.Stack;
  * Collection 클래스들은(저장공간의 타입: Object) 
  * 1. Object 타입 저항 >> 타입?? >> 타입강제 >> 제네릭
  * 2. 타입 안정성(타입 강제)
- * 3. 형변환(castring)할 필요없음
+ * 3. 형변환(casting)할 필요없음
  * 
  * 만드는 시점: 클래스 설계 >> 타입을 강제하도록
 */
@@ -34,7 +34,7 @@ public class Ex06_Generic {
 
     public static void main(String[] args) {
         
-        MyGen<String> mygen = new MyGen<String>();
+        MyGen<String> mygen = new MyGen<String>();   //add와 get을 직접 구현한 클래스
         mygen.add("문자열");
         String result = mygen.get();
         System.out.println(result);
