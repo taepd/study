@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.HashSet;
+
 
 public class Account {
     private String accountNo;      //계좌번호
@@ -8,11 +8,14 @@ public class Account {
     private ArrayList<Transaction> transactions;    //거래내역
     
     
+    Account(){
+        this(null, null);
+    }
+    
     Account(String accountNo, String name){
         this.accountNo = accountNo;
         this.name=name;
-        this.balance=0;
-        
+        this.balance=0;       
         this.transactions = new ArrayList<Transaction>();
         
     }
@@ -38,19 +41,18 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account [accountNo=" + accountNo + ", name=" + name + ", balance=" + balance + "]";
+        return "Account [계좌번호=" + accountNo + ", 소유자명=" + name + ", 잔고=" + balance + "]";
     }
 
-    public void deposit(long amount) {      //입금한다
-     
+    public void deposit(long amount) {      //입금한다           
           this.balance+=amount;
-          System.out.printf("%s계좌에 %d원을 입금. 현재 잔고: %d\n",accountNo,amount,balance);
-          this.transactions.add(new Transaction("준비중", "준비중", "입금", amount, balance));
+          System.out.printf("[%s]계좌에 [%d]원을 입금. 현재 잔고: %d\n",accountNo,amount,balance);
+          this.transactions.add(new Transaction("입금", amount, balance));
     }
     public void withdraw(long amount) {    //출금한다
         this.balance-=amount;
-        System.out.printf("%s계좌에 %d원을 출금. 현재 잔고: %d\n",accountNo,amount,balance);
-        this.transactions.add(new Transaction("준비중", "준비중", "입금", amount, balance));
+        System.out.printf("[%s]계좌에 [%d원]을 출금. 현재 잔고: %d\n",accountNo,amount,balance);
+        this.transactions.add(new Transaction("출금", amount, balance));
     }
     public long getBalance() {    //잔고를 확인한다
         System.out.printf("%s계좌 잔고 확인. 현재 잔고: %d\n",accountNo,balance);
