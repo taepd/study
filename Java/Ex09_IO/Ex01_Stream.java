@@ -23,13 +23,14 @@ public class Ex01_Stream {
         byte[] inSrc = {0,1,2,3,4,5,6,7,8,9};
         byte[] outSrc = null; //현재는 메모리를 가지고 있지 않아요
         
-        //내가 데이터를 read, write하는 대상이 Memory
+        //내가 데이터를 read, write하는 대상을 Memory
         ByteArrayInputStream input = null;
         ByteArrayOutputStream output = null;
         
         input = new ByteArrayInputStream(inSrc);
         //생성자를 통해서 inSrc 배열의 값을 read할 준비
         output = new ByteArrayOutputStream(); //write
+        
         System.out.println("outSrc before : "+Arrays.toString(outSrc));
         
         //공식같은 로직(암기)

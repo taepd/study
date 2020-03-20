@@ -110,7 +110,7 @@ public class Bank {
 	}
 
 	void programB() {
-		outer: while (true) {
+		    while (true) {
 			switch (displayMenuB()) {
 			case 1: {
 				System.out.println("**계좌 생성**");
@@ -151,7 +151,7 @@ public class Bank {
 				break;
 			}
 			case 6: {
-				break outer;
+				return;
 			}
 			case 7: {
 				System.exit(0);
@@ -195,7 +195,7 @@ public class Bank {
 					break;
 				}
 				case 5: {
-					break outer;
+					break outer;   //return하면 해당하는 가장 상위 메서드 블럭 탈출
 				}
 				case 6: {
 					System.exit(0);

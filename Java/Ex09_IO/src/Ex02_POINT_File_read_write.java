@@ -33,6 +33,7 @@ public class Ex02_POINT_File_read_write {
             fs.close();  //스코프 때문에 작동안함
         }
         */
+        
         FileInputStream fs=null;  //try블럭 밖에서 변수 선언해야 한다
         FileOutputStream fos=null;
         String path = "D:\\tae\\IOTemp\\a.txt";
