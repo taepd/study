@@ -1,1 +1,1 @@
-word=C:\Temp\File.txt
+HELLO=C:\Temp\aaa.txt

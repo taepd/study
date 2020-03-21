@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 public class Ex11_PrintWriter {
 	public static void main(String[] args) {
 		try {
-			//console 작업을  txt 파일에다 작업 ..
+			//파일에 print문을 이용해서 간편하게 입력
 			PrintWriter pw = new PrintWriter("C:\\Temp\\homework.txt");
 			pw.println("*******************************************");
 			pw.println("*             HOMEWORK                    *");
@@ -16,7 +16,8 @@ public class Ex11_PrintWriter {
 			pw.println();
 			pw.close(); //close() 
 			
-			//homework.txt read (Line) 
+			//homework.txt read (Line)
+			//BufferedReader와 String readLine() 이용해 라인별로 읽어들임
 			FileReader fr = new FileReader("C:\\Temp\\homework.txt");
 			BufferedReader br = new BufferedReader(fr);
 			String s="";

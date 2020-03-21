@@ -24,7 +24,7 @@ public class Ex04_Stream_Buffer {
         FileOutputStream fos = null;
         BufferedOutputStream bos = null;
         try {                            //예외처리 권장(거의 강제)
-            fos = new FileOutputStream("data.txt");  //default: false : 파일 생성
+            fos = new FileOutputStream("data.txt");  //생성자 선언으로 파일 생성. default: false >> 덮어씀
             bos = new BufferedOutputStream(fos);    // 기본 생성자가 없고 매개변수로 outputStream(추상클래스)를 갖음 >> 독자적 객체 생성 불가
             
             for (int i = 0; i < 10; i++) {

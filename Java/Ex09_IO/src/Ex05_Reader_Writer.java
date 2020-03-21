@@ -28,12 +28,12 @@ public class Ex05_Reader_Writer {
             int data = 0;
             while((data=fr.read())!=-1) {
 //                System.out.println((char)data);  //char캐스팅을 안하면 아스키코드값으로 출력됨
-                fw.write(data); //data값을 copy_Stream.txt에 write
+//                fw.write(data); //data값을 copy_Stream.txt에 write
                 if(data != '\n' && data !='\r' && data !='\t' && data !=' ') {   //\r도 줄바꿈  유닉스는 \n, 윈도우는 \r\n
                     fw.write(data);  //압축파일(파일의 크기를 감소: 배포 버전)  // 공백이나 엔터가 모두 생략되었으므로
               
                 }
-            }fw.flush();  // Writer도 flush를 해줘야 한다
+            }//fw.flush();  // 사용자가 원할 때 버퍼를 비워줌
         } catch (Exception e) {
 
                

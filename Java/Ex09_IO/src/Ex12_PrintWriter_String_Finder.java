@@ -34,7 +34,7 @@ public class Ex12_PrintWriter_String_Finder {
 			String line="";
 			while((line = br.readLine()) != null) {
 				if(line.indexOf(word) != -1) { //HELLO 단어가 문장에 포함되어 있으면
-					writer.write("word" + "=" + files[i].getAbsolutePath() + "\n");
+					writer.write(word + "=" + files[i].getAbsolutePath() + "\n");
 				}
 			}
 			writer.flush();

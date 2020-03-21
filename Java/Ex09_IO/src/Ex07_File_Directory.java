@@ -6,14 +6,14 @@ import java.io.IOException;
  * 파일과 폴더를 다룰 수 있는 클래스
  * 
  * Java: 파일, 폴더 다루는 걸 하나의 클래스로 만듬: File
- * C# : 파일(File), 폴더(Directory)
+ * C# : 파일(File), 폴더(Directory) 따로
  * >> a.txt 생성, 수정, 삭제, 정보 read
  * >> Temp 생성, 삭제, 정보 read
  * 
  * 경로
  * 절대경로: C:\\, D:\\  >>C:\\Temp\\a.txt
- * 상대경로: 현재 파일을 중심으로 C:\\Temp\\a.txt >> ../ >> /
- * 
+ * 상대경로: 현재 파일을 중심으로 
+ *
 */
 
 

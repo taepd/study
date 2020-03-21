@@ -119,9 +119,9 @@ public class Bank {
 				String accountNo="";
 				while(true) {
 				accountNo = (int)((Math.random() * 9000000)+10000000)+"";
-				if(!accountsMap.containsKey(accountNo)) {
-					break;
-				}				
+					if(!accountsMap.containsKey(accountNo)) {
+						break;
+					}				
 				}
 				addAccount(accountNo, name);
 				break;

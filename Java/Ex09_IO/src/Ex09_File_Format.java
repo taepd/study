@@ -21,7 +21,7 @@ public class Ex09_File_Format {
         Calendar cal = Calendar.getInstance();
         String sdate = sdf.format(cal.getTime());
         System.out.println(sdate);
-        
+       
         //문자열 형식(>>printf(), String.format..
         //MessageFormat 클래스
         String userid = "kglim";
@@ -51,7 +51,7 @@ public class Ex09_File_Format {
                     size,
                     name
             );
-            //폴더, 파일 갯수 구하기ㅠ
+            //폴더, 파일 갯수 구하기
         }
 
         
