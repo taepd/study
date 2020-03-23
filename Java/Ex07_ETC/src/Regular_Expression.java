@@ -2,10 +2,9 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
  
-public class temp {
-    // static ¼±¾ğ ³¢¸®³¢¸® ³î¾Æ¶ó
-    static String data = "";
-    static String regExp;
+public class Regular_Expression {
+//    static String data = "";
+//    static String regExp;
     static Scanner sc = new Scanner(System.in); //ÀÔ·Â
  
     public static void main(String[] args) throws Exception {
@@ -51,14 +50,14 @@ public class temp {
         //[] ¾È¿¡ ÀÖ´Â ¹®ÀÚ Áß ÇÏ³ª, ¹üÀ§´Â '-'·Î ÁöÁ¤
         //+¾Õ¿¡´Â ÇÑ ±ÛÀÚ ÀÌ»óÀÇ ´Ü¾î°¡ ¹İµå½Ã ¿Í¾ß ÇÑ´Ù. 0¹øÀÌ»ó ¹İº¹
         //$¹®ÀåÀÇ ³¡
-        String regExp = "^[¤¡-¤¾°¡-ÆR]+$";
+        String regExpaa = "^[¤¡-¤¾°¡-ÆR]+$";
         
         String data = sc.nextLine();
         
        //Á¤±ÔÇ¥Çö½ÄÀÌ ÆĞÅÏ¿¡ ÀÏÄ¡ÇÏ´ÂÁö ¿©ºÎ¸¦ Å×½ºÆ®ÇÑ´Ù.
        //java.util.regex ÆĞÅ°Áö¿¡ ÀÖ´Â Match Å¬·¡½º¿Í Pattern Å¬·¡½º¸¦ »ç¿ëÇÏ¿© 
        //¹®ÀÚ¿­À» Á¤±ÔÇ¥Çö½ÄÀ¸·Î °ËÁõÇÒ ¼ö ÀÖ´Ù.
-       boolean b = data.matches(regExp); // true ,false
+       boolean b = data.matches(regExpaa); // true ,false
  
         if (b == true) {
             System.out.println("¿Ã¹Ù¸¥ Çü½ÄÀÔ´Ï´Ù , Â¦Â¦Â¦!!");
@@ -71,12 +70,13 @@ public class temp {
     public static void pwd() {
         System.out.println("2.ºñ¹Ğ¹øÈ£ ÀÔ·Â:");
         //[] ´ë°ıÈ£ ¾ÈÀÇ Çü½Ä ÀÏÄ¡¸¦ ÀÇ¹Ì
-        //[A-Za-z ~¼Ò¹®ÀÚaºÎÅÍ ´ë¹®ÀÚZ ±îÁö¿Í 0-9 ¼ıÀÚ
+        //[A-Za-z ¼Ò¹®ÀÚaºÎÅÍ ´ë¹®ÀÚZ ±îÁö¿Í 0-9 ¼ıÀÚ
         //^ :¹®ÀÚ¿­ÀÇ ½ÃÀÛÀ» ³ªÅ¸³¿
         //{} : ¼±Çà¹®ÀÚ°¡ ³ªÅ¸³ª´Â È½¼ö ¶Ç´Â ¹üÀ§¸¦ ³ªÅ¸³½´Ù
-        //_@./#&+=?~] Æ¯¼ö¹®ÀÚ Æ÷ÇÔ
+        //!@#$%^~*+=- Æ¯¼ö¹®ÀÚ Æ÷ÇÔ
         //{6,20} ¹İº¹°¹¼ö¸¦ ÀÇ¹Ì
-        String regExp = "^[A-Za-z0-9_@./#&+-?~]*.{6,20}$";
+        //?=.* Àû¾îµµ ÇÏ³ª
+        String regExp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,20}$";
         String data = sc.nextLine();
  
         boolean b1 = data.matches(regExp); // true ,false À¯È¿¼º °Ë»ç
@@ -84,7 +84,7 @@ public class temp {
         if (b1 == true) {
             System.out.println("¿Ã¹Ù¸¥ Çü½ÄÀÔ´Ï´Ù , Â¦Â¦Â¦!!");
         } else {
-            System.out.println("6~20ÀÚ »çÀÌ¿¡ ¿µ¾î´ë¼Ò¹®ÀÚ,Æ¯¼ö¹®ÀÚµµ µé¾î¿Ã¼ö ÀÖ½À´Ï´Ù.");
+            System.out.println("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù. 8~20ÀÚ »çÀÌ¿¡ Àû¾îµµ ÇÏ³ªÀÇ ¿µ¾î´ë¹®ÀÚ,Æ¯¼ö¹®ÀÚ°¡ Æ÷ÇÔµÇ¾î¾ß ÇÕ´Ï´Ù.");
         }
     }
  
