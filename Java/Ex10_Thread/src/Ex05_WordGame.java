@@ -11,7 +11,14 @@ main 함수 2개 실행
 단 단어를 하나라도 입력해서 확인 버튼을 누르면 시간을 멈추게 하세요
 hint) 공유자원 (static)
 
+Thread: 상태정보
 
+join : 다른 스레드의 종료를 기다림(휴게실에서)
+
+다양한 계산 작업... 각 행성별 거리를 구해서.. 그 합산한 결과..
+10개... 1개... 합산
+
+main 스레드에게 join 걸어서 기다리게 함
 
 
 */
@@ -52,6 +59,13 @@ public class Ex05_WordGame {
 			
 		word.start();
 		time.start();
+		
+		try {
+            word.join(); //main에게  word가 종료할 때까지 대기하라고 명령
+            time.join(); //main에게  time이 종료할 때까지 대기하라고 명령
+        } catch (Exception e) {
+
+        }  
 		
 		System.out.println("Main END");
 
