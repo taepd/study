@@ -1,53 +1,42 @@
 import java.io.Serializable;
 import java.util.ArrayList;
- class Cart implements Manager, Serializable{
+import java.util.HashMap;
+import java.util.Set;
+ class Cart implements Serializable{
 
 	int count;
 	int totalprice;
-	ArrayList<Product> cartArray;
+	HashMap<Product, Integer> cartArray;
 	
 	Cart(){
 	    count=0;
 	    totalprice=0;
-	    cartArray= new ArrayList<Product>();
+	    cartArray= new HashMap<Product, Integer>();
 	}
 	
 //카트목록 보여주는.................
 	public void show() {
-		System.out.println(cartArray.toString());
-		count = cartArray.size();
+		count=0;
+		Set<Product> set= cartArray.keySet();
+        //방법2
+        System.out.println("==========================장바구니 리스트==========================");
+        System.out.println("       상품명    가격    수량        합산가격              ");
+        for(Product p : set) {
+    
+  
+            System.out.printf("%10s %10s %5s %10s",p.getPname(), p.getPrice(), cartArray.get(p), p.getPrice()*cartArray.get(p));
+            System.out.println();
+            count +=cartArray.get(p);
+        }
+		
+		
+
+		
 		System.out.println("총 물건의 개수는 " + count + "입니다.");
 		System.out.println("총 가격은 " + totalprice + "입니다.");
 	}
+
+
 	
- //카트에 프로덕트 추가.
-	public void add(Product product) {
-		cartArray.add(product);
-		count++;
-	}
 
-//카트에 프로덕트 삭제.
-	public void remove(Product product) { 
-
-		for(int i=0;i<cartArray.size();i++) {
-		if(cartArray.get(i)==product) { //cart에 해당 product가 있으면 삭제한다.
-			cartArray.remove(i);
-			count--;
-			totalprice-=cartArray.get(i).getPrice();
-		}else {
-			System.out.println("장바구니에 없는 상품입니다.");
-			return;
-		}
-		} 	
-		
-	}
-//**인터페이스 때문에 놔둔 애이고, parameter로 product 받는게 맞지않을까 해서 위에 오버로딩 시킴**
-		public void add() {			
-		}
-		public void remove() {			
-		}
-		@Override
-		public String toString() {
-			return "Cart [cartArray=" + cartArray + "]";
-		}		
 }

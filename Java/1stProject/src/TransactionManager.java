@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class TransactionManager implements Manager{
+public class TransactionManager implements Manager, Serializable{
     
         
-    HashMap<String, ArrayList> transactionList = new HashMap<String, ArrayList>();
+    static HashMap<String, ArrayList> transactionList = new HashMap<String, ArrayList>();
 
     @Override
     public void add() {
@@ -32,7 +32,8 @@ public class TransactionManager implements Manager{
     public String toString() {
         return "TransactionManager [transactionList=" + transactionList + "]";
     }
-    //I/O를 위한 직렬화 저장
+    
+   //I/O를 위한 직렬화 저장
     public void save() {
         File file = new File("TransactionDB.txt");
         
@@ -58,12 +59,12 @@ public class TransactionManager implements Manager{
         try{
             FileInputStream fis = new FileInputStream(file);
             BufferedInputStream bis = new BufferedInputStream(fis);
-            ObjectInputStream oos = new ObjectInputStream(bis); //역직렬화를 위한 보조스트림
+            ObjectInputStream ois = new ObjectInputStream(bis); //역직렬화를 위한 보조스트림
             
-            transactionList = (HashMap)oos.readObject(); //readObject메서드를 이용해서 역직렬화
+            transactionList = (HashMap)ois.readObject(); //readObject메서드를 이용해서 역직렬화
                                                   //리턴값이 Object이므로 다운캐스팅
             
-            oos.close();
+            ois.close();
             bis.close();
             fis.close();
             

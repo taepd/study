@@ -30,6 +30,10 @@ public class Transaction implements Serializable{
         SimpleDateFormat dateformat2 = new SimpleDateFormat("HH½ÃmmºÐ");
         this.transactionDate=dateformat.format(cal.getTime());
         this.transactionTime=dateformat2.format(cal.getTime());
+        this.customerName = cutomerName;
+        this.productName=productName;
+        this.price=price;
+        this.quantity=quantity;
         
         
     }
@@ -54,7 +58,7 @@ public class Transaction implements Serializable{
     public String toString() {
         return "Transaction [transactionDate=" + transactionDate + ", transactionTime=" + transactionTime
                 + ", customerName=" + customerName + ", productName=" + productName + ", price=" + price + ", quantity="
-                + quantity + ", customerManager=" + customerManager + "]";
+                + quantity+"]";
     }
 
     

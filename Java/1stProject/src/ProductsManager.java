@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class ProductsManager implements Manager, Serializable{
 
-    HashMap<Integer, Product> productList = new HashMap<Integer, Product>();// 상품products array
+    static HashMap<Integer, Product> productList = new HashMap<Integer, Product>();// 상품products array
 
     static Scanner sc = new Scanner(System.in);
 
@@ -114,7 +114,7 @@ public class ProductsManager implements Manager, Serializable{
     }
 
     // I/O를 위한 직렬화 저장
-    public void save() {
+    public static void save() {
         File file = new File("ProductDB.txt");
 
         try {
@@ -140,12 +140,13 @@ public class ProductsManager implements Manager, Serializable{
         try {
             FileInputStream fis = new FileInputStream(file);
             BufferedInputStream bis = new BufferedInputStream(fis);
-            ObjectInputStream oos = new ObjectInputStream(bis); // 역직렬화를 위한 보조스트림
+            ObjectInputStream ois = new ObjectInputStream(bis); // 역직렬화를 위한 보조스트림
 
-            productList = (HashMap) oos.readObject(); // readObject메서드를 이용해서 역직렬화
+            productList = (HashMap) ois.readObject(); // readObject메서드를 이용해서 역직렬화
                                                       // 리턴값이 Object이므로 다운캐스팅
 
-            oos.close();
+            ois.close();
+            bis.close();
             fis.close();
 
         } catch (Exception e) {

@@ -35,8 +35,8 @@ public class Mall {
                 BufferedOutputStream bos = new BufferedOutputStream(fos);
                 ObjectOutputStream oos = new ObjectOutputStream(bos); // 직렬화 저장을 위한 보조스트림
 
-                customerManager.customerList.put(admin.getId(), admin);
-                oos.writeObject(customerManager.customerList); 
+                CustomerManager.customerList.put(admin.getId(), admin);
+                oos.writeObject(CustomerManager.customerList); 
                 // writeObject 메서드를 이용해서 직렬화 저장
                 oos.close();
                 bos.close();
@@ -89,7 +89,7 @@ public class Mall {
         if (file4.exists()) {
             transactionManager.load();
         } else {
-            // productsArray 파일 생성
+
             try {
                 FileOutputStream fos = new FileOutputStream(file4);
                 BufferedOutputStream bos = new BufferedOutputStream(fos);
@@ -402,9 +402,9 @@ public class Mall {
     
 
     void CartProgram() {
-
+    	
         outer: while (true) {
-            System.out.println(cartManager.cartList.get(id).cartArray);
+        	cartManager.cartList.get(id).show();
            
             switch (this.CartMenu()) {
             case 1: {
@@ -413,7 +413,7 @@ public class Mall {
                 break;
             }
             case 2: {
-                System.out.println("**장바구니 상품 삭제**");
+                System.out.println("**장바구니 비우기**");
                 cartManager.remove();
                 break;
             }
@@ -474,12 +474,13 @@ public class Mall {
             }
             case 2: {
                 System.out.println("**주문 내역**");
-                System.out.println((Customer)(customerManager.customerList.get(customerManager.id)));
+                customerManager.watchBuyHistory();
                 break;
             }
             case 3: {
                 System.out.println("**장바구니**");
-                cartManager.show();
+                CartProgram();
+                
                 break;
             }
 

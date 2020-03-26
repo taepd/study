@@ -1,11 +1,12 @@
 import java.io.Serializable;
 
 public class Product implements Serializable{
-    private String pname;
-    private int price;
-    private int pnumber;
+	private int pnumber;
+	private int price;
+	private String pname;
     private int quantity;
     private String kind;
+	
         
     public Product(String pname, int pnumber, int price, int quantity, String kind) {
         this.pnumber = pnumber;

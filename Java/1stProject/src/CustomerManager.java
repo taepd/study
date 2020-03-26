@@ -10,8 +10,9 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class CustomerManager implements Manager, Serializable{
-    HashMap<String, User> customerList = new HashMap<String, User>();
+    static HashMap<String, User> customerList = new HashMap<String, User>();
     ProductsManager p = new ProductsManager();
+    TransactionManager transactionManager = new TransactionManager();
     static String id;
     
     //회원 가입
@@ -55,7 +56,10 @@ public class CustomerManager implements Manager, Serializable{
 
 
     void watchBuyHistory() {
-
+    	String id = Mall.id;     
+        Customer customer = (Customer)CustomerManager.customerList.get(id);
+        System.out.println(customer.transactionArray);       
+  
     }
     
     public void userList() {
