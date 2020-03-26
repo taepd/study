@@ -18,6 +18,8 @@ class CartManager extends Cart implements Manager{
     TransactionManager transactionManager = new TransactionManager();
 
     public void add() {
+        
+        
         customerManager.load();
         String id = customerManager.id;
         //카트가 자꾸 재생성됨 if문 추가해야 함
@@ -54,7 +56,6 @@ class CartManager extends Cart implements Manager{
     
     public void buy() {
         String id = customerManager.id;
-        System.out.println(id);
         
         Customer customer = (Customer)customerManager.customerList.get(id);
         

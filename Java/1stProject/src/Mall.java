@@ -347,7 +347,7 @@ public class Mall {
     }
         
     void buyProgram() {
-
+        
         outer: while (true) {
             switch (this.BuyMenu()) {
             case 1: {
@@ -404,6 +404,8 @@ public class Mall {
     void CartProgram() {
 
         outer: while (true) {
+            System.out.println(cartManager.cartList.get(id).cartArray);
+           
             switch (this.CartMenu()) {
             case 1: {
                 System.out.println("**장바구니 상품 구매**");
