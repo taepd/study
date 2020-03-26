@@ -1,16 +1,20 @@
+import java.io.Serializable;
 import java.util.ArrayList;
- class Cart implements Manager{
+ class Cart implements Manager, Serializable{
 
-	int count=0;
+	int count;
 	int totalprice;
-	ArrayList<Product> cartArray= new ArrayList<Product>();
+	ArrayList<Product> cartArray;
+	
+	Cart(){
+	    count=0;
+	    totalprice=0;
+	    cartArray= new ArrayList<Product>();
+	}
 	
 //카트목록 보여주는.................
 	public void show() {
 		System.out.println(cartArray.toString());
-		for(int i=0;i<cartArray.size();i++) {
-		totalprice=cartArray.get((int)i).getPrice();
-		}
 		count = cartArray.size();
 		System.out.println("총 물건의 개수는 " + count + "입니다.");
 		System.out.println("총 가격은 " + totalprice + "입니다.");

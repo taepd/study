@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 
 public class Customer extends User{
     
     private String name;
     private String tel;
     private String address;
+    
+    public ArrayList<Transaction> transactionArray= new ArrayList<Transaction>();
     
     
           
@@ -13,6 +16,8 @@ public class Customer extends User{
         this.name=name;
         this.tel=tel;
         this.address=address;
+        
+        
         
     }
 

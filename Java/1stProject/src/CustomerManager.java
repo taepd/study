@@ -5,13 +5,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Set;
 
-public class CustomerManager implements Manager {
+public class CustomerManager implements Manager, Serializable{
     HashMap<String, User> customerList = new HashMap<String, User>();
-
-    
+    ProductsManager p = new ProductsManager();
+    static String id;
     
     //회원 가입
     Customer signUp(String id, String pwd, String name, String tel, String address) {
@@ -27,12 +28,13 @@ public class CustomerManager implements Manager {
         return customer;       
     }
   
-    Customer login(String id, String pwd) {
+    Customer signIn(String id, String pwd) {
         
         if(customerList.containsKey(id)&&
                 ((customerList.get(id).getPwd()).equals(pwd))) {
 
             System.out.println("로그인 성공");
+            this.id = id;
             return (Customer) customerList.get(id);
         }else {
             System.out.println("로그인 실패");
@@ -41,8 +43,9 @@ public class CustomerManager implements Manager {
     }
     
     
-    void watchProductList() {
-        
+    void productList() {       
+        p.load();
+        p.productList();
     }
 
     void buy() {
@@ -54,9 +57,41 @@ public class CustomerManager implements Manager {
     void watchBuyHistory() {
 
     }
+    
+    public void userList() {
+        Set<String> set= customerList.keySet();
+        //방법2
+        System.out.println("==========================Vip고객명단==========================");
+        System.out.println("       ID    Password    성함           전화번호                     배송지");
+        for(String c : set) {
+            if(c.equals("admin")) {
+                continue;
+            }
+            Customer user = (Customer)(customerList.get(c));
+            System.out.printf("%10s %10s %5s %10s %17s",user.getId(),user.getPwd(),user.getName(),user.getTel(),user.getAddress());
+            System.out.println();
+        }
+    }
+    
+    void MyInfo() {
+        
+//        System.out.println("회원님의 정보 입니다.");
+//        load(); //임시로 둔 load
+//        Set<String> set = customerList.keySet();
+//        customerList.keySet();
+//        
+//        for(String a : set) {
+//            String name = customerList.get(a).getId();
+//            
+//        }
+        Customer my = (Customer)customerList.get(id); //(user)타입으로 있는 value값 다운캐스팅필요.
+       System.out.println("회원님의 이름은 "+my.getName());
+       System.out.println("회원님의 아이디는 "+my.getId());
+       System.out.println("회원님의 비밀번호는"+my.getPwd());
+       System.out.println("회원님의 전화번호는"+my.getTel());
+       System.out.println("회원님의 주소는"+my.getAddress());
 
-    void searchUserInfo() {
-
+        
     }
 
     public String toString() {
