@@ -16,12 +16,12 @@ public class Product implements Serializable{
         this.kind = kind;
     }
     
-    public Product(String pname, int pnumber, int price, int quantity) {
-        this.pnumber = pnumber;
-        this.price = price;
-        this.pname = pname;
-        this.quantity = quantity;
-    }
+//    public Product(String pname, int pnumber, int price, int quantity) {
+//        this.pnumber = pnumber;
+//        this.price = price;
+//        this.pname = pname;
+//        this.quantity = quantity;
+//    }
     
     
 
@@ -76,28 +76,28 @@ public class Product implements Serializable{
 
 }
 
-class IPhone extends Product {
-
-    public IPhone(String pname, int pnumber, int price, int quantity) {
-        super(pname, pnumber, price, quantity);
-        super.setKind("¾ÆÀÌÆù");
-    }
-    
-   
-}
-
-class MacBook extends Product {
-    public MacBook(String pname, int pnumber, int price, int quantity) {
-        super(pname, pnumber, price, quantity);
-        super.setKind("¸ÆºÏ");
-    }
-
-}
-
-class IPad extends Product {
-    public IPad(String pname, int pnumber, int price, int quantity) {
-        super(pname, pnumber, price, quantity);
-        super.setKind("¾ÆÀÌÆÐµå");
-    }
-
-}
+//class IPhone extends Product {
+//
+//    public IPhone(String pname, int pnumber, int price, int quantity) {
+//        super(pname, pnumber, price, quantity);
+//        super.setKind("¾ÆÀÌÆù");
+//    }
+//    
+//   
+//}
+//
+//class MacBook extends Product {
+//    public MacBook(String pname, int pnumber, int price, int quantity) {
+//        super(pname, pnumber, price, quantity);
+//        super.setKind("¸ÆºÏ");
+//    }
+//
+//}
+//
+//class IPad extends Product {
+//    public IPad(String pname, int pnumber, int price, int quantity) {
+//        super(pname, pnumber, price, quantity);
+//        super.setKind("¾ÆÀÌÆÐµå");
+//    }
+//
+//}

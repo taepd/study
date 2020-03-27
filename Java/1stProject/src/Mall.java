@@ -108,16 +108,16 @@ public class Mall {
 
     }
 
-    void program() {
+    void mallMain() {
         while (true) {
-            switch (MainMenu()) {
+            switch (mallMainMenu()) {
             case 1: {
-                this.signInProgram();
+                this.signIn();
 
                 break;
             }
             case 2: {
-                this.signUpProgram();
+                this.signUp();
                 break;
             }
             case 3: {
@@ -130,7 +130,7 @@ public class Mall {
     }
     
     // 초기 메뉴
-    int MainMenu() {
+    int mallMainMenu() {
         int menu = 0;
         do {
             try {
@@ -160,7 +160,7 @@ public class Mall {
     }
 
     // 회원가입
-    void signUpProgram() {
+    void signUp() {
         System.out.println("회원 가입");
         System.out.println("ID를 입력해주세요");
         String id = sc.nextLine();
@@ -177,7 +177,7 @@ public class Mall {
 
   
     // 로그인
-    void signInProgram() {
+    void signIn() {
 
         System.out.println("**로그인**");
         System.out.println("ID를 입력해주세요");
@@ -186,34 +186,35 @@ public class Mall {
         String pwd = sc.nextLine();
         if (admin.getId().equals(id) && admin.getPwd().equals(pwd)) {
             System.out.println("관리자 로그인");
-            AdminProgram();
+            admin();
 
         } else if (customerManager.signIn(id, pwd) != null) {
-            CustomerProgram();
+            customer();
 
         } else {
             System.out.println("일치하는 정보가 없습니다.");
+            System.out.println(transactionManager.transactionList.toString());
         }
     }
 
-    void CustomerProgram() {
+    void customer() {
 
         outer: while (true) {
-            switch (this.CustomerMenu()) {
+            switch (this.customerMenu()) {
             case 1: {
                 System.out.println("**상품조회**");
                 productsManager.productList();
-                buyProgram();
+                addCart();
                 break;
             }
             case 2: {
                 System.out.println("**장바구니**");
-                CartProgram();
+                cart();
                 break;
             }
             case 3: {
                 System.out.println("**마이페이지**");
-                MyPageProgram();
+                myPage();
 
                 break;
             }
@@ -232,7 +233,7 @@ public class Mall {
     }
     
     // 고객 메뉴 화면
-    int CustomerMenu() {
+    int customerMenu() {
         int menu = 0;
         do {
             try {
@@ -266,10 +267,10 @@ public class Mall {
     }
     
     //관리자 프로그램
-    void AdminProgram() {
+    void admin() {
 
         outer: while (true) {
-            switch (this.AdminMenu()) {
+            switch (this.adminMenu()) {
             case 1: {
                 productsManager.productList();
 
@@ -309,7 +310,7 @@ public class Mall {
     }
     
     // 관리자 메뉴 화면
-    int AdminMenu() {
+    int adminMenu() {
         int menu = 0;
         do {
             try {
@@ -346,10 +347,10 @@ public class Mall {
 
     }
         
-    void buyProgram() {
+    void addCart() {
         
         outer: while (true) {
-            switch (this.BuyMenu()) {
+            switch (this.addCartMenu()) {
             case 1: {
                 System.out.println("**장바구니에 상품 추가**");
                 
@@ -359,7 +360,7 @@ public class Mall {
             }
             case 2: {
                 System.out.println("**장바구니**");
-                CartProgram();
+                cart();
                 break;
             }
             case 3: {
@@ -376,7 +377,7 @@ public class Mall {
     
 
     // 상품 조회 페이지 메뉴 화면
-    int BuyMenu() {
+    int addCartMenu() {
         int menu = 0;
         do {
             try {
@@ -401,12 +402,12 @@ public class Mall {
 
     
 
-    void CartProgram() {
+    void cart() {
     	
         outer: while (true) {
-        	cartManager.cartList.get(id).show();
+        	cartManager.cartList.get(id).show();  //장바구니 보여주기
            
-            switch (this.CartMenu()) {
+            switch (this.cartMenu()) {
             case 1: {
                 System.out.println("**장바구니 상품 구매**");
                 cartManager.buy();
@@ -432,7 +433,7 @@ public class Mall {
     }
     
     // 카트 메뉴 화면
-    int CartMenu() {
+    int cartMenu() {
         int menu = 0;
         do {
             try {
@@ -463,10 +464,10 @@ public class Mall {
 
     }
 
-    void MyPageProgram() {
+    void myPage() {
 
         outer: while (true) {
-            switch (this.MyPageMenu()) {
+            switch (this.myPageMenu()) {
             case 1: {
                 System.out.println("**내 정보 조회**");
                 customerManager.MyInfo();
@@ -474,12 +475,12 @@ public class Mall {
             }
             case 2: {
                 System.out.println("**주문 내역**");
-                customerManager.watchBuyHistory();
+                customerManager.myTransactiontHistory();
                 break;
             }
             case 3: {
                 System.out.println("**장바구니**");
-                CartProgram();
+                cart();
                 
                 break;
             }
@@ -499,7 +500,7 @@ public class Mall {
 
 
     // 마이페이지 메뉴 화면
-    int MyPageMenu() {
+    int myPageMenu() {
         int menu = 0;
         do {
             try {
@@ -536,7 +537,7 @@ public class Mall {
 
         Mall mall = new Mall();
 
-        mall.program();
+        mall.mallMain();
 
     }
 

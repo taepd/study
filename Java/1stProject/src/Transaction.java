@@ -15,10 +15,10 @@ public class Transaction implements Serializable{
       
     private String transactionDate;
     private String transactionTime;
-    String customerName;
-    String productName;
-    int price;
-    int quantity;
+    private String customerName;
+    private String productName;
+    private int price;
+    private int quantity;
     
     
     
@@ -56,9 +56,8 @@ public class Transaction implements Serializable{
 
     @Override
     public String toString() {
-        return "Transaction [transactionDate=" + transactionDate + ", transactionTime=" + transactionTime
-                + ", customerName=" + customerName + ", productName=" + productName + ", price=" + price + ", quantity="
-                + quantity+"]";
+        System.out.println("--상품명--상품가격--수량----주문자성함-------거래일시-------");
+        return productName+"  "+price+"   "+quantity+"      "+customerName+"    "+transactionDate+transactionTime;
     }
 
     

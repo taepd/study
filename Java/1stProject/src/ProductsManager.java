@@ -42,8 +42,7 @@ public class ProductsManager implements Manager, Serializable{
 
     // 구매내역 ********user 클래스 필요*******
     public void buyHistory() {
-        Payment payment = new Payment(); // 새로 생성 가능?
-        payment.load();
+
     }
 
     // 구매자 정보불러오기 ******user 클래스 필요*****
@@ -109,12 +108,9 @@ public class ProductsManager implements Manager, Serializable{
         }
     }
 
-    public void UserTransaciontHistory() {
-
-    }
 
     // I/O를 위한 직렬화 저장
-    public static void save() {
+    public void save() {
         File file = new File("ProductDB.txt");
 
         try {

@@ -60,7 +60,7 @@ class CartManager implements Manager {
 		p2.setQuantity(p2.getQuantity() - 1); // 상품 수량 -1
 
 		cartList.get(id).totalprice += p.getPrice();
-		ProductsManager.save();
+		productsManager.save();
 		save();
 		cartList.get(id).show();
 
@@ -116,12 +116,12 @@ class CartManager implements Manager {
        
 	}
 
-	public void show() {
-		cartList.get(CustomerManager.id).show();
-	}
+//	public void show() {
+//		cartList.get(CustomerManager.id).show();
+//	}
 
 	// I/O를 위한 직렬화 저장
-	private void save() {
+	public void save() {
 		File file = new File("CartDB.txt");
 
 		try {
@@ -142,7 +142,7 @@ class CartManager implements Manager {
 	}
 
 	// I/O를 위한 역직렬화 로드
-	void load() {
+	public void load() {
 		File file = new File("CartDB.txt");
 		try {
 			FileInputStream fis = new FileInputStream(file);

@@ -49,16 +49,10 @@ public class CustomerManager implements Manager, Serializable{
         p.productList();
     }
 
-    void buy() {
-        
-    }
 
-
-
-    void watchBuyHistory() {
+    void myTransactiontHistory() {
     	String id = Mall.id;     
-        Customer customer = (Customer)CustomerManager.customerList.get(id);
-        System.out.println(customer.transactionArray);       
+        System.out.println(transactionManager.transactionList.get(id));       
   
     }
     
@@ -112,7 +106,7 @@ public class CustomerManager implements Manager, Serializable{
     
     
     //I/O를 위한 직렬화 저장
-    private void save() {
+    public void save() {
         File file = new File("CustomerDB.txt");
         
         try{
@@ -132,7 +126,7 @@ public class CustomerManager implements Manager, Serializable{
         System.out.println("저장되었습니다.");
     }
     //I/O를 위한 역직렬화 로드
-    void load() {
+    public void load() {
         File file = new File("CustomerDB.txt");
         try{
             FileInputStream fis = new FileInputStream(file);

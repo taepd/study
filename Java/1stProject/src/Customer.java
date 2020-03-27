@@ -16,9 +16,7 @@ public class Customer extends User{
         this.name=name;
         this.tel=tel;
         this.address=address;
-        
-        
-        
+      
     }
 
     public String getName() {

@@ -54,7 +54,7 @@ public class TransactionManager implements Manager, Serializable{
         System.out.println("저장되었습니다.");
     }
     //I/O를 위한 역직렬화 로드
-    void load() {
+    public void load() {
         File file = new File("TransactionDB.txt");
         try{
             FileInputStream fis = new FileInputStream(file);
