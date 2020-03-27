@@ -167,8 +167,7 @@ public class Mall {
         while(true) {
         //ID 입력 
         System.out.println("ID를 입력해주세요. (5~20자. 영어 대소문자, 숫자, _ 만 사용가능)");
-        String regExpaa = "^[a-zA-Z0-9_]{5,20}+$";
-        
+        String regExpaa = "^[a-zA-Z0-9_]{5,20}+$";      
         id = sc.nextLine();
         boolean b = id.matches(regExpaa); // true ,false
         
@@ -525,25 +524,18 @@ public class Mall {
     void cart() {
     	
         outer: while (true) {
-            
-            //장바구니가 비어있을 때 null에러 발생 시 대처법
-            if(cartManager.cartList.get(id).cartArray.isEmpty()) {
-                System.out.println("=============장바구니 리스트===============");
+
+            //장바구니가 비어있을 때 
+        	try {
+        		  cartManager.cartList.get(id).show();  
+			} catch (Exception e) {
+				System.out.println("=============장바구니 리스트===============");
                 System.out.println("          상품명          가격          수량       합산가격");
+                System.out.println();
+                System.out.println("             장바구니가 비어 있습니다                   ");
                 break;
-            }
-            cartManager.cartList.get(id).show();  
-//            if(cartManager.cartList.get(id)==null) {
-//        	try {
-//        	    cartManager.cartList.get(id).show();  
-//            } catch (Exception e) {
-//                System.out.println("장바구니가 비어있습니다.");
-//            }
-//            }else {
-//                cartManager.cartList.get(id).show();
-//            }
-        	//장바구니 보여주기
-        	
+			}
+        	//장바구니 보여주기        	
             switch (this.cartMenu()) {
             case 1: {
                 System.out.println("**장바구니 상품 구매**");

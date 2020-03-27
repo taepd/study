@@ -11,14 +11,11 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class CustomerManager implements Manager, Serializable{
-    static HashMap<String, User> customerList = new HashMap<String, User>();
     
-    ProductsManager p = new ProductsManager();
-    TransactionManager transactionManager = new TransactionManager();
-    CartManager cartManager = new CartManager();
-    
+	static HashMap<String, User> customerList = new HashMap<String, User>();
+       
     static Scanner sc = new Scanner(System.in);
-    static String id;
+ 
     
     //회원 가입
     Customer signUp(String id, String pwd, String name, String tel, String address) {
@@ -30,14 +27,9 @@ public class CustomerManager implements Manager, Serializable{
         customer.setAddress(address);
 
         customerList.put(id,customer);
-        
-        //장바구니 생성
-      
-        cartManager.cartList.put(id, new Cart()); 
-
-        
-        cartManager.save();
+           
         save();
+
         return customer;       
     }
   
@@ -47,7 +39,7 @@ public class CustomerManager implements Manager, Serializable{
                 ((customerList.get(id).getPwd()).equals(pwd))) {
 
             System.out.println("로그인 성공");
-            this.id = id;
+            Mall.id = id;
             return (Customer) customerList.get(id);
         }else {
             System.out.println("로그인 실패");
@@ -56,7 +48,8 @@ public class CustomerManager implements Manager, Serializable{
     }
     
     
-    void productList() {       
+    void productList() {  
+        ProductsManager p = new ProductsManager();
         p.load();
         p.productList();
     }
@@ -64,12 +57,12 @@ public class CustomerManager implements Manager, Serializable{
 
     void myTransactiontHistory() {
 
-        String id = Mall.id;
+       
 
-        if (transactionManager.transactionList.get(id) == null) {
+        if (TransactionManager.transactionList.get(Mall.id) == null) {
             System.out.println("주문 내역이 없습니다.");
         } else {
-            System.out.println(transactionManager.transactionList.get(id));
+            System.out.println(TransactionManager.transactionList.get(Mall.id));
         }
 
     }
@@ -94,8 +87,8 @@ public class CustomerManager implements Manager, Serializable{
             try {
                  System.out.println("비밀번호를 입력하십시오");
                  String password = sc.nextLine();
-                 if(customerList.get(id).getPwd().equals(password)) {
-                     Customer my = (Customer)customerList.get(id); //(user)타입으로 있는 value값 다운캐스팅필요.
+                 if(customerList.get(Mall.id).getPwd().equals(password)) {
+                     Customer my = (Customer)customerList.get(Mall.id); //(user)타입으로 있는 value값 다운캐스팅필요.
                      System.out.printf("[이름 : %s]\n[아이디 : %s]\n[비밀번호 : %s]\n[전화번호 : %s]\n[주소 : %s]\n", my.getName(),my.getId(),my.getPwd(),my.getTel(),my.getAddress());
                       break;
                 } else {
@@ -115,7 +108,7 @@ public class CustomerManager implements Manager, Serializable{
     public void userTransactionList() {
         Set<String> set= customerList.keySet();
         for(String c: set) {
-            if(transactionManager.transactionList.get(c)==null) {
+            if(TransactionManager.transactionList.get(c)==null) {
                 if(c.equals("admin")) {
                     continue;
                 }
@@ -125,12 +118,12 @@ public class CustomerManager implements Manager, Serializable{
     }
     
     void userTransactionHistory(String id) {
-        if(transactionManager.transactionList.get(id)==null){
+        if(TransactionManager.transactionList.get(id)==null){
             System.out.println(id+" 회원님은 거래내역이 없습니다.");
             return;
         }else {
             System.out.println(id+" 님의 거래내역 입니다.");
-            System.out.println(transactionManager.transactionList.get(id));
+            System.out.println(TransactionManager.transactionList.get(id));
         }
     }
     

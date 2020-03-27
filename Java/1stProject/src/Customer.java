@@ -6,7 +6,7 @@ public class Customer extends User{
     private String tel;
     private String address;
     
-    public ArrayList<Transaction> transactionArray= new ArrayList<Transaction>();
+    public static ArrayList<Transaction> transactionArray= new ArrayList<Transaction>();
     
     
           

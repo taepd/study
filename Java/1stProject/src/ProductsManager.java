@@ -11,7 +11,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class ProductsManager implements Manager, Serializable{
-
+	
     static HashMap<Integer, Product> productList = new HashMap<Integer, Product>();// ªÛ«∞products array
 
     static Scanner sc = new Scanner(System.in);
