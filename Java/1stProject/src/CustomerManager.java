@@ -7,12 +7,17 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.Set;
 
 public class CustomerManager implements Manager, Serializable{
     static HashMap<String, User> customerList = new HashMap<String, User>();
+    
     ProductsManager p = new ProductsManager();
     TransactionManager transactionManager = new TransactionManager();
+    CartManager cartManager = new CartManager();
+    
+    static Scanner sc = new Scanner(System.in);
     static String id;
     
     //회원 가입
@@ -25,6 +30,13 @@ public class CustomerManager implements Manager, Serializable{
         customer.setAddress(address);
 
         customerList.put(id,customer);
+        
+        //장바구니 생성
+      
+        cartManager.cartList.put(id, new Cart()); 
+
+        
+        cartManager.save();
         save();
         return customer;       
     }
@@ -51,9 +63,15 @@ public class CustomerManager implements Manager, Serializable{
 
 
     void myTransactiontHistory() {
-    	String id = Mall.id;     
-        System.out.println(transactionManager.transactionList.get(id));       
-  
+
+        String id = Mall.id;
+
+        if (transactionManager.transactionList.get(id) == null) {
+            System.out.println("주문 내역이 없습니다.");
+        } else {
+            System.out.println(transactionManager.transactionList.get(id));
+        }
+
     }
     
     public void userList() {
@@ -72,22 +90,24 @@ public class CustomerManager implements Manager, Serializable{
     }
     
     void MyInfo() {
-        
-//        System.out.println("회원님의 정보 입니다.");
-//        load(); //임시로 둔 load
-//        Set<String> set = customerList.keySet();
-//        customerList.keySet();
-//        
-//        for(String a : set) {
-//            String name = customerList.get(a).getId();
-//            
-//        }
-        Customer my = (Customer)customerList.get(id); //(user)타입으로 있는 value값 다운캐스팅필요.
-       System.out.println("회원님의 이름은 "+my.getName());
-       System.out.println("회원님의 아이디는 "+my.getId());
-       System.out.println("회원님의 비밀번호는"+my.getPwd());
-       System.out.println("회원님의 전화번호는"+my.getTel());
-       System.out.println("회원님의 주소는"+my.getAddress());
+        do {
+            try {
+                 System.out.println("비밀번호를 입력하십시오");
+                 String password = sc.nextLine();
+                 if(customerList.get(id).getPwd().equals(password)) {
+                     Customer my = (Customer)customerList.get(id); //(user)타입으로 있는 value값 다운캐스팅필요.
+                     System.out.printf("[이름 : %s]\n[아이디 : %s]\n[비밀번호 : %s]\n[전화번호 : %s]\n[주소 : %s]\n", my.getName(),my.getId(),my.getPwd(),my.getTel(),my.getAddress());
+                      break;
+                } else {
+                    throw new Exception("");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("<입력 오류>");
+                System.out.println("비밀번호를 잘못 입력하셨습니다. 다시 입력하십시오.");
+         
+            }
+        } while (true);
 
         
     }

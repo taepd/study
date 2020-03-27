@@ -84,7 +84,7 @@ public class Regular_Expression {
         if (b1 == true) {
             System.out.println("올바른 형식입니다 , 짝짝짝!!");
         } else {
-            System.out.println("잘못 입력하셨습니다. 8~20자 사이에 적어도 하나의 영어대문자,특수문자가 포함되어야 합니다.");
+            System.out.println("잘못 입력하셨습니다. 8~20자 사이에 적어도 하나의 영어대문자,숫자, 특수문자가 포함되어야 합니다.");
         }
     }
  

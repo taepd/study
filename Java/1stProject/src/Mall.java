@@ -162,17 +162,79 @@ public class Mall {
     // È¸¿ø°¡ÀÔ
     void signUp() {
         System.out.println("È¸¿ø °¡ÀÔ");
-        System.out.println("ID¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
-        String id = sc.nextLine();
-        System.out.println("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
-        String pwd = sc.nextLine();
-        System.out.println("ÀÌ¸§¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
-        String name = sc.nextLine();
-        System.out.println("ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
-        String tel = sc.nextLine();
-        System.out.println("ÁÖ¼ÒÁö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
-        String address = sc.nextLine();
+        String pwd, name, tel, address;
+        
+        while(true) {
+        //ID ÀÔ·Â 
+        System.out.println("ID¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä. (5~20ÀÚ. ¿µ¾î ´ë¼Ò¹®ÀÚ, ¼ıÀÚ, _ ¸¸ »ç¿ë°¡´É)");
+        String regExpaa = "^[a-zA-Z0-9_]{5,20}+$";
+        
+        id = sc.nextLine();
+        
+        boolean b = id.matches(regExpaa); // true ,false
+        
+            if (b == true) {            
+            break;
+            }else {
+            System.out.println("Çü½ÄÀÌ Àß¸øµÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+            }
+        }
+        
+        //ºñ¹Ğ¹øÈ£ ÀÔ·Â
+        while(true) {
+            System.out.println("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä. (8~20ÀÚ.Àû¾îµµ ÇÏ³ªÀÇ ¿µ¾î´ë¹®ÀÚ ¼Ò¹®ÀÚ,¼ıÀÚ,Æ¯¼ö¹®ÀÚ°¡ °¢°¢ Æ÷ÇÔµÇ¾î¾ß ÇÔ)");
+            String regExp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,20}$";;
+            
+            pwd = sc.nextLine();
+            
+            boolean b = pwd.matches(regExp); // true ,false
+            
+                if (b == true) {            
+                break;
+                }else {
+                System.out.println("Çü½ÄÀÌ Àß¸øµÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+                }
+            }
+      //ÀÌ¸§ ÀÔ·Â
+        while(true) {
+            //ID ÀÔ·Â 
+            System.out.println("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä. (ÇÑ±Û¸¸ »ç¿ë°¡´É)");
+            String regExp = "^[¤¡-¤¾°¡-ÆR]+$";
+            
+            name = sc.nextLine();
+            
+            boolean b = name.matches(regExp); // true ,false
+            
+                if (b == true) {            
+                break;
+                }else {
+                System.out.println("Çü½ÄÀÌ Àß¸øµÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+                }
+            }
+        
+      //ÈŞ´ëÆù ¹øÈ£ ÀÔ·Â
+        while(true) {
+            //ID ÀÔ·Â 
+            System.out.println("ÈŞ´ëÆù ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä. ex) 010-1234-1234)");
+            String regExp = "(01[01679]{1})-(\\d{3,4})-(\\d{4})";
+            
+            tel = sc.nextLine();
+            
+            boolean b = tel.matches(regExp); // true ,false
+            
+                if (b == true) {            
+                break;
+                }else {
+                System.out.println("Çü½ÄÀÌ Àß¸øµÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+                }
+            }
+        
+      //¹è¼ÛÁö ÁÖ¼Ò ÀÔ·Â
+        System.out.println("¹è¼ÛÁö ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+        address = sc.nextLine();
+        
         customerManager.signUp(id, pwd, name, tel, address); // ¸¸µé¾îÁø customer °´Ã¼¸¦ ¸®ÅÏ
+        System.out.println(id+pwd+name+tel+address);
     } // È¸¿ø°¡ÀÔ ¸¶Ä¡¸é ·Î±×ÀÎ ÀÌÈÄ È­¸éÀ¸·Î ÁøÀÔÇØ¾ß ÇÑ´Ù
 
   
@@ -193,7 +255,6 @@ public class Mall {
 
         } else {
             System.out.println("ÀÏÄ¡ÇÏ´Â Á¤º¸°¡ ¾ø½À´Ï´Ù.");
-            System.out.println(transactionManager.transactionList.toString());
         }
     }
 
@@ -352,10 +413,9 @@ public class Mall {
         outer: while (true) {
             switch (this.addCartMenu()) {
             case 1: {
-                System.out.println("**Àå¹Ù±¸´Ï¿¡ »óÇ° Ãß°¡**");
-                
+                System.out.println("Àå¹Ù±¸´Ï¿¡ »óÇ° Ãß°¡");
+                productsManager.productList();
                 cartManager.add();    
-
                 break;
             }
             case 2: {
