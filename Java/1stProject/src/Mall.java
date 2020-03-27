@@ -262,7 +262,7 @@ public class Mall {
 
     void customer() {
 
-        outer: while (true) {
+        while (true) {
             switch (this.customerMenu()) {
             case 1: {
                 System.out.println("**상품조회**");
@@ -283,7 +283,7 @@ public class Mall {
             }
 
             case 4: {
-                break outer; // return하면 해당하는 가장 상위 메서드 블럭 탈출
+                return; // return하면 해당하는 가장 상위 메서드 블럭 탈출
             }
             case 5: {
                 System.exit(0);
@@ -332,7 +332,7 @@ public class Mall {
     //관리자 프로그램
     void admin() {
 
-        outer: while (true) {
+        while (true) {
             switch (this.adminMenu()) {
             case 1: {
                 productsManager.productList();
@@ -365,7 +365,7 @@ public class Mall {
                 break;
             }
             case 7: {
-                break outer; // return하면 해당하는 가장 상위 메서드 블럭 탈출
+                return; // return하면 해당하는 가장 상위 메서드 블럭 탈출
             }
             case 8: {
                 System.exit(0);
@@ -418,7 +418,7 @@ public class Mall {
     }
     
     void lookup() {     
-        outer: while (true) {        
+        while (true) {        
             switch (lookUpMenu()) {
             case 1: {
                 customerManager.userTransactionList();
@@ -437,7 +437,7 @@ public class Mall {
             }
             }    
             case 3: {
-                break outer; // return하면 해당하는 가장 상위 메서드 블럭 탈출
+                return; // return하면 해당하는 가장 상위 메서드 블럭 탈출
             }
             }
         }
@@ -469,7 +469,7 @@ public class Mall {
         
     void addCart() {
         
-        outer: while (true) {
+        while (true) {
             switch (this.addCartMenu()) {
             case 1: {
                 System.out.println("장바구니에 상품 추가");
@@ -483,7 +483,7 @@ public class Mall {
                 break;
             }
             case 3: {
-                break outer; // return하면 해당하는 가장 상위 메서드 블럭 탈출
+                return; // return하면 해당하는 가장 상위 메서드 블럭 탈출
             }
             case 4: {
                 System.exit(0);
@@ -523,18 +523,10 @@ public class Mall {
 
     void cart() {
     	
-        outer: while (true) {
+        while (true) {
 
-            //장바구니가 비어있을 때 
-        	try {
-        		  cartManager.cartList.get(id).show();  
-			} catch (Exception e) {
-				System.out.println("=============장바구니 리스트===============");
-                System.out.println("          상품명          가격          수량       합산가격");
-                System.out.println();
-                System.out.println("             장바구니가 비어 있습니다                   ");
-                break;
-			}
+        		cartManager.cartList.get(id).show();
+			
         	//장바구니 보여주기        	
             switch (this.cartMenu()) {
             case 1: {
@@ -549,7 +541,7 @@ public class Mall {
             }
 
             case 3: {
-                break outer; // return하면 해당하는 가장 상위 메서드 블럭 탈출
+                return; // return하면 해당하는 가장 상위 메서드 블럭 탈출
             }
             case 4: {
                 System.exit(0);
@@ -595,7 +587,7 @@ public class Mall {
 
     void myPage() {
 
-        outer: while (true) {
+        while (true) {
             switch (this.myPageMenu()) {
             case 1: {
                 System.out.println("**내 정보 조회**");
@@ -615,7 +607,7 @@ public class Mall {
             }
 
             case 4: {
-                break outer; // return하면 해당하는 가장 상위 메서드 블럭 탈출
+                return; // return하면 해당하는 가장 상위 메서드 블럭 탈출
             }
             case 5: {
                 System.exit(0);

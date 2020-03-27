@@ -17,15 +17,17 @@ class CartManager implements Manager, Serializable {
     
     static Scanner sc = new Scanner(System.in);
         
-    String id = Mall.id;
+    
     
     // 장바구니에 상품 추가
     public void add() {
-       
+        String id = Mall.id;
         int pnumber;
         //장바구니 생성
         
-        cartList.put(id, new Cart()); 
+//        if(cartList.get(id).cartArray==null) {
+//        	cartList.put(id, new Cart()); 	
+//        }
 
         while (true) {
             System.out.println("추가할 상품 번호를 입력해 주세요.");
@@ -40,7 +42,7 @@ class CartManager implements Manager, Serializable {
 
         Product p = ProductsManager.productList.get(pnumber); // 입력한 상품 호출
         if (p.getQuantity() < 1) {
-            System.out.println("상품이 매진되어 구매할 수 없습니다.");
+            System.out.println("상품이 품절되어 구매할 수 없습니다.");
 
             return;
         }
@@ -58,9 +60,6 @@ class CartManager implements Manager, Serializable {
                 break;
 
         }
-        System.out.println(id);
-        Cart a = cartList.get(id);
-
         Set<Product> set = cartList.get(id).cartArray.keySet(); // 그 카트에 카트어레이의 프로덕트를 줄세움.
     
 
@@ -93,8 +92,7 @@ class CartManager implements Manager, Serializable {
     }
     //장바구니 비우기
     public void remove() {  
-        System.out.println(id);
-        
+    	String id = Mall.id;
         //장바구니가 비었을 때 
         if(cartList.get(id).cartArray.isEmpty()) {
             System.out.println("장바구니가 비었습니다. 결제할 상품이 없습니다.");
@@ -111,6 +109,7 @@ class CartManager implements Manager, Serializable {
     //장바구니에 담긴 물건 사기
     public void buy() {
         //장바구니가 비었을 때 
+    	String id = Mall.id;
         if(cartList.get(id).cartArray.isEmpty()) {
             System.out.println("장바구니가 비었습니다. 결제할 상품이 없습니다.");
             return;

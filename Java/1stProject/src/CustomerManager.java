@@ -29,7 +29,9 @@ public class CustomerManager implements Manager, Serializable{
         customerList.put(id,customer);
            
         save();
-
+        CartManager cartManager = new CartManager();
+        cartManager.cartList.put(id, new Cart()); 
+        cartManager.save();
         return customer;       
     }
   
