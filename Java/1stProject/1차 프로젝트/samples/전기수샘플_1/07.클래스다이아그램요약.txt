@@ -1,0 +1,5 @@
+Event 클래스는 Person 클래스와 집약관계이고 
+IInfoManager는 PersonManager와 Person 클래스가 구현한다.
+PersonManager는 Person클래스와 집약관계이고 
+Main클래스와 PersonManager는 합성(composition)관계이다.
+user클래스와 Main 클래스는 합성(compoistion)관계이다.

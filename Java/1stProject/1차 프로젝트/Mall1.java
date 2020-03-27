@@ -7,7 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Mall {
@@ -162,81 +164,16 @@ public class Mall {
     // È¸¿ø°¡ÀÔ
     void signUp() {
         System.out.println("È¸¿ø °¡ÀÔ");
-        String pwd, name, tel, address;
-        
-        while(true) {
-        //ID ÀÔ·Â 
-        System.out.println("ID¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä. (5~20ÀÚ. ¿µ¾î ´ë¼Ò¹®ÀÚ, ¼ıÀÚ, _ ¸¸ »ç¿ë°¡´É)");
-        String regExpaa = "^[a-zA-Z0-9_]{5,20}+$";
-        
-        id = sc.nextLine();
-        boolean b = id.matches(regExpaa); // true ,false
-        
-            if (b == true) { 
-                if(CustomerManager.customerList.containsKey(id)) {
-                    System.out.println("ÀÌ¹Ì Á¸ÀçÇÏ´Â IDÀÔ´Ï´Ù.");
-                }else {
-                    break;
-                }
-
-            }else {
-            System.out.println("Çü½ÄÀÌ Àß¸øµÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
-            }
-        }
-        
-        //ºñ¹Ğ¹øÈ£ ÀÔ·Â
-        while(true) {
-            System.out.println("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä. (8~20ÀÚ.Àû¾îµµ ÇÏ³ªÀÇ ¿µ¾î´ë¹®ÀÚ ¼Ò¹®ÀÚ,¼ıÀÚ,Æ¯¼ö¹®ÀÚ°¡ °¢°¢ Æ÷ÇÔµÇ¾î¾ß ÇÔ)");
-            String regExp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,20}$";;
-            
-            pwd = sc.nextLine();
-            
-            boolean b = pwd.matches(regExp); // true ,false
-            
-                if (b == true) {            
-                break;
-                }else {
-                System.out.println("Çü½ÄÀÌ Àß¸øµÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
-                }
-            }
-      //ÀÌ¸§ ÀÔ·Â
-        while(true) {
-            //ID ÀÔ·Â 
-            System.out.println("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä. (ÇÑ±Û¸¸ »ç¿ë°¡´É)");
-            String regExp = "^[¤¡-¤¾°¡-ÆR]+$";
-            
-            name = sc.nextLine();
-            
-            boolean b = name.matches(regExp); // true ,false
-            
-                if (b == true) {            
-                break;
-                }else {
-                System.out.println("Çü½ÄÀÌ Àß¸øµÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
-                }
-            }
-        
-      //ÈŞ´ëÆù ¹øÈ£ ÀÔ·Â
-        while(true) {
-            //ID ÀÔ·Â 
-            System.out.println("ÈŞ´ëÆù ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä. ex) 010-123(4)-1234)");
-            String regExp = "(01[01679]{1})-(\\d{3,4})-(\\d{4})";
-            
-            tel = sc.nextLine();
-            
-            boolean b = tel.matches(regExp); // true ,false
-            
-                if (b == true) {            
-                break;
-                }else {
-                System.out.println("Çü½ÄÀÌ Àß¸øµÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
-                }
-            }
-        
-      //¹è¼ÛÁö ÁÖ¼Ò ÀÔ·Â
-        System.out.println("¹è¼ÛÁö ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
-        address = sc.nextLine();
-        
+        System.out.println("ID¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+        String id = sc.nextLine();
+        System.out.println("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+        String pwd = sc.nextLine();
+        System.out.println("ÀÌ¸§¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+        String name = sc.nextLine();
+        System.out.println("ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+        String tel = sc.nextLine();
+        System.out.println("ÁÖ¼ÒÁö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+        String address = sc.nextLine();
         customerManager.signUp(id, pwd, name, tel, address); // ¸¸µé¾îÁø customer °´Ã¼¸¦ ¸®ÅÏ
     } // È¸¿ø°¡ÀÔ ¸¶Ä¡¸é ·Î±×ÀÎ ÀÌÈÄ È­¸éÀ¸·Î ÁøÀÔÇØ¾ß ÇÑ´Ù
 
@@ -245,7 +182,7 @@ public class Mall {
     void signIn() {
 
         System.out.println("**·Î±×ÀÎ**");
-        System.out.println("ID¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");   
+        System.out.println("ID¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
         id = sc.nextLine();
         System.out.println("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
         String pwd = sc.nextLine();
@@ -258,6 +195,7 @@ public class Mall {
 
         } else {
             System.out.println("ÀÏÄ¡ÇÏ´Â Á¤º¸°¡ ¾ø½À´Ï´Ù.");
+            System.out.println(transactionManager.transactionList.toString());
         }
     }
 
@@ -337,7 +275,6 @@ public class Mall {
             switch (this.adminMenu()) {
             case 1: {
                 productsManager.productList();
-
                 break;
             }
             case 2: {                
@@ -345,23 +282,22 @@ public class Mall {
                 break;
             }
             case 3: {
-                System.out.println("**»óÇ° »èÁ¦**");
+                System.out.println("*************»óÇ° »èÁ¦*************");
                 productsManager.remove();
                 break;
             }
             case 4: {
-                System.out.println("**»óÇ° Àç°í º¯°æ**");
+                System.out.println("***********»óÇ° Àç°í º¯°æ***********");
                 productsManager.changeQuantity();
                 break;
             }
             case 5: {
-                System.out.println("**È¸¿ø ¸®½ºÆ® Á¶È¸**");
+                System.out.println("***********È¸¿ø ¸®½ºÆ® Á¶È¸**********");
                 customerManager.userList();
                 break;
             }
-
             case 6: {
-                System.out.println("*ÆÇ¸Å³»¿ªÁ¶È¸");
+                System.out.println("************ÆÇ¸Å³»¿ªÁ¶È¸***********");
                 lookup();
                 break;
             }
@@ -377,6 +313,56 @@ public class Mall {
         }
 
     }
+
+ void lookup() {   	
+        outer: while (true) {        
+            switch (lookUpMenu()) {
+            case 1: {
+            	customerManager.userTransactionList();
+      		return;
+      		}
+            case 2: {
+            System.out.println("È¸¿ø ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+      		String userId = sc.nextLine();
+      		if(customerManager.customerList.containsKey(userId)) {
+            customerManager.userTransactionHistory(userId);
+      		return;
+      		}
+      		else {
+      			System.out.println("ÀÏÄ¡ÇÏ´Â È¸¿øÀÌ ¾ø½À´Ï´Ù.");
+      			return;
+      		}
+          	}    
+            case 3: {
+                break outer; // returnÇÏ¸é ÇØ´çÇÏ´Â °¡Àå »óÀ§ ¸Ş¼­µå ºí·° Å»Ãâ
+            }
+            }
+        }
+    }
+ int lookUpMenu() {
+     int menu = 0;
+     do {
+         try {
+        	 System.out.println("1.¸ğµç È¸¿ø ±¸¸Å ³»¿ª");
+         	 System.out.println();
+             System.out.println("2.È¸¿ø ±¸¸Å ³»¿ª"); 
+             System.out.println();
+             System.out.println("3. ÀÌÀü ¸Ş´º·Î");
+             System.out.println();
+             menu = Integer.parseInt(sc.nextLine());
+             if (1 <= menu && menu <= 3) {
+                 return menu;
+             } else {
+                 throw new Exception("¸Ş´º ¼±ÅÃ ¹øÈ£°¡ Àß¸ø µÇ¾ú½À´Ï´Ù");
+             }
+         } catch (Exception e) {
+             System.out.println(e.getMessage());
+             System.out.println("<ÀÔ·Â ¿À·ù>");
+             System.out.println("1~3¹øÀÇ ¸Ş´º Áß ÇÏ³ª¸¦ ¼±ÅÃÇÏ¼¼¿ä");
+         }
+     } while (true);
+
+ }
     
     // °ü¸®ÀÚ ¸Ş´º È­¸é
     int adminMenu() {
@@ -385,7 +371,7 @@ public class Mall {
             try {
                 System.out.println();
                 System.out.println("*********************************");
-                System.out.println("*·Î±×ÀÎ ¸Ş´º");
+                System.out.println("*************·Î±×ÀÎ ¸Ş´º************");
                 System.out.println("*********************************");
                 System.out.println("1. »óÇ° ¸®½ºÆ® Á¶È¸");
                 System.out.println();
@@ -417,63 +403,13 @@ public class Mall {
         } while (true);
 
     }
-    
-    void lookup() {     
-        outer: while (true) {        
-            switch (lookUpMenu()) {
-            case 1: {
-                customerManager.userTransactionList();
-            return;
-            }
-            case 2: {
-            System.out.println("È¸¿ø ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-            String userId = sc.nextLine();
-            if(customerManager.customerList.containsKey(userId)) {
-            customerManager.userTransactionHistory(userId);
-            return;
-            }
-            else {
-                System.out.println("ÀÏÄ¡ÇÏ´Â È¸¿øÀÌ ¾ø½À´Ï´Ù.");
-                return;
-            }
-            }    
-            case 3: {
-                break outer; // returnÇÏ¸é ÇØ´çÇÏ´Â °¡Àå »óÀ§ ¸Ş¼­µå ºí·° Å»Ãâ
-            }
-            }
-        }
-    }
- int lookUpMenu() {
-     int menu = 0;
-     do {
-         try {
-             System.out.println("1.¸ğµç È¸¿ø ±¸¸Å ³»¿ª");
-             System.out.println();
-             System.out.println("2.È¸¿ø ±¸¸Å ³»¿ª"); 
-             System.out.println();
-             System.out.println("3. ÀÌÀü ¸Ş´º·Î");
-             System.out.println();
-             menu = Integer.parseInt(sc.nextLine());
-             if (1 <= menu && menu <= 3) {
-                 return menu;
-             } else {
-                 throw new Exception("¸Ş´º ¼±ÅÃ ¹øÈ£°¡ Àß¸ø µÇ¾ú½À´Ï´Ù");
-             }
-         } catch (Exception e) {
-             System.out.println(e.getMessage());
-             System.out.println("<ÀÔ·Â ¿À·ù>");
-             System.out.println("1~3¹øÀÇ ¸Ş´º Áß ÇÏ³ª¸¦ ¼±ÅÃÇÏ¼¼¿ä");
-         }
-     } while (true);
-
- }
         
     void addCart() {
         
         outer: while (true) {
             switch (this.addCartMenu()) {
             case 1: {
-                System.out.println("Àå¹Ù±¸´Ï¿¡ »óÇ° Ãß°¡");
+                System.out.println("**Àå¹Ù±¸´Ï¿¡ »óÇ° Ãß°¡**");
                 productsManager.productList();
                 cartManager.add();    
                 break;
@@ -525,25 +461,8 @@ public class Mall {
     void cart() {
     	
         outer: while (true) {
-            
-            //Àå¹Ù±¸´Ï°¡ ºñ¾îÀÖÀ» ¶§ null¿¡·¯ ¹ß»ı ½Ã ´ëÃ³¹ı
-            if(cartManager.cartList.get(id).cartArray.isEmpty()) {
-                System.out.println("=============Àå¹Ù±¸´Ï ¸®½ºÆ®===============");
-                System.out.println("          »óÇ°¸í          °¡°İ          ¼ö·®       ÇÕ»ê°¡°İ");
-                break;
-            }
-            cartManager.cartList.get(id).show();  
-//            if(cartManager.cartList.get(id)==null) {
-//        	try {
-//        	    cartManager.cartList.get(id).show();  
-//            } catch (Exception e) {
-//                System.out.println("Àå¹Ù±¸´Ï°¡ ºñ¾îÀÖ½À´Ï´Ù.");
-//            }
-//            }else {
-//                cartManager.cartList.get(id).show();
-//            }
-        	//Àå¹Ù±¸´Ï º¸¿©ÁÖ±â
-        	
+        	cartManager.cartList.get(id).show();  //Àå¹Ù±¸´Ï º¸¿©ÁÖ±â
+           
             switch (this.cartMenu()) {
             case 1: {
                 System.out.println("**Àå¹Ù±¸´Ï »óÇ° ±¸¸Å**");

@@ -40,10 +40,6 @@ public class ProductsManager implements Manager, Serializable{
 
     }
 
-    // 구매내역 ********user 클래스 필요*******
-    public void buyHistory() {
-
-    }
 
     // 구매자 정보불러오기 ******user 클래스 필요*****
     public void userInfo(Customer customer) {

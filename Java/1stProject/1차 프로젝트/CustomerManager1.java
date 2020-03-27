@@ -12,13 +12,10 @@ import java.util.Set;
 
 public class CustomerManager implements Manager, Serializable{
     static HashMap<String, User> customerList = new HashMap<String, User>();
-    
     ProductsManager p = new ProductsManager();
     TransactionManager transactionManager = new TransactionManager();
-    CartManager cartManager = new CartManager();
-    
-    static Scanner sc = new Scanner(System.in);
     static String id;
+    static Scanner sc = new Scanner(System.in);
     
     //회원 가입
     Customer signUp(String id, String pwd, String name, String tel, String address) {
@@ -30,13 +27,6 @@ public class CustomerManager implements Manager, Serializable{
         customer.setAddress(address);
 
         customerList.put(id,customer);
-        
-        //장바구니 생성
-      
-        cartManager.cartList.put(id, new Cart()); 
-
-        
-        cartManager.save();
         save();
         return customer;       
     }
@@ -63,20 +53,22 @@ public class CustomerManager implements Manager, Serializable{
 
 
     void myTransactiontHistory() {
-
-        String id = Mall.id;
-
-        if (transactionManager.transactionList.get(id) == null) {
-            System.out.println("주문 내역이 없습니다.");
-        } else {
-            System.out.println(transactionManager.transactionList.get(id));
-        }
-
+    	String id = Mall.id;     
+        System.out.println(transactionManager.transactionList.get(id));       
     }
     
-    public void userList() {
-        Set<String> set= customerList.keySet();
-        //방법2
+    void userTransactionHistory(String id) {
+    	if(transactionManager.transactionList.get(id)==null){
+    		System.out.println(id+" 회원님은 거래내역이 없습니다.");
+    		return;
+    	}else {
+    		System.out.println(id+" 님의 거래내역 입니다.");
+    		System.out.println(transactionManager.transactionList.get(id));
+    	}
+    }
+    
+    public void userList() {      
+    	Set<String> set= customerList.keySet();
         System.out.println("==========================Vip고객명단==========================");
         System.out.println("       ID    Password    성함           전화번호                     배송지");
         for(String c : set) {
@@ -88,51 +80,41 @@ public class CustomerManager implements Manager, Serializable{
             System.out.println();
         }
     }
-    
-    void MyInfo() {
-        do {
-            try {
-                 System.out.println("비밀번호를 입력하십시오");
-                 String password = sc.nextLine();
-                 if(customerList.get(id).getPwd().equals(password)) {
-                     Customer my = (Customer)customerList.get(id); //(user)타입으로 있는 value값 다운캐스팅필요.
-                     System.out.printf("[이름 : %s]\n[아이디 : %s]\n[비밀번호 : %s]\n[전화번호 : %s]\n[주소 : %s]\n", my.getName(),my.getId(),my.getPwd(),my.getTel(),my.getAddress());
-                      break;
-                } else {
-                    throw new Exception("");
-                }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                System.out.println("<입력 오류>");
-                System.out.println("비밀번호를 잘못 입력하셨습니다. 다시 입력하십시오.");
-         
-            }
-        } while (true);
-
-        
-    }
-    
     public void userTransactionList() {
-        Set<String> set= customerList.keySet();
-        for(String c: set) {
-            if(transactionManager.transactionList.get(c)==null) {
-                if(c.equals("admin")) {
+    	Set<String> set= customerList.keySet();
+    	for(String c: set) {
+    		if(transactionManager.transactionList.get(c)==null) {
+    			if(c.equals("admin")) {
                     continue;
                 }
-            System.out.println("             회원 "+c+" 님은 구매내역이 없습니다.");
-            }else userTransactionHistory(c);
-        }   
+    		System.out.println("             회원 "+c+" 님은 구매내역이 없습니다.");
+    		}else userTransactionHistory(c);
+    	}	
     }
     
-    void userTransactionHistory(String id) {
-        if(transactionManager.transactionList.get(id)==null){
-            System.out.println(id+" 회원님은 거래내역이 없습니다.");
-            return;
-        }else {
-            System.out.println(id+" 님의 거래내역 입니다.");
-            System.out.println(transactionManager.transactionList.get(id));
+ 
+    	void MyInfo() {
+            do {
+                try {
+                	 System.out.println("비밀번호를 입력하십시오");
+                	 String password = sc.nextLine();
+                	 if(customerList.get(id).getPwd().equals(password)) {
+                    	 Customer my = (Customer)customerList.get(id); //(user)타입으로 있는 value값 다운캐스팅필요.
+                         System.out.printf("[이름 : %s]\n[아이디 : %s]\n[비밀번호 : %s]\n[전화번호 : %s]\n[주소 : %s]\n", my.getName(),my.getId(),my.getPwd(),my.getTel(),my.getAddress());
+                    	  break;
+                    } else {
+                        throw new Exception("");
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("<입력 오류>");
+                    System.out.println("비밀번호를 잘못 입력하셨습니다. 다시 입력하십시오.");
+                }
+            } while (true);
+
+            
         }
-    }
+        
     
 
     public String toString() {
@@ -166,6 +148,7 @@ public class CustomerManager implements Manager, Serializable{
             System.out.println("에러발생!!!");
             e.printStackTrace();
         }
+        System.out.println("저장되었습니다.");
     }
     //I/O를 위한 역직렬화 로드
     public void load() {

@@ -27,7 +27,7 @@ public class Transaction implements Serializable{
     public Transaction(String cutomerName, String productName, int price, int quantity) {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy년MM월dd일");
-        SimpleDateFormat dateformat2 = new SimpleDateFormat("HH시mm분");
+        SimpleDateFormat dateformat2 = new SimpleDateFormat("HH시mm분ss초");
         this.transactionDate=dateformat.format(cal.getTime());
         this.transactionTime=dateformat2.format(cal.getTime());
         this.customerName = cutomerName;

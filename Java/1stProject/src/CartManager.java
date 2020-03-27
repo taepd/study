@@ -92,6 +92,12 @@ class CartManager implements Manager, Serializable {
     public void remove() { 
         String id = Mall.id;
         System.out.println(id);
+        
+        //장바구니가 비었을 때 
+        if(cartList.get(id).cartArray.isEmpty()) {
+            System.out.println("장바구니가 비었습니다. 결제할 상품이 없습니다.");
+            return;
+        }
 
         cartList.get(id).cartArray.clear();
         cartList.get(id).totalprice = 0;
@@ -102,6 +108,11 @@ class CartManager implements Manager, Serializable {
     
     //장바구니에 담긴 물건 사기
     public void buy() {
+        //장바구니가 비었을 때 
+        if(cartList.get(Mall.id).cartArray.isEmpty()) {
+            System.out.println("장바구니가 비었습니다. 결제할 상품이 없습니다.");
+            return;
+        }
         
         //결제 방식 선택
         while(true) {
@@ -170,7 +181,6 @@ class CartManager implements Manager, Serializable {
             System.out.println("에러발생!!!");
             e.printStackTrace();
         }
-        System.out.println("저장되었습니다.");
     }
 
     // I/O를 위한 역직렬화 로드
