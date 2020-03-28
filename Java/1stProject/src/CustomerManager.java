@@ -73,7 +73,7 @@ public class CustomerManager implements Manager, Serializable{
         Set<String> set= customerList.keySet();
         //방법2
         System.out.println("==========================Vip고객명단==========================");
-        System.out.println("       ID    Password    성함           전화번호                     배송지");
+        System.out.println("       ID    Password    성함           휴대폰 번호                     배송지");
         for(String c : set) {
             if(c.equals("admin")) {
                 continue;

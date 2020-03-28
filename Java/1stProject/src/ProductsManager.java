@@ -10,140 +10,191 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
 
-public class ProductsManager implements Manager, Serializable{
-	
-    static HashMap<Integer, Product> productList = new HashMap<Integer, Product>();// 상품products array
+public class ProductsManager implements Manager, Serializable {
 
-    static Scanner sc = new Scanner(System.in);
+	static HashMap<Integer, Product> productList = new HashMap<Integer, Product>();// 상품products array
 
-    @Override
-    public String toString() {
-        return "ProductsManager [productList=" + productList + "]";
-    }
+	static Scanner sc = new Scanner(System.in);
 
-    // 상품내역 보여주기
-    public void productList() {
+	@Override
+	public String toString() {
+		return "ProductsManager [productList=" + productList + "]";
+	}
 
-        Set<Integer> set = productList.keySet(); // 상품번호가 다 set에 저장되어 있고,
-        System.out.println("----------VIP Product List-----------");
-        System.out.println("    종류          상품명      상품번호      가격     수량");
-        for (Integer num : set) {
-            String name = productList.get(num).getPname();
-            int price = productList.get(num).getPrice();
-            int quantity = productList.get(num).getQuantity();
-            int number = productList.get(num).getPnumber();
-            String kind = productList.get(num).getKind();
-            System.out.printf("%7s %10s %5d %7d %3d", kind, name, number, price, quantity);
-            System.out.println();
-        }
-        System.out.println("-------------------------------------");
+	// 상품내역 보여주기
+	public void productList() {
 
-    }
+		Set<Integer> set = productList.keySet(); // 상품번호가 다 set에 저장되어 있고,
+		System.out.println("----------VIP Product List-----------");
+		System.out.println("    종류          상품명      상품번호      가격       수량");
+		for (Integer num : set) {
+			String name = productList.get(num).getPname();
+			int price = productList.get(num).getPrice();
+			int quantity = productList.get(num).getQuantity();
+			int number = productList.get(num).getPnumber();
+			String kind = productList.get(num).getKind();
+//			System.out.printf("%7s %10s %5d %7d %3d", kind, name, number, price, quantity);
+			System.out.printf("%7s %10s %5d %10d %5d", kind, name, number, price, quantity);
+			System.out.println();
+		}
+		System.out.println("-------------------------------------");
 
+	}
 
-    // 구매자 정보불러오기 ******user 클래스 필요*****
-    public void userInfo(Customer customer) {
+	// 구매자 정보불러오기 ******user 클래스 필요*****
+	public void userInfo(Customer customer) {
 
-        System.out.println("");
-        System.out.println(customer.getName() + "회원님 안녕하세요 ^^");
-        System.out.println("회원님의 아이디는: " + customer.getId() + " 입니다.");
-        System.out.println("회원님의 비밀번호는: " + customer.getPwd() + " 입니다.");
-        System.out.println("회원님의 휴대폰 번호는: " + customer.getTel() + " 입니다.");
-        System.out.println("회원님의 주소는: " + customer.getAddress() + " 입니다.");
-    }
+		System.out.println("");
+		System.out.println(customer.getName() + "회원님 안녕하세요 ^^");
+		System.out.println("회원님의 아이디는: " + customer.getId() + " 입니다.");
+		System.out.println("회원님의 비밀번호는: " + customer.getPwd() + " 입니다.");
+		System.out.println("회원님의 휴대폰 번호는: " + customer.getTel() + " 입니다.");
+		System.out.println("회원님의 주소는: " + customer.getAddress() + " 입니다.");
+	}
 
-    // 수량변경
-    public void changeQuantity() {
+	// 수량변경
+	public void changeQuantity() {
 
-        System.out.println("상품 재고 변경");
-        productList();
-        System.out.println("변경할 상품의 번호를 입력하십시오");
-        int pKey = Integer.parseInt(sc.nextLine());
-        int quantity = 0;
-        if (productList.containsKey(pKey)) {
-            System.out.println("변경할 상품의 수량을 입력하십시오");
-            quantity = Integer.parseInt(sc.nextLine());
-            productList.get(pKey).setQuantity(quantity);
-        } else {
-            System.out.println("잘못 입력하셨습니다.");
-        }
-        System.out.println(productList.get(pKey).getPname() + "의 수량을" + quantity + "으로 변경하였습니다.");
-        save();
-        productList();
-    }
+		System.out.println("상품 재고 변경");
+		productList();
+		System.out.println("변경할 상품의 번호를 입력하십시오");
+		int pKey = Integer.parseInt(sc.nextLine());
+		int quantity = 0;
+		if (productList.containsKey(pKey)) {
+			System.out.println("변경할 상품의 수량을 입력하십시오");
+			quantity = Integer.parseInt(sc.nextLine());
+			productList.get(pKey).setQuantity(quantity);
+		} else {
+			System.out.println("잘못 입력하셨습니다.");
+		}
+		System.out.println(productList.get(pKey).getPname() + "의 수량을" + quantity + "으로 변경하였습니다.");
+		save();
+		productList();
+	}
 
-    public void add() {
-        System.out.println("**상품 추가**");
-        System.out.println("상품명을 입력해주세요");
-        String pname = sc.nextLine();
-        System.out.println("상품번호를 입력해주세요");
-        int pnumber = Integer.parseInt(sc.nextLine());
-        System.out.println("상품 가격을 입력해주세요");
-        int price = Integer.parseInt(sc.nextLine());
-        System.out.println("상품 수량을 입력해주세요");
-        int quantity = Integer.parseInt(sc.nextLine());
-        System.out.println("상품 종류를 입력해주세요");
-        String kind = sc.nextLine();
-        productList.put(pnumber, new Product(pname, pnumber, price, quantity, kind));
-        save();
-        productList();
-        System.out.println("상품이 추가되었습니다.");
-    }
+	public void add() {
+		System.out.println("**상품 추가**");
+		String pname;
+		int pnumber, price, quantity;
 
-    public void remove() {
-        productList();
-        System.out.println("삭제할 상품번호를 입력해주세요");
-        int pnumber = Integer.parseInt(sc.nextLine());
-        if (productList.containsKey(pnumber)) {
-            productList.remove(pnumber);
-            productList();
-            System.out.println("상품이 삭제되었습니다.");
-            save();
-        }else {
-            System.out.println("일치하는 상품번호가 없습니다.");
-        }
-    }
+		// 상품명 입력
+		outer: while (true) {
+			System.out.println("상품명을 입력해주세요.");
+			System.out.print(">>");
+			pname = sc.nextLine();
+			Set<Integer> pset = productList.keySet();
+			for (int p : pset) {
+				if (productList.get(p).getPname().equals(pname)) {
+					System.out.println("이미 존재하는 상품명입니다.");
+				} else {
+					break outer;
+				}
+			}
+		}
 
+		// 상품 번호 입력
+		do {
+			try {
+				System.out.println("상품 번호를 입력해주세요.");
+				System.out.print(">>");
+				pnumber = Integer.parseInt(sc.nextLine());
+				if (productList.containsKey(pnumber)) {
+					System.out.println("이미 존재하는 상품 번호입니다.");
+				} else {
+					break;
+				}
+			} catch (Exception e) {
+				System.out.println("상품 번호는 숫자만 가능합니다.");
+			}
+		} while (true);
 
-    // I/O를 위한 직렬화 저장
-    public void save() {
-        File file = new File("ProductDB.txt");
+		// 상품 가격 입력
+		do {
+			try {
+				System.out.println("상품 가격를 입력해주세요.");
+				System.out.print(">>");
+				price = Integer.parseInt(sc.nextLine());
+				break;
+			} catch (Exception e) {
+				System.out.println("상품 가격은 숫자만 가능합니다.");
+			}
+		} while (true);
 
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            BufferedOutputStream bos = new BufferedOutputStream(fos);
-            ObjectOutputStream oos = new ObjectOutputStream(bos); // 직렬화 저장을 위한 보조스트림
+		// 상품 수량 입력
+		do {
+			try {
+				System.out.println("상품 수량을 입력해주세요.");
+				System.out.print(">>");
+				quantity = Integer.parseInt(sc.nextLine());
+				break;
+			} catch (Exception e) {
+				System.out.println("상품 수량은 숫자만 가능합니다.");
+			}
+		} while (true);
 
-            oos.writeObject(productList);
-            // writeObject 메서드를 이용해서 직렬화 저장
-            oos.close();
-            bos.close();
-            fos.close();
-        } catch (Exception e) {
-            System.out.println("에러발생!!!");
-            e.printStackTrace();
-        }
-    }
+		// 상품 종류 입력
+		System.out.println("상품 종류를 입력해주세요");
+		System.out.print(">>");
+		String kind = sc.nextLine();
+		productList.put(pnumber, new Product(pname, pnumber, price, quantity, kind));
+		save();
+		productList();
+		System.out.println("상품이 추가되었습니다.");
+	}
 
-    // I/O를 위한 역직렬화 로드
-    public void load() {
-        File file = new File("ProductDB.txt");
-        try {
-            FileInputStream fis = new FileInputStream(file);
-            BufferedInputStream bis = new BufferedInputStream(fis);
-            ObjectInputStream ois = new ObjectInputStream(bis); // 역직렬화를 위한 보조스트림
+	public void remove() {
+		productList();
+		System.out.println("삭제할 상품번호를 입력해주세요");
+		int pnumber = Integer.parseInt(sc.nextLine());
+		if (productList.containsKey(pnumber)) {
+			productList.remove(pnumber);
+			productList();
+			System.out.println("상품이 삭제되었습니다.");
+			save();
+		} else {
+			System.out.println("일치하는 상품번호가 없습니다.");
+		}
+	}
 
-            productList = (HashMap) ois.readObject(); // readObject메서드를 이용해서 역직렬화
-                                                      // 리턴값이 Object이므로 다운캐스팅
+	// I/O를 위한 직렬화 저장
+	public void save() {
+		File file = new File("ProductDB.txt");
 
-            ois.close();
-            bis.close();
-            fis.close();
+		try {
+			FileOutputStream fos = new FileOutputStream(file);
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+			ObjectOutputStream oos = new ObjectOutputStream(bos); // 직렬화 저장을 위한 보조스트림
 
-        } catch (Exception e) {
-            System.out.println("불러오는데 실패하였습니다.");
-            e.printStackTrace();
-        }
-    }
+			oos.writeObject(productList);
+			// writeObject 메서드를 이용해서 직렬화 저장
+			oos.close();
+			bos.close();
+			fos.close();
+		} catch (Exception e) {
+			System.out.println("에러발생!!!");
+			e.printStackTrace();
+		}
+	}
+
+	// I/O를 위한 역직렬화 로드
+	public void load() {
+		File file = new File("ProductDB.txt");
+		try {
+			FileInputStream fis = new FileInputStream(file);
+			BufferedInputStream bis = new BufferedInputStream(fis);
+			ObjectInputStream ois = new ObjectInputStream(bis); // 역직렬화를 위한 보조스트림
+
+			productList = (HashMap) ois.readObject(); // readObject메서드를 이용해서 역직렬화
+														// 리턴값이 Object이므로 다운캐스팅
+
+			ois.close();
+			bis.close();
+			fis.close();
+
+		} catch (Exception e) {
+			System.out.println("불러오는데 실패하였습니다.");
+			e.printStackTrace();
+		}
+	}
 
 }

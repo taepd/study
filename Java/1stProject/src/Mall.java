@@ -164,8 +164,8 @@ public class Mall {
         System.out.println("회원 가입");
         String pwd, name, tel, address;
         
-        while(true) {
         //ID 입력 
+        while(true) {
         System.out.println("ID를 입력해주세요. (5~20자. 영어 대소문자, 숫자, _ 만 사용가능)");
         String regExpaa = "^[a-zA-Z0-9_]{5,20}+$";      
         id = sc.nextLine();
@@ -304,7 +304,7 @@ public class Mall {
                 System.out.println("*********************************");
                 System.out.println("*****고객 메뉴*****");
                 System.out.println("*********************************");
-                System.out.println("1. 상품 리스트 조회");
+                System.out.println("1. 상품 목록 조회");
                 System.out.println();
                 System.out.println("2. 장바구니");
                 System.out.println();
@@ -354,13 +354,13 @@ public class Mall {
                 break;
             }
             case 5: {
-                System.out.println("**회원 리스트 조회**");
+                System.out.println("**회원 목록 조회**");
                 customerManager.userList();
                 break;
             }
 
             case 6: {
-                System.out.println("*판매내역조회");
+                System.out.println("*판매 내역 조회");
                 lookup();
                 break;
             }
@@ -386,7 +386,7 @@ public class Mall {
                 System.out.println("*********************************");
                 System.out.println("*로그인 메뉴");
                 System.out.println("*********************************");
-                System.out.println("1. 상품 리스트 조회");
+                System.out.println("1. 상품 목록 조회");
                 System.out.println();
                 System.out.println("2. 상품 추가");
                 System.out.println();
