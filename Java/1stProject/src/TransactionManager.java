@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class TransactionManager implements Manager, Serializable{
     
         
-    static HashMap<String, ArrayList> transactionList = new HashMap<String, ArrayList>();
+    static HashMap<String, ArrayList<Transaction>> transactionList = new HashMap<String, ArrayList<Transaction>>();
 
     @Override
     public void add() {

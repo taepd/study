@@ -59,15 +59,22 @@ public class CustomerManager implements Manager, Serializable{
 
     void myTransactiontHistory() {
 
-       
+        String id = Mall.id;
 
-        if (TransactionManager.transactionList.get(Mall.id) == null) {
+        if (TransactionManager.transactionList.get(id) == null||
+        		TransactionManager.transactionList.get(id).isEmpty()) {
             System.out.println("주문 내역이 없습니다.");
         } else {
-            System.out.println(TransactionManager.transactionList.get(Mall.id));
+        	System.out.println("--상품명--상품가격--수량----주문자성함-------거래일시-------");
+            for(Object o : TransactionManager.transactionList.get(id)) {
+            	System.out.println(o);
+            }
+           
         }
 
     }
+    
+    
     
     public void userList() {
         Set<String> set= customerList.keySet();
@@ -125,6 +132,7 @@ public class CustomerManager implements Manager, Serializable{
             return;
         }else {
             System.out.println(id+" 님의 거래내역 입니다.");
+            System.out.println("--상품명--상품가격--수량----주문자성함-------거래일시-------");
             System.out.println(TransactionManager.transactionList.get(id));
         }
     }

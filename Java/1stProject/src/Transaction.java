@@ -22,15 +22,17 @@ public class Transaction implements Serializable{
     
     
     
-    CustomerManager customerManager = new CustomerManager();
+ 
+
+	CustomerManager customerManager = new CustomerManager();
     
-    public Transaction(String cutomerName, String productName, int price, int quantity) {
+    public Transaction(String customerName, String productName, int price, int quantity) {
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy년MM월dd일");
-        SimpleDateFormat dateformat2 = new SimpleDateFormat("HH시mm분ss초");
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy년 MM월 dd일");
+        SimpleDateFormat dateformat2 = new SimpleDateFormat("HH시 mm분 ss초");
         this.transactionDate=dateformat.format(cal.getTime());
         this.transactionTime=dateformat2.format(cal.getTime());
-        this.customerName = cutomerName;
+        this.customerName = customerName;
         this.productName=productName;
         this.price=price;
         this.quantity=quantity;
@@ -53,11 +55,16 @@ public class Transaction implements Serializable{
     public void setTransactionTime(String transactionTime) {
         this.transactionTime = transactionTime;
     }
+    
+    public int getQuantity() {
+ 		return quantity;
+ 	}
 
     @Override
     public String toString() {
-        System.out.println("--상품명--상품가격--수량----주문자성함-------거래일시-------");
+        
         return productName+"  "+price+"   "+quantity+"      "+customerName+"    "+transactionDate+transactionTime;
+
     }
 
     

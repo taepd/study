@@ -384,7 +384,7 @@ public class Mall {
             try {
                 System.out.println();
                 System.out.println("*********************************");
-                System.out.println("*로그인 메뉴");
+                System.out.println("******     관리자 메뉴           ********");
                 System.out.println("*********************************");
                 System.out.println("1. 상품 목록 조회");
                 System.out.println();
@@ -531,7 +531,7 @@ public class Mall {
             switch (this.cartMenu()) {
             case 1: {
                 System.out.println("**장바구니 상품 구매**");
-                cartManager.buy();
+                cartManager.buy();  
                 break;
             }
             case 2: {

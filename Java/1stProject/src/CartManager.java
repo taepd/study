@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -30,12 +31,16 @@ class CartManager implements Manager, Serializable {
 //        }
 
         while (true) {
-            System.out.println("추가할 상품 번호를 입력해 주세요.");
-            pnumber = Integer.parseInt(sc.nextLine()); // 상품번호 입력
+        	System.out.println("추가할 상품 번호를 입력해 주세요.");
+            try {				
+            	pnumber = Integer.parseInt(sc.nextLine()); // 상품번호 입력
             if (!ProductsManager.productList.containsKey(pnumber)) {
                 System.out.println("존재하지 않는 상품 번호입니다. 다시 선택해 주세요.");
             } else
                 break;
+            } catch (Exception e) {
+            	System.out.println("잘못 입력하였습니다.상품 번호를 입력해주세요.");
+            }
         }
        
         
@@ -95,7 +100,7 @@ class CartManager implements Manager, Serializable {
     	String id = Mall.id;
         //장바구니가 비었을 때 
         if(cartList.get(id).cartArray.isEmpty()) {
-            System.out.println("장바구니가 비었습니다. 결제할 상품이 없습니다.");
+            System.out.println("장바구니가 비었습니다.");
             return;
         }
 
@@ -135,34 +140,29 @@ class CartManager implements Manager, Serializable {
         
         
         Customer customer = (Customer) CustomerManager.customerList.get(id);
-        System.out.println(customer);
+        ArrayList<Transaction> tArray = TransactionManager.transactionList.get(id);
 
+        // 구매내역 생성
         Set<Product> set = cartList.get(id).cartArray.keySet();
-
+        
         if (set.isEmpty()) {
             System.out.println("장바구니가 비었습니다.");
-        } else {
-
-            // 구매내역 생성
+        }else {    
             for (Product p : set) {
-
-                Transaction t = new Transaction(customer.getId(), p.getPname(), p.getPrice(),
+                Transaction t = new Transaction(customer.getName(), p.getPname(), p.getPrice(),
                         cartList.get(id).cartArray.get(p));
-                customer.transactionArray.add(t);
-                TransactionManager.transactionList.put(id, customer.transactionArray);
-                System.out.print(p.getPname() + ", ");
-            }
+                tArray.add(t);
+//                customer.transactionArray.add(t);  // 이 경로를 거치면 안된다. 저장된 경로를 따라 가야함
+                TransactionManager.transactionList.put(id, tArray);
+                System.out.print(p.getPname() +"을 "+t.getQuantity()+"개 ");            
+            }         
+            System.out.println("구매하셨습니다.");
             TransactionManager transactionManager = new TransactionManager();
             transactionManager.save();
-            System.out.println("을 구매하셨습니다.");
             remove();
         }
-
     }
 
-//	public void show() {
-//		cartList.get(CustomerManager.id).show();
-//	}
 
     // I/O를 위한 직렬화 저장
     public void save() {

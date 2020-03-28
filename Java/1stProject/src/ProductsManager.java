@@ -83,6 +83,9 @@ public class ProductsManager implements Manager, Serializable {
 			System.out.print(">>");
 			pname = sc.nextLine();
 			Set<Integer> pset = productList.keySet();
+			if(pset.isEmpty()) {
+				break;
+			}
 			for (int p : pset) {
 				if (productList.get(p).getPname().equals(pname)) {
 					System.out.println("이미 존재하는 상품명입니다.");
