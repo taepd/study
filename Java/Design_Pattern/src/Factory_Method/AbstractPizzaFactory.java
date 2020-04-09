@@ -1,6 +1,5 @@
 package Factory_Method;
-public abstract class AbstractPizzaFactory {
+public interface AbstractPizzaFactory {
  
     public abstract Pizza createPizza(String name);
-    
 }

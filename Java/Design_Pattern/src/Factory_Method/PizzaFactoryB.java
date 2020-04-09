@@ -1,15 +1,13 @@
 package Factory_Method;
-public class PizzaFactoryB extends AbstractPizzaFactory{
+public class PizzaFactoryB implements AbstractPizzaFactory{
  
     @Override
     public Pizza createPizza(String name) {
  
         switch (name) {
         case "Tomato": return new TomatoPizza(); 
-        case "Cheeze":return new CheesePizza();
+        case "Cheese":return new CheesePizza();
         }
-         
         return null;
     }
-      
 }

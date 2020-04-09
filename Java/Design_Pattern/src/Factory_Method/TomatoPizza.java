@@ -5,5 +5,4 @@ public class TomatoPizza extends Pizza{
     public String getName() {
         return "TomatoPizza";
     }
- 
 }
