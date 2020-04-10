@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>테이블 표 만들기</title>
+<style type="text/css">
+	table {border-collapse: collapse;}
+	td{border: 1px solid red;}	
+	table {
+  width:100%;
+}
+
+table#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body>
+	<h3>일반 테이블</h3>
+	<table>
+		<tr>
+			<td>가</td><td>나</td><td>다</td>
+		</tr>
+		<tr>
+			<td>라</td><td>마</td><td>바</td>
+		</tr>
+		<tr>
+			<td>사</td><td>아</td><td>자</td>
+		</tr>
+	</table>
+	<hr>
+	<h3>일반 테이블2</h3>
+	<table style="height: 200px; width: 500px">
+		<tr>
+			<td>가</td><td>나</td><td>다</td>
+		</tr>
+		<tr>
+			<td>라</td><td>마</td><td>바</td>
+		</tr>
+		<tr>
+			<td>사</td><td>아</td><td>자</td>
+		</tr>
+	</table>
+	<hr>
+	<h3>일반 테이블3</h3>
+	<table style="height: 200px; width: 500px">
+		<tr>
+			<td colspan="2">가나</td><td>다</td>
+		</tr>
+		<tr>
+			<td>라</td><td>마</td><td>바</td>
+		</tr>
+		<tr>
+			<td colspan="3">사아자</td>
+		</tr>
+	</table>
+	<hr>
+	<h3>일반 테이블4</h3>
+	<table style="height: 200px; width: 500px">
+		<tr>
+			<td rowspan="2">가라</td><td colspan="2" rowspan="2">나다마바</td>
+		</tr>
+		<tr>			
+		</tr>
+		<tr>
+			<td>사</td><td>아</td><td>자</td>
+		</tr>
+	</table>
+	<hr>
+	<table id="t01">
+	  <tr>
+	    <th>Firstname</th>
+	    <th>Lastname</th> 
+	    <th>Age</th>
+	  </tr>
+	  <tr>
+	    <td>Jill</td>
+	    <td>Smith</td>
+	    <td>50</td>
+	  </tr>
+	  <tr>
+	    <td>Eve</td>
+	    <td>Jackson</td>
+	    <td>94</td>
+	  </tr>
+	  <tr>
+	    <td>John</td>
+	    <td>Doe</td>
+	    <td>80</td>
+	  </tr>
+	</table>
+
+</body>
+</html>

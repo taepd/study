@@ -1,52 +1,42 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class temp2 {
-
-	public static void main(String[] args) {
-  
-		Scanner sc = new Scanner(System.in); 		
-
-		
-		int[] num = new int[3];
-		int[] ran = new int[3];
-
-		System.out.println("숫자 3자리를 입력하세요");
-		int data= Integer.parseInt(sc.nextLine());
-		num[0] = data/100;
-		num[1] = data%100/10;
-		num[2] = data%100%10;       //각 자리수의 숫자추출
-		
-		System.out.println(num[0]);
-		System.out.println(num[1]);
-		System.out.println(num[2]);
-
-	    for(int i=0;i<ran.length;i++) {
-	    	ran[i]=(int)(Math.random()*10);
-	    	System.out.print(ran[i]);
-	    }                            //랜덤 숫자 출력
-	    System.out.println();      
-		
-		 if(ran[0]==num[0]) {
-			 System.out.println("STRIKE");
-		 }
-		 else if(ran[1]==num[1]) {
-			 System.out.println("STRIKE");
-		 }
-		 else if(ran[2]==num[2]) {
-			 System.out.println("STRIKE");
-		 }
-		 else if(ran[0]==num[1]||ran[0]==num[2]) {
-			 System.out.println("BALL");
-		 }
-		 else if(ran[1]==num[0]||ran[1]==num[2]) {
-			 System.out.println("BALL");
-		 }
-		 else if(ran[2]==num[0]||ran[2]==num[1]) {
-			 System.out.println("BALL");
-		 }
-		 else System.out.println("OUT");
-
-		
-
-		 }
+    
+    static char arr[][]; 
+    public static void triangle(int a,int b,int n) {
+        int div = 0;
+        if(n==3) {           
+            for(int i=0;i<3;i++) { //5*5 기본 모양 형성
+                for(int j=0;j<5;j++) {
+                    if((i==0 && j%5!=2)||
+                       (i==1 && j%2!=1)                                
+                            ) continue;
+              arr[i][j] = '*';
+                }
+            }
+            return;
+        }
+         div= n/2; 
+        
+        
+//                triangle(a+(div*i),b+(div*j),div); //시작점 변경
+        
+    }
+ 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n= sc.nextInt();
+        
+        arr = new char[n][n+2];
+        System.out.println(3%2);
+        for(int i=0;i<arr.length;i++) {  //새로운 입력 전 배열 청소
+            Arrays.fill(arr[i],' ');
+        }
+        
+        triangle(0,0,n); //재귀 메서드
+        for(int i=0;i<arr.length;i++) {  //패턴 출력
+            System.out.println(arr[i]);
+        }
+    }
 }
