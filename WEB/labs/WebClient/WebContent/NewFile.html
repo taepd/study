@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css 레이아웃 연습</title>
+<style>
+	div#wrap {
+		width: 800px;
+		height: 800px;
+		background-color: linen;
+		border: 10px solid black;
+		margin:auto;
+	}
+	div#header{
+		height: 100px;
+		border:none;
+		background-color: gray;
+	}
+	div#left_main{
+		width: 200px;
+		height: 600px;
+		background-color: blue;
+		float: left;
+	}
+	div#content{
+		width: 300px;
+		height: 600px;
+		background-color: bule;
+		float: left;
+	}
+	div#footer{
+		height: 100px;
+		border:none;
+		background-color: red;
+		clear: both;
+	}
+</style>
+</head>
+<body>
+	
+	<div id="wrap">
+		<div id="header" align="center">헤더</div>
+		<div id="left_main"></div>
+		<div id="content"></div>
+		<div id="footer"></div>
+	</div>
+	
+</body>
+</html>

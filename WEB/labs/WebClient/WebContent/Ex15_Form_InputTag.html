@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form 태그 내부에서... input(write, read)</title>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>Text: Password</legend>
+			Text: <input type="text" name="userid" id="userid"><br>
+			Password: <input type="password" name="pwd" maxlength="5"><br>
+			<hr>
+			Text2: <input type="text" name="date" maxlength="10" size="100px" value="초기값">
+			<hr>
+			readonly(읽기 전용: 서버 데이터 전송 가능)
+			<input type="text" name="data2" value="hong" readonly="readonly"> <!-- 속성값과 밸류값이 같으면밸류값 생략가능하다 -->
+			<br>
+			disabled(비활성화: 서버 데이터 전송 불가능)
+			<input type="text" name="data3" value="kim" disabled="disabled">
+		</fieldset>
+		<fieldset>
+			<legend>체크박스(다중선택)</legend>
+			농구:<input type="checkbox" name="sports_1" value="A" checked="checked">
+			야구:<input type="checkbox" name="sports_2" value="B">
+			축구:<input type="checkbox" name="sports_3" value="C">
+			<!-- 
+				regiser.jsp?sports_1=A&sports_2=B&sports_3=C
+				서버(jsp)
+				String a = request.getParameter("sports_1");
+				String b = request.getParameter("sports_2");
+				String c = request.getParameter("sports_3");
+				
+				농구:<input type="checkbox" name="sports" value="A" checked="checked">
+				야구:<input type="checkbox" name="sports" value="B">
+				축구:<input type="checkbox" name="sports" value="C">
+				regiser.jsp?sports=A&sports=B&sports=C
+				서버(jsp)
+				>>같은 변수로 여러 값을 받을 땐 getParameterValues로 하면 배열로 받을 수 있다
+				String[] strarr = request.getParameterValues("sports")	
+			 -->								
+		</fieldset>
+		<fieldset>
+			<legend>Select 태그(단일 선택: 년, 월, 일)</legend>
+			<select name="year">
+				<option value="2020">2020</option>
+				<option value="2019" selected>2019</option>
+				<option value="2018">2018</option>
+			</select>
+			<!-- 
+				?year=2020
+			 -->
+		</fieldset>
+		<fieldset>
+			<legend>Select 태그(다중 선택)</legend>  <!-- 잘 안쓴다 -->
+			<select name="items" multiple>
+				<option value="01">JAVA</option>
+				<option value="02" selected>Oracle</option>
+				<option value="03">HTML</option>
+			</select>
+			<!-- 
+				?items=01&items=02..
+			 -->
+		</fieldset>
+		<fieldset>
+			<legend>라디오 버튼(단일선택: 남/여) 같은 group >> name 동일</legend>
+			남<input type="radio" name="gender" value="1" checked="checked">
+			여<input type="radio" name="gender" value="2">
+		</fieldset>
+		<fieldset>
+			<legend>기타 등등</legend>
+			1. 화면에 출력이 안되요(소스는 있어요)<br>
+			<input type="hidden" value="1000" name="hdata">
+			<hr>
+			2. 파일 업로드(선택)<br>
+			<input type="file" name="upload">
+			<hr>
+			3. 게시판 글쓰기(여러 줄)(초기 크기: cols, rows)
+			<textarea rows="10" cols="20" name="content">입력데이터</textarea>
+			<br>
+			4. 각종 버튼들
+			<input type="button" value="나 눌러봐" onclick="alert('월요일')">
+			<br>
+			submit 기능 내장<input type= "image" src="images/submit.png">
+			<br>
+			<input type="submit" value="전송">
+			<input type="reset" value="취소">
+		</fieldset>
+		<fieldset>
+			<legend>목록 정의하기</legend>
+			<input list="browsers" name="data">
+				<datalist id="browsers">
+					<option value="Internet Explorer">
+    				<option value="Firefox">
+    				<option value="Chrome">
+    				<option value="Opera">
+    				<option value="Safari">
+				</datalist>
+		</fieldset>
+	</form>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

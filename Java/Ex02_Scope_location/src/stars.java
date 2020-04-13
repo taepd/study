@@ -40,26 +40,26 @@ public class stars {
 //                System.out.print("*"); //별을 n-i개만큼 추가
 //            }System.out.println();   //줄바꿈
 //        }
-    //별찍기 5번
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        for(int i=1;i<=n;i++) {
-            for(int j=1;j<=n-i;j++) { //공백을 n-i개만큼 추가
-                System.out.print(" ");
-            }for(int j=1;j<=2*i-1;j++) { //별을 2i-1개만큼 추가
-                System.out.print("*");
-            }System.out.println(); //줄바꿈
-        }
-    //별찍기 6번
-      Scanner sc = new Scanner(System.in);
-      int n = sc.nextInt();
-      for(int i=1;i<=n;i++) {  
-          for(int j=1;j<i;j++) {  //공백 i-1개 입력
-              System.out.print(" ");
-          }for(int j=1;j<=2*(n-i)+1;j++) { //별 2*(n-i)+1개 입력
-               System.out.print("*");
-          }System.out.println(); //줄바꿈
-      }
+//    //별찍기 5번
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        for(int i=1;i<=n;i++) {
+//            for(int j=1;j<=n-i;j++) { //공백을 n-i개만큼 추가
+//                System.out.print(" ");
+//            }for(int j=1;j<=2*i-1;j++) { //별을 2i-1개만큼 추가
+//                System.out.print("*");
+//            }System.out.println(); //줄바꿈
+//        }
+//    //별찍기 6번
+//      Scanner sc = new Scanner(System.in);
+//      int n = sc.nextInt();
+//      for(int i=1;i<=n;i++) {  
+//          for(int j=1;j<i;j++) {  //공백 i-1개 입력
+//              System.out.print(" ");
+//          }for(int j=1;j<=2*(n-i)+1;j++) { //별 2*(n-i)+1개 입력
+//               System.out.print("*");
+//          }System.out.println(); //줄바꿈
+//      }
      //별찍기 7번
      Scanner sc = new Scanner(System.in);
      int n = sc.nextInt(); 
