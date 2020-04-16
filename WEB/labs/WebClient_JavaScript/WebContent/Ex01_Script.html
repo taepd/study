@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="script/common.js"></script>
+	<script type="text/javascript">
+		/*
+			javascript(Web언어: 코드해석(웹브라우저: 해석기(엔진): 라인단위 해석(순서 중요))
+			ex) naver.com/js/common.js => enter => common.js 다운로드(local)
+			=> 내 브라우저가 해석 >>서버에 부담이 없음
+			javascript (객체지향언어: class개념 > 상속, 다형성, 재사용성)
+			
+			javascript 사용
+			1. html의 content, attribute [변경][삭제][추가] 동적으로 가능
+			2. css속성 [변경][삭제][추가] 동적으로	가능
+			3. 유효성 검증(id체크, 주민번호)
+			4. 동적인 웹 페이지(화면 구성)
+			5. 전 세계적으로 1위
+				-javascript >> 코드 량을 줄이고, 많이 쓰는 것을 framework로
+				-jquery.js (좀 더 쉽게) >> angular.js(MVC)
+				-javascript를 local에서 동작: 브라우저 엔진을 local에(v8엔진)
+				>> js가 back-end도 다룰 수 있게 됨 (DB연동) 
+				>> node.js (npm) : 단점: 대규모 서비스에는 부적합 >> 보조적 사용(채팅서버만)
+				-vue.js, react
+			6. 문법
+				1. 대소문자 엄격하게 구분
+				2. 종결자;
+				3. 타입 (var, const, let), 연산자, 제어문, 객체...
+				참고) java와 코드가 거의 유사(제어문)
+			
+			7. 사용법(css 동일)
+				-inline(태그 안쪽에 표현<p onclick="<script>구문 작성"><p>)
+				-internal(page 안에서 <head><script>구문</haed> 또는 <body><script></body>)
+				-external(common.js) >> 가장 선호
+		*/
+		function call(){
+			alert('internal');			
+		}
+	</script>
+</head>
+<body>
+	<h3>in-line</h3>
+	<input type="button" value="inline" onclick="alert('hello')"> 
+ 
+ 	<hr>
+ 	<h3>internal</h3>
+	<input type="button" value="internal" onclick="call()"> 
+	<hr>
+ 	<h3>external</h3>
+	<input type="button" value="external" onclick="excall()"> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</body>
+</html>

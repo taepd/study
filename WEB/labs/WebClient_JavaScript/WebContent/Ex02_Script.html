@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//javascript 해석: 웹 브라우저(해석기 + 다양한 객체 제공)
+	//웹 브루우저 내장 객체(window)
+	//window 객체 생략
+	window.document.write("방가방가<br>");
+	document.write("window 객체 생략 가능<br>");
+	
+	console.log(10+10);
+	console.log("디버깅, 결과확인, 오류메시지 확인");
+	
+	document.write("<b>hello wolrd</b>")
+	document.write('<table border="1"');
+		document.write('<tr><td>AA</td><td>BB</td></tr>');
+	document.write('</table>');
+	
+	var num; //미리 타입을 정의하지 않음
+	console.log(num);
+	num = 100; //이 때 타입이 설정됨(값을 가지는 순간)
+	console.log(num);
+	console.log(typeof(num));
+	
+	//var ele = window.document.forms[0].elements[0];
+	//console.log(ele);
+	//Uncaught TypeError: Cannot read property 'elements' of undefined
+	//js는 순차적 실행이므로 사용하려면 먼저 만들어져 있어야 함
+	//form이 만들어 지기 전에 read하려고 시도해서 오류
+	
+	//순서에 상관없이 처리... (함수.. 호출하세요)
+	function data(){
+		var ele = window.document.forms[0].elements[0];
+		console.log(ele);
+	}
+	
+</script>
+</head>
+<body>
+	<form action="#" method="get" name="myform">  <!-- "#" : 어떤 주소도 가지지 않겠다 -->
+		<input type="text" name="userid" value="hong"><br>
+		<input type="password" name="pwd" value="1004"><br>
+		<input type="submit" value="전송">
+	</form>
+	<input type="button" value="클릭해봐" onclick="data()">
+</body>
+	<script>var ele = window.document.forms[0].elements[0];
+	console.log(ele); //ele 가지고 있는 것은: <input type="text" name="userid" value="hong">
+	console.log(ele.value);
+	console.log(ele.value.length);
+	
+	//form 태그 자신의 이름 >> name="myform"
+	//window.document.폼이름.요소이름
+	var ele2 = window.document.myform.userid;
+	console.log("ele2: "+ele2);
+	console.log("ele2 value: "+ele2.value);
+	
+	var value = window.document.myform.userid.value;
+	console.log("타입: " + typeof(value));
+	
+	if(value.length<5){
+		 alert("다시 입력해");
+		 ele2.value="";
+	}	
+	
+	</script>
+
+
+
+
+
+
+</html>

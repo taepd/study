@@ -13,7 +13,7 @@ class temp3 {
     void pattern(int n) {
         //n=3¿œ ∂ß
         
-        
+    
     }
     
     

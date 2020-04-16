@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		var myTime = window.setInterval(function() {
+			//js 다양한 객체 제공 받음
+			var d = new Date();
+			var t = d.toLocaleTimeString();
+			document.getElementById("time").innerHTML = t;
+			
+		}, 1000); //익명함수, 뒤 매개변수마다 앞 함수를 호출
+		function myTimeStop(){
+			window.clearInterval(myTime);
+					}
+	</script>
+</head>
+<body>
+	<p id="time"></p>
+	<button onclick="myTimeStop()">Stop Time</button>
+
+</body>
+</html>

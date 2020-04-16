@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		//유효성 검증
+		//1. Client 서버 전송 >> 서버 검증 >> 검증 여부(true, false) : ID검사
+		//2. Client 에서 검증 >> 입력유무, 숫자, 문자 검증, 주민번호 >> 검증 후 서버 전송
+		//최대한 client에서 처리할 수 있는 부분은 처리하자... (서버전송수를 줄이자)
+		
+		//2번은 js에서 해결
+		function send(){
+			//js가 요소의 정보를 가지고 있어야 한다
+			//var ele = document.forms[0].elements[0].value
+			
+			//form name 속성, 요소 name 속성으로 접근
+			var inputuserid = document.loginform.txtuserid;
+			console.log(inputuserid);
+			console.log(inputuserid.value);
+			
+			//실제 활용은 (DOM script 사용)
+			var userpwd = document.getElementById("txtpwd"); //계층 루트를 다 적을 필요없이 id로 접근 가능
+			console.log(userpwd.value);
+			
+			//검증로직(여러분이 알아서)
+			var re = new RegExp("^[a-zA-z0-9]{3,10}$")  // /^[a-zA-z0-9]{3,10}$/ 이렇게 표현해도 됨			
+			if(re.test(inputuserid.value)){ ///^[a-zA-z0-9]{3,10}$/ 직접 re자리에 넣어도 됨
+				alert("검증 완료");
+				//여기서 서버 전송
+				
+				document.loginform.action="login.jsp";
+				document.loginform.submit(); //form >> 내장 >> submit;
+			}else{
+				alert("다시 입력해");
+				document.loginform.txtuserid.focus();
+				inputuserid.select();
+			}
+			
+		}	
+	
+	</script>
+
+
+</head>
+<body>
+	<form action="" method="" name="loginform">
+		ID:<input type="text" name="txtuserid"><br>
+		PWD:<input type="password" name="txtpwd" id="txtpwd"><br>
+		<input type="button" value="전송" onclick="send()">
+		<!-- 
+			type
+		 -->
+	
+	</form>
+	
+</body>
+</html>

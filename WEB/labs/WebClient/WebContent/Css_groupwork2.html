@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css 레이아웃 연습</title>
+<style>
+	div#wrap {
+		width: 800px;
+		height: 800px;
+		background-color: linen;
+		border: 10px solid black;
+		margin:auto;
+		opacity: 0.8;
+	}
+	div#header{
+		height: 100px;
+		border:none;
+		background-color: blue;
+	}
+	div#left_main{
+		width: 200px;
+		height: 600px;
+		background-color: blue;
+		float: left;
+	}
+	div#content{
+		width: 800px;
+		height: 650px;
+		background-color: bule;
+		float: left;
+	}
+	div#footer{
+		height: 50px;
+		border:none;
+		background-color: red;
+		clear: both;
+	}
+	div#title{
+		width: auto;
+		height: 100px;
+		border:none;
+		color: white;
+		font-size: 25px;
+	}
+	div#title a {
+	 color: white;	
+	 text-decoration: none;
+	}
+	div#title a:hover{
+	 color: gold;	
+	 text-decoration: none;
+	}
+	dd {
+		margin:0;
+	}
+</style>
+</head>
+<body>
+	
+	<div id="wrap">
+		<div id="header" align="center">
+			<div id="title">
+			<br>
+			<a href="http://192.168.0.9:8090/WebClient/Css_groupwork.html">BIT 155</a></div>
+		</div>
+		
+		<div id="content" align="center">
+		<div class="entry-area" align="center">
+					<div id="register_auth" class="layerbox" style="width: 400px;">
+							<div class="wrapper table">
+								<div class="header">
+								<br><br><br><br>
+									<div class="icon"><span class="ico_join"></span><strong>회원가입</strong></div>
+								</div>
+								<div class="body">
+
+						<form action="https://opentutorials.org/auth?mode=register&amp;returnURL=course%2F1" method="post" accept-charset="utf-8">
+									<dl class="form1" style="width: 277px; margin: 0 auto; float: none; ">
+										<dt><label for="login_id">닉네임</label></dt>
+										<dd><input type="text" class="text" id="nickname" name="nickname" value=""></dd>
+										<dt><label for="email">이메일</label></dt>
+										<dd><input type="email" class="text" id="email" name="email" value=""></dd>
+										<dt><label for="password">비밀번호</label></dt>
+										<dd><input type="password" class="text" id="password" name="password" value=""></dd>
+										<dt><label for="password2">비밀번호 확인</label></dt>
+										<dd><input type="password" class="text" id="password2" name="password2" value=""></dd>
+									</dl>
+									<!-- dl class="form2">
+										<dt>프로필 이미지</dt>
+										<dd>
+											<div id="file-uploader">
+												<img id="user_avatar" src="/static/img/common/160_profile.png" alt="">
+												<button id="btn_uploader" class="btn_small">이미지 업로드</button>
+											</div>
+											<ul>
+												<li>이미지의 용량은 1MB(1,024KB)를 넘을 수 없습니다.</li>
+												<li>최적화된 이미지 사이즈는 160x160입니다.</li>
+												<li>허용되는 이미지 파일포맷은 GIF, JPEG, PNG입니다.</li>
+											</ul>
+											<input type="hidden" name="avatar_temp" value="">
+										</dd>
+									</dl -->
+								
+									<div class="btns">
+										<p><button type="submit" class="btn btn_submit">가입하기</button></p>
+									</div>
+								
+
+									<!-- script src="/static/js/common/ajaxupload.js" type="text/javascript"></script>
+									<script>
+										$(document).ready(function() {
+											$('#nickname').focus();
+
+											var button = $('#btn_uploader'), interval;
+
+											new AjaxUpload('btn_uploader', {
+												action: "https://opentutorials.org/auth/profile_upload_image",
+												name: 'upload',
+												autoSubmit: true,
+												onSubmit : function(file, ext){
+													// change button text, when user selects file
+													button.text('업로드 중');
+
+													// If you want to allow uploading only 1 file at time,
+													// you can disable upload button
+													this.disable();
+
+													// Uploding -> Uploading. -> Uploading...
+													interval = window.setInterval(function(){
+														var text = button.text();
+														if (text.length < 13){
+															button.text(text + '.');
+														} else {
+															button.text('업로드 중');
+														}
+													}, 200);
+												},
+												onComplete: function(file, response){
+													button.text('이미지 업로드');
+
+													window.clearInterval(interval);
+
+													// enable upload button
+													this.enable();
+
+													// add file to the list
+													//$('<li></li>').appendTo('#example1 .files').text(file);
+												}
+											});
+										});
+									</script -->
+								</form>
+								<div class="socialbtn">
+<!-- 
+									<p class="btn_google">
+										<span id="signinButton">
+										  <span
+										    class="g-signin"
+										    data-callback="gg_signinCallback"
+										    data-clientid=""
+										    data-cookiepolicy="single_host_origin"
+										    data-requestvisibleactions=""
+										    data-scope="https://www.googleapis.com/auth/plus.login"
+										    data-width="wide"
+										    >
+										  </span>
+										</span>
+									</p>
+-->									
+									<p class="btn_facebook">
+										<button id="rember_btn">페이스북으로 회원가입하기</button>
+									</p>
+								</div>
+							</div>
+										
+							<div class="footer">
+									<a href="https://opentutorials.org/auth?mode=forget&amp;returnURL=course%2F1">비밀번호 찾기</a> |
+									<a href="https://opentutorials.org/auth?mode=login&amp;returnURL=course%2F1">로그인</a>
+							</div>	
+						</div>	
+					</div>
+				</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+	
+</body>
+</html>
