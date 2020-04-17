@@ -29,7 +29,7 @@
 				alert("검증 완료");
 				//여기서 서버 전송
 				
-				document.loginform.action="login.jsp";
+				document.loginform.action="Ex08_Login.jsp";
 				document.loginform.submit(); //form >> 내장 >> submit;
 			}else{
 				alert("다시 입력해");
@@ -43,6 +43,13 @@
 
 
 </head>
+<!-- 
+name: 서버로 넘어가는 이름
+id: front에서 사용하는 이름
+<input tag에 name 속성을 주지 않으면 server에서 받을 수 없다
+<input tag에 id: javascript, css front 작업 가능
+ -->
+
 <body>
 	<form action="" method="" name="loginform">
 		ID:<input type="text" name="txtuserid"><br>

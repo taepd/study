@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		var v = "hello"; //전역변수(global) : 모든 함수에 사용 가능
+		var p = "pppp";
+		function func(){
+			var v = "world";  //지역변수(local)
+			document.write("func : "+v+"<br>");
+			//v; 전역변수: 함수 안에서 타입없이 변수쓰면 전역변수
+			p = "qqqq";
+		}
+		
+		func(); //호출
+		document.write(v + "<br>");
+		document.write(p);
+		
+		
+	/*
+		function makePlan(){
+			var name;
+		
+			if(){
+				
+				let id;			
+			}
+
+		}
+	
+	*/
+	//ES6 이전
+	//var 혼자서 살던 시대
+	
+	//var 는 function 단위 .... {}단위 아님
+	var hello='hello';
+		if(true)  {
+  			var hello = 'hello in if';
+		}
+	console.log(hello); // hello in if
+	
+	//const 상수
+	const hello6 ='hello';
+	hello6 = "change hello";
+	//
+	
+	//Scope 은 { } 블럭
+	const hello2='hello!';
+	{	
+			const hello2='inner hello!'; 
+			console.log(hello2); // inner hello!
+	}
+	console.log(hello2); // hello! 
+	
+	//let 변수는 재정의 가능
+	let hello3='first hello';  // first hello
+	hello3 = 'changed hello';  // changed hello
+	console.log(hello3);
+	
+	//Scope 은 { } 블럭
+	let hello4='first hello';  
+	{
+	  let hello4 = 'inner hello';  
+	  console.log(hello4); // inner hello
+	}
+	console.log(hello4); // first hello
+	
+	
+	let hello5='first hello';  
+	//let hello5='second hello'; // error. 두 번 선언 불가
+	//Uncaught SyntaxError: Identifier 'hello5' has already been declared
+</script>
+	
+
+</head>
+<body>
+
+</body>
+</html>
