@@ -18,21 +18,26 @@
 			var intColumn = parseInt(document.getElementById("txtcolumn").value);
 			
 			var table = document.createElement("table");
+			
 			for(let i=0;i<intRow;i++){
-				let tr = table.appendChild(document.createElement("tr"));
+				let tr = document.createElement("tr");
 				for(let j=0; j<intColumn;j++){
 					if(i==0){
-					let th = tr.appendChild(document.createElement("th"));
-					tr.appendChild(th.appendChild(document.createTextNode(i+"행"+j+"열")));
+					let th = document.createElement("th");
+					let thText= document.createTextNode((i+1)+"행"+(j+1)+"열");
+					th.appendChild(thText);
+					tr.appendChild(th);
 
 					}else{
-					let td = tr.appendChild(document.createElement("td"));
-					tr.appendChild(td.appendChild(document.createTextNode(i+"행"+j+"열")));
+					let td = document.createElement("td");
+					let thText= document.createTextNode((i+1)+"행"+(j+1)+"열");
+					td.appendChild(thText);
+					tr.appendChild(td);
 					}
 
-				}
+				}table.appendChild(tr); //table태그에 th/tr추가
 			
-			}
+			}document.body.appendChild(table); //body에 table추가
 			
 			
 	}
@@ -41,7 +46,14 @@
 			//동적으로 생성되는 테이블
 			var intRow = parseInt(document.getElementById("txtrow").value);
 			var intColumn = parseInt(document.getElementById("txtcolumn").value);
-		
+			
+			let tables = document.getElementsByTagName("table");
+
+			if(tables.length>0){
+				document.body.removeChild(tables[tables.length-1]);
+			}else{
+				alert("모두 삭제 되었습니다");
+			}
 	}
 }
 	</script>
