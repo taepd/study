@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		.democlass {
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div">
+		<h1 class="democlass">Hello World1</h1>
+		<h1 class="democlass">Hello World2</h1>
+		<h1 class="democlass">Hello World3</h1>
+	</div>
+<script type="text/javascript">
+	//var arr = document.getElementsByTagName("h1")[0].removeAttribute("class");
+	
+	
+	var arr = document.getElementsByTagName("h1");
+/* 	for(let index in arr){
+		//console.log(arr[index]);
+		//arr[index].removeAttribute("class");
+		//document.body.removeChild(arr[index]); //h1은 div의 자식요소(error)
+		
+		//document.getElementById("div").removeChild(arr[index]);
+	if(arr.length >0){
+			console.log(index+"/"+arr.length+arr[index]);
+			//document.getElementById("div").removeChild(arr[arr.length-1]);
+		} 
+	} */
+	
+	/* for(var i= 0 ; i < arr.length ;){
+  		console.log("arr.length :" + arr.length + " - " +  "i : " + i);
+  		console.log(arr[i]);
+  		console.log("***********************************");
+  		document.getElementById("div").removeChild(arr[i]);
+   	    //[h1][h2][h3]
+   	    //[0] [1] [2]
+   	    //[h2][h3]
+   	    //[0] [1]
+  	}
+	 */
+	 
+/* 	 var len = arr.length;
+	  	for(var i= 0 ; i < len ; i++){
+	  		console.log("len :" + len);
+	  		console.log("arr.length :" + arr.length + " - " +  "i : " + i);
+	  		console.log(arr[arr.length -1]); 
+	  		console.log("arr.length -1 : " + (arr.length -1));
+	  		console.log("***********************************");
+	  		document.getElementById("div").removeChild(arr[arr.length -1]);
+	   		//arr.length -1 >> 2,1,0
+	  	}  */
+	 var len = arr.length;
+	  	for(let i =0; i<len; i++){
+	  		arr[arr.length-1].remove(); //자기자신 삭제
+	 }
+	  	
+	  	
+</script>	
+	<p id="demo">Click the Button</p>
+	<button onclick="">Try it</button>
+
+</body>
+</html>

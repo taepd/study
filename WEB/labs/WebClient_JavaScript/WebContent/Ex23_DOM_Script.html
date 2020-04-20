@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var btnobj = document.getElementById("btnGetData");
+			//이벤트 처리
+			//input type="botton" onclick="함수명"...는 아래와 같이 처리할 수도 있다
+			btnobj.onclick = function(){ //익명함수(일회성)
+				var txtmsg = document.getElementById("txtmessage");
+				var str="";
+				str += "ID: "+txtmsg.getAttribute("id");
+				str += "\nvalue : " + txtmsg.getAttribute("value");
+				str += "\nvalue : " + txtmsg.value;
+				str += "\nlength : " + txtmsg.value.length;
+				console.log(str);
+					
+			}
+			document.getElementById("btnCreate").onclick = function() {
+				var txtname = document.createElement("input");
+				txtname.setAttribute("type", "text");
+				txtname.setAttribute("id", "txtbox");
+				txtname.setAttribute("value", "홍길동");
+				document.body.appendChild(txtname);
+			}
+		}
+	
+	</script>
+</head>
+<body>
+	<input type="text" id="txtmessage" value="hello">
+	<input type="button" value="getInfo" id="btnGetData">
+	<hr>
+	<input type="button" value="동적생성" id="btnCreate">
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

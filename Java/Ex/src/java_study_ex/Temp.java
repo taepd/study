@@ -26,6 +26,7 @@ class Temp {
 			int b = Integer.parseInt(st.nextToken()); //두번째 호출
 			bw.write((a+b) + "\n");// 출력
 		}
+		
 
 //		for (int i = 0; i < n; i += 2) {
 //

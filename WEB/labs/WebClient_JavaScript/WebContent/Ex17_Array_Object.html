@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Array</title>
+	<script type="text/javascript">
+		//while
+		var i =1;
+		var sum=0;
+		while (i<=10) {
+			sum+=i;
+			i++;
+		}
+		document.write("sum: "+sum+"<br>");
+		
+		var sum2=0;
+		for(let i=0; i<=10;i++){
+			if(i%3===0){
+				console.log("i: "+i);
+				console.log(0%3);  //NaN: Not a Number
+				continue;
+			}
+		}sum2+=i;
+		document.write("sum2: "+sum2+"<br>");
+		
+		var a = 1;
+		do {
+			document.write(a + "<br>");
+			a++;
+		} while (a<11);
+	
+		//Today Point (Array)
+		//Java >> Array : Collection 나누어서 처리
+		/*
+		JAVA
+		
+		int[] arr = new int[10];
+		int[] arr2 = new int[]{10,20,30};
+		int[] arr3 = {10,20,30};  
+		
+		ArrayList al = new ArrayList();
+		al.add(10);
+		al.add(20);
+		
+		JavaScript: Array(정적+동적)
+					
+		*/
+		//var arr=[];  // 가장 선호
+		var arr = [10,20,30];  //js에선 배열은 대괄호로 감쌈
+		for(let i = 0; i<3; i++){
+			document.write(arr[i]+"<br>");
+		}
+		
+		//java int[] arr = new int[10];
+		var eng = new Array(3);  //이것도 가능 but 비권장. 타입이 설정되지 않기 때문에 >>초기화(x)
+		for (let i = 0;  i< eng.length; i++) {
+			document.write(eng[i]+"<br>");  //undefined. js는 값이 들어올 때 타입이 정해지므로.
+		}
+		
+		eng[0]=100;
+		eng[1]=200;
+		eng[2]=300;
+		
+		for (let i = 0;  i< eng.length; i++) {
+			document.write(eng[i]+"<br>");  
+		}
+		
+		//빈 배열 (선호 스타일)
+		var arr2=[]; //good
+		arr2.push(10); //js 배열은 내부적으로 stack 자료구조.
+		arr2.push(20);
+		
+		//정리
+		//1. 배열(Array) 기본 생성 방법
+		var array = new Array(5); //bad
+		
+		//2. 배열(Array) 초기화
+		var array2 = new Array(10,20,30); //bad
+		
+		//3. 값으로 배열 초기화(정적, 동적): stack구조(push, pop)
+		var array3 = [1,2,3]; //good
+		var array4 = [];
+		array4.push(10);
+		array4.push(20);
+		document.write(array4.pop());
+		
+		
+	</script>
+</head>
+<body>
+</body>
+</html>
