@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	/*
+		<java>
+		try{
+			0/0 >> 자동으로 예외 객체가 생성되고 ... catch 전달
+		}catch(Exception e){
+
+		}
+
+		-javascript >> 사건이 발생하면(click, mouseover) Event라는 객체가 자동생성된다.
+		그리고 이 객체 안에는 다양한 정보가 들어있다(누가 사건을 일으켰고 등등)
+
+
+	*/
+
+		window.onload =function(){
+			var btn = document.getElementById("mybtn");
+			btn.onclick = function(e){ //e변수가 Event객체를 받는다
+				//이벤트가 발생되면 이벤트의 정보를 담고 있는 객체 생성
+				console.log(e.type); //click
+				console.log(e.target); //<span>눌러봐</span>
+				console.log(e.currentTarget); //<button id="mybtn"><span>눌러봐</span></button>
+				console.log(e.x);  //좌표값
+				
+			}
+			
+			var btn2 = document.getElementById("mybtn2"); 
+			var handler = function(event){ 
+				switch(event.type) //event.type()
+				{ 
+				  case "click": //코드 
+				  		alert("클릭");
+						break; 
+				  case "mouseover": //코드 
+				  		event.target.style.backgroundColor = "red"; 
+				  		break; 
+				  case "mouseout": //코드 
+				  		event.target.style.backgroundColor = ""; 
+				  		break; 
+				  } 
+				};
+				
+				
+		  	btn2.onclick = handler; 
+		  	btn2.onmouseover = handler; 
+		  	btn2.onmouseout = handler;
+			
+		  	
+		}
+		
+		
+		
+
+	</script>
+</head>
+<body>
+	<button id="mybtn"><span>눌러봐</span></button>
+	<br>
+	<button id="mybtn2">눌러봐2</button>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		function displateDate(){
+			document.getElementById("demo").innerHTML = new Date();
+		}
+
+		//document.getElementById("mybtn").onclick = displateDate(); //이 시점에 실행하면 없는 속성 에러가 난다
+		//.onclick = displateDate(); //함수가 호출된다 >>그냥 실행
+		//.onclick = displateDate; //이렇게 써야 이벤트시에만 실행
+		//window.onload=function(){}
+		//function call(){}
+		//window.onload = call();
+	</script>
+</head>
+<body>
+	<button id="mybtn">눌러봐</button>
+	<br>
+	<button id="mybtn" onclick="displateDate()">눌러봐2</button>
+	<p id="demo"></p>
+	<script>
+		document.getElementById("mybtn").onclick = displateDate();
+	</script>
+</body>
+</html>

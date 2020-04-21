@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	/*
+		javaScript: Array(정적+collection)
+	 */
+	 var array = ['포도','사과'];
+	 document.write(array.toString()+'<br>');
+	 document.write(array+"<br>toString() defalut<br>");
+
+	 for(let i=0; i< array.length;i++){
+		 document.write(array[i]+"<br>");
+	 }
+
+	 //동적기능
+	 //출력: array[0] >>포도, array[1]>>사과
+	 //방은 2개
+
+	 array[2]="바나나"; //동적으로 데이터 추가 가능
+	 document.write(array+"<br>"+array.length+"<br>");
+
+	 array[10]="애플망고"; //이것도 가능
+	 document.write(array+"<br>"+array.length+"<br>");
+	 //그 사이 정의되지 않은 배열 인덱스에 대해서는 
+	 document.write(array[9]); //undefined
+
+	 var array2=["one","two","three"];
+	 document.write(array2.length+"<br>");
+
+	 array2.length=2; //강제로 길이 조정
+	 document.write(array2 +"<br>"+array2.length+"<br>");	
+
+	 array2.length=4; 
+	 document.write(array2[3] +"<br>"+array2.length+"<br>");	
+
+
+	 //Point (javaScript: Array >> Stack >>LIFO)
+	array2.push("Four");
+	document.write(array2 +"<br>"+array2.length+"<br>");
+	document.write(array2.pop() +"<br>"+array2.length+"<br>");
+	document.write(array2.pop() +"<br>"+array2.length+"<br>");
+	document.write(array2.pop() +"<br>"+array2.length+"<br>");
+	document.write(array2.pop() +"<br>"+array2.length+"<br>");
+	document.write(array2.pop() +"<br>"+array2.length+"<br>");
+
+	
+
+
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>
