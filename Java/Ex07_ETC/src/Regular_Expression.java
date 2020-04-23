@@ -97,7 +97,7 @@ public class Regular_Expression {
         // \d 숫자(정수)
         //{} 괄호 안의 숫자만큼 앞의 문자열을 반복
  
-        String regExp = "(01[1679]{1})[-.\\s]?(\\d{3,4})[-.\\s]?(\\d{4})";
+        String regExp = "(01[01679]{1})[-.\\s]?(\\d{3,4})[-.\\s]?(\\d{4})";
         String data = sc.nextLine();
  
         boolean b2 = data.matches(regExp); // true ,false 유효성 검사
@@ -118,7 +118,7 @@ public class Regular_Expression {
         //$ :문자열의 끝
         System.out.println("4.E-Mail 입력:");
  
-        String regExp = "^([a-zA-Z0-9_-]{5,})@[a-zA-Z0-9]+\\.[a-zA-Z]+$";
+        String regExp = "^([a-zA-Z0-9_-]{5,})@[a-zA-Z0-9]+\\.[a-zA-Z] {2,3}+$";
         String data = sc.nextLine();
  
         boolean b3 = data.matches(regExp); // true ,false 유효성 검사
