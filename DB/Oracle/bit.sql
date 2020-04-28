@@ -3083,3 +3083,20 @@ create table Department
     dname varchar2(50)
 ); 
 
+--------------------------------------------
+--jsp jdbc 실습 예제
+
+CREATE TABLE koreaMember
+(
+    id VARCHAR2(50) PRIMARY KEY ,
+    pwd VARCHAR2(50) NOT NULL,
+    NAME VARCHAR2(50) NOT NULL,
+    age NUMBER ,
+    gender CHAR(4),
+    email VARCHAR2(50),
+    ip   VARCHAR2(50)
+);
+
+
+desc koreaMember;
+select * from koreaMember;
