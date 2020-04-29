@@ -2,7 +2,7 @@
 <%@ page import="kr.or.bit.Emp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  <!-- import와 같은 기능 prefix는 축약어 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  <!-- import와 같은 기능 prefix는 축약어 jstl은 다운받아서 WEB-INF/lib에 추가해줘야 함--> 
 <%
 	Emp e = new Emp();
 	e.setEmpno(2000);
@@ -25,8 +25,8 @@
 기존방식: <%= e.getEname() %><br>
 
 <h3>EL (출력)</h3>
-자바객체 출력하기(객체에 대한 직접 접근 불가): ${e }<br>
-자바객체 속성 출력하기: ${e.getEname() }<br>
+자바객체 출력하기(객체에 대한 직접 접근 불가): ${e}<br>
+자바객체 속성 출력하기: ${e.getEname() }<br> <!-- 오류는 안나지만 출력안됨 -->
 
 1. JSTL (core) : 변수 생성, 제어문<br>
 <c:set var="m" value="<%=e %>"></c:set>
@@ -34,7 +34,7 @@ JSTL을 사용해서 변수 m을 생성(e 객체의 주소값): ${m}<br>
 <hr>
 EL 출력: JSTL 변수값을 출력: ${m}<br>
 EL 출력: JSTL 변수(가능하지만 잘 안씀): ${m.getEmpno()}<br>
-EL 출력: JSTL 변수(자동 getter 함수 호출)(m.member field명) :${m.empno}<br>
+EL 출력: JSTL 변수(자동 getter 함수 호출)(m.member field명) :${m.empno}<br><!-- getter/setter가 구현되어있다는 전제 -->
 EL 출력: JSTL 변수(자동 getter 함수 호출)(m.member field명) :${m.ename}<br>
 <hr>
 <h3>EL & JSTL 사용하기</h3>
@@ -67,7 +67,8 @@ hp객체: ${vhp.data}<br>
 <!-- 
 	hp.put("color", "red")
  -->
-객체 값 넣기 (가능하지만 잘 안씀) 
+객체 값 넣기 (가능하지만 잘 안씀)<br>
+
 <c:set target="${vhp}" property="color" value="red"/>
 hp객체: ${vhp}<br>
 
