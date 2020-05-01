@@ -4,6 +4,10 @@
 <%@page import="kr.or.bit.utils.Singleton_Helper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<c:if test="${empty sessionScope.userid || sessionScope.userid != 'admin' }">
+		<script>location.href='Ex02_JDBC_Login.jsp'</script>
+	</c:if>
 <%
 	/* 
 	회원정보 수정하기
@@ -14,17 +18,17 @@
 	 2.1  DB select 한 결과 화면 출력 
 	      <input type="text" value="rs.getString(id)">
 	      수정안하고 .. 화면 .. 전송(x) : <td>rs.getString("id")</td>
-	      수정안하고 .. 화면 .. 전송   : <input type="text" value="rs.getString(id)" readonly>  //서버에 보내기 위해선 String이 아닌 인풋태그 안의 값으로 넘겨야 한다
+	      수정안하고 .. 화면 .. 전송   : <input type="text" value="rs.getString(id)" readonly>
 	      수정하고 ..화면  ..전송   :  <input type="text" value="rs.getString(id)">
 	
 	*/
+	
+
+
+	
     request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
 	
-	if(session.getAttribute("userid") == null || !session.getAttribute("userid").equals("admin") ){
-		//강제로 페이지 이동
-		out.print("<script>location.href='Ex02_JDBC_Login.jsp'</script>");
-	}
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -84,7 +88,8 @@ td {
 							<tr>
 								<td>아이디</td>
 								<td>
-								  	<input type="text" name="id" value="<%=rs.getString(1)%>" readonly>
+								  	<input type="text" name="id" value="<%=rs.getString(1)%>" readonly> 
+								  	<!-- 텍스트 값은 서버로 전송을 시킬 수 없기에 input으로 만듬. 대신 쓸 수 없게 readonly를 붙임 -->
 								</td>
 							</tr>
 							<tr>

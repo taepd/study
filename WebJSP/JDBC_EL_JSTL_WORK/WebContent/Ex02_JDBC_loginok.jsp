@@ -27,7 +27,7 @@
 	 사용자가 입력한 ID , PWD 알고있고
 	>select id , pwd from kostamember where id=?
 			
-	//1. 결과 없는 경우 , 2. single row , 3. multi row 모두 만족하는 코드   (아래보다 이 형식을 권장)
+	//1. 결과 없는 경우 , 2. single row , 3. multi row 모두 만족하는 코드
 	if(rs.next()) {
 			 do {
 					 System.out.println(rs.getInt(1)+"/"+rs.getString(2)+"/"+rs.getString(3));
@@ -89,6 +89,7 @@
 			out.print("location.href='Ex02_JDBC_JoinForm.jsp'");
 		out.print("</script>");
 		
+		//공식같은 코드가 더 좋다. 이건 위험함
 		
 		//
 	}catch(Exception e){

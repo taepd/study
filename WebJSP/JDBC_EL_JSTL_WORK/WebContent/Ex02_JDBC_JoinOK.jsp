@@ -15,7 +15,7 @@
 	 Insert 성공 > 회원가입 > 페이지 이동 > 로그인 화면(로그인 요구) 
 	  이동 : java: response.sendRedirect("") , javaScript: location.href="" 
 	 >> 클라이언트가 서버에게 페이지를 재요청 
-	 >> https://cafe.naver.com/bitsmartweb/697
+	 >> https://cafe.naver.com/opensourceweb/837
 	  
 	 Insert 실패 > 경고창 > 회원가입 이동
 	 >> <script>alert()</script>
@@ -34,7 +34,7 @@
 	String email = request.getParameter("email"); 
 	
 	//out.print(id + "/"+pwd + "/"+name + "/"+age + "/"+gender + "/"+email);
-	//out.print(request.getRemoteAddr());  //ip정보는 이렇게 받는다
+	//out.print(request.getRemoteAddr());
 	
 	Class.forName("oracle.jdbc.OracleDriver");
 	Connection conn = null;
@@ -43,7 +43,7 @@
 	try{
 		conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","bit","1004");
 		String sql="insert into koreamember(id,pwd,name,age,gender,email,ip) values(?,?,?,?,?,?,?)";
-		pstmt = conn.prepareStatement(sql);  //jdbc는 auto commit이 기본값
+		pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, id);
 		pstmt.setString(2, pwd);
@@ -53,7 +53,7 @@
 		pstmt.setString(6, email);
 		pstmt.setString(7, request.getRemoteAddr());
 		
-		int result = pstmt.executeUpdate();  //건수의 정수값이 리턴
+		int result = pstmt.executeUpdate();
 		if(result !=0){
 			out.print("<script>");
 				out.print("location.href='Ex02_JDBC_Login.jsp'");	

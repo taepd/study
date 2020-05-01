@@ -2,9 +2,12 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="kr.or.bit.utils.Singleton_Helper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>      
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
+	<c:if test="${empty sessionScope.userid || sessionScope.userid != 'admin' }">
+		<script>location.href='Ex02_JDBC_Login.jsp'</script>
+	</c:if>
 <%
 	//권한처리
 	
@@ -16,15 +19,7 @@
     //where id=?
     		
     //처리 : Ex03_Memberlist.jsp 이동  		
-	if(session.getAttribute("userid") == null || 
-	!session.getAttribute("userid").equals("admin")  
-	){
-	  //다른 페이지 이동
-	  out.print("<script>");
-	  out.print("location.href='Ex02_JDBC_Login.jsp'");
-	  out.print("</script>");
-	}
- 
+
 	request.setCharacterEncoding("UTF-8");
 	
 	String id = request.getParameter("id");

@@ -22,23 +22,5 @@
 	EL : ${day}<br>
 	Session EL : ${sessionScope.day2}<br>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 </body>
 </html>

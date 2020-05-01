@@ -4,6 +4,7 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 /*  
 	회원 상세 페이지 (id 컬럼 PK)
@@ -18,12 +19,13 @@
 2.로그인한 일반 회원이 주소값을 외워서 ... 접근불가 
 3.그러면  회원에 관련되 모든 페이지 상단에는 아래 코드를 ..... : sessionCheck.jsp >> include 
 */
-	if(session.getAttribute("userid") == null || !session.getAttribute("userid").equals("admin") ){
-		//강제로 페이지 이동
-		out.print("<script>location.href='Ex02_JDBC_Login.jsp'</script>");
-	}
+%>	
+	<c:if test="${empty sessionScope.userid || sessionScope.userid != 'admin' }">
+		<script>location.href='Ex02_JDBC_Login.jsp'</script>
+	</c:if>
+	
 
-%>
+
 <!DOCTYPE html>
 <html>
 <head>

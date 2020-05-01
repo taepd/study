@@ -52,22 +52,5 @@ EL : ${false}<br>
 EL : ${!false}<br>
 EL : ${empty x}<br> <!-- x라는 변수의 값이 비어있는지 여부 -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>

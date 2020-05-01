@@ -22,7 +22,7 @@
 <!--  
 	JDBC
 	1. 드라이버 참조 (WEB > Webcontent > WEB-INF > lib > 붙여넣기 (ojdbc6.jar)
-	2. 드라이버 메모리 로딩 : class.forName("드라이버 클래스명")	
+	2. 드라이버 메모리 로딩 : class.forName("드라이버 클래스명")
 	3. DB 연결(연결문자열 : 서버 IP, PORT , 계정 , 비번 )
 	
 	JAVA JDBC API(Interface , class 제공)
@@ -53,7 +53,6 @@
 	
 	rs = stmt.executeQuery(sql);
 	while(rs.next()){
-	
 %>
 	<tr>
 		<td><%= rs.getInt(1) %></td>
