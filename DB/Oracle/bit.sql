@@ -3105,7 +3105,7 @@ select * from koreaMember;
 
 
 CREATE TABLE team2Board
-(
+(   no number primary key,
     title VARCHAR2(50) NOT NULL,
     name VARCHAR2(50) NOT NULL,
     content VARCHAR2(4000)
@@ -3117,3 +3117,13 @@ desc team2Board;
 rollback;
 
 drop table team2Board;
+
+create table memo(
+	id varchar2(15) not null,
+	email varchar2(20) not null,
+	content varchar2(100)
+);
+
+desc memo;
+
+select * from memo;
