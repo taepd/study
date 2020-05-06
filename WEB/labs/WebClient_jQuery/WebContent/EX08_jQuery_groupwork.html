@@ -6,39 +6,42 @@
     <title> 회원가입 </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript">
-            var validate = true;
-            $(function(){
+            var validate = new Array;
+            
+            $(function (){
                 //id검증
                 $('#userId').keyup(function(){
                     let id =/^[a-zA-Z0-9]{5,16}$/;
                     if(!id.test($(this).val())){
                         $('.tdid').html('<b style="color:red">5~16자리의 영문+숫자 조합으로 입력해주세요</b>');
-                        validate=false;
+                        validate[0] = false;
                     }else{
                         $('.tdid').html('<b>적합한 아이디입니다.</b>');
-                        
+                        validate[0] = true;
                     }
-                    
+                    console.log(validate[0]);
                 });
                 //password
                 $('#userPass').keyup(function(){
                     let pwd =/^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,20}$/;
                     if(!pwd.test($(this).val())){
                         $('.tdpw').html('<b style="color:red">8~20자 사이에 적어도 하나의 영어대문자,숫자, 특수문자가 포함되어야 합니다.</b>');
-                        validate=false;
+                        validate[1] = false;
                     }else{
                         $('.tdpw').html('<b>적합한 패스워드입니다.</b>');
+                        validate[1] = true;
                     }
-                    
+                    console.log(validate[1]);
                 });
                 //password check
-                $('#userPassCheck').keyup(function(){
+                $('#userPassCheck, #userPass').keyup(function (){
                     if($('#userPass').val() != $('#userPassCheck').val()) {
                         $('.tdpwch').html('<b style="color:red">비밀번호가 다릅니다.</b>');
-                        validate=false;
+                        validate[2] = false;
                     }else{
                         $('.tdpwch').html('<b>비밀번호가 일치합니다.</b>');
-                    }
+                        validate[2] = true;
+                    }console.log(validate[2]);
                 });
 
                 //email
@@ -46,10 +49,11 @@
                     let email =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
                     if(!email.test($(this).val())){
                         $('.tdemail').html('<b style="color:red">적합하지 않은 이메일 형식입니다.</b>');
-                        validate=false;
+                        validate[3] = false;
                     }else{
                         $('.tdemail').html('<b>적합한 이메일입니다.</b>');
-                    }
+                        validate[3] = true;
+                    }console.log(validate[3]);
                 });
 
                  //phone
@@ -57,29 +61,60 @@
                     let phone =/^(01[01679]{1})[-.\s]?([0-9]{3,4})[-.\s]?([0-9]{4})$/;
                     if(!phone.test($(this).val())){
                         $('.tdphone').html('<b style="color:red">적합하지 않은 형식입니다. "01X-XXX(X)-XXXX"형식으로 입력하세요.</b>');
-                        validate=false;
+                        validate[4] = false;
                     }else{
                         $('.tdphone').html('<b>적합한 형식입니다.</b>');
-                    }
+                        validate[4] = true;
+                    }console.log(validate[4]);
                 });
-
+                
+                $('input').focus(function(){
+                    $(this).css('background-color',"gold");
+                });
+                $('input').blur(function(){
+                    $(this).css('background-color',"white");
+                });
+            
+           
 
                 //입력 다 했는지 검증
                 $('input:not([type=checkbox]').prop("required",true);
                 // $('#userId').attr("required","required");
-                
-                 //올바르지 않은 입력 검증
+               
+                //올바르지 않은 입력 검증
                 $('input:submit').click(function(){
-                    if(!$('input:checkbox').is(":checked")) {
+                    if(!($('input:checkbox').is(":checked"))) {
                         alert("취미를 선택해 주세요");
                         return false;
-                    }else if(!validate){ 
-                        alert("올바르지 않은 입력이 있습니다.");
-                        return false;
-                    };
+                    };                 
+                    for(let i=0; i<validate.length;i++){
+                            if(validate[i]==false){
+                                alert("올바르지 않은 입력이 있습니다.");
+                                console.log(i);
+                                switch (i) {
+                                    case 0: 
+                                    $('#userId').focus();
+                                    return false;
+                                    case 1: 
+                                    $('#userPass').focus();
+                                    return false;
+                                    case 2: 
+                                    $('#userPassCheck').focus();
+                                    return false;
+                                    case 3: 
+                                    $('#userEmail').focus();
+                                    return false;
+                                    case 4: 
+                                    $('#userPhone').focus();
+                                    return false;
+                                }
+                            }                      
+                               
+                        };
+                    
                 });
 
-                // });
+         
                 // $('input:submit').click(function(){
                 // if($('#userId').val()=="") {
                 //     alert("아이디를 입력해 주세요");
@@ -133,11 +168,8 @@
 
                 // });
                 
-          
-                
             });
-        
-	
+            
 	</script>
   <!--  
       조별과제 : 
