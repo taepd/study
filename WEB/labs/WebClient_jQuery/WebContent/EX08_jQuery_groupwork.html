@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 회원가입 </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+            var validate = true;
+            $(function(){
+                //id검증
+                $('#userId').keyup(function(){
+                    let id =/^[a-zA-Z0-9]{5,16}$/;
+                    if(!id.test($(this).val())){
+                        $('.tdid').html('<b style="color:red">5~16자리의 영문+숫자 조합으로 입력해주세요</b>');
+                        validate=false;
+                    }else{
+                        $('.tdid').html('<b>적합한 아이디입니다.</b>');
+                        
+                    }
+                    
+                });
+                //password
+                $('#userPass').keyup(function(){
+                    let pwd =/^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,20}$/;
+                    if(!pwd.test($(this).val())){
+                        $('.tdpw').html('<b style="color:red">8~20자 사이에 적어도 하나의 영어대문자,숫자, 특수문자가 포함되어야 합니다.</b>');
+                        validate=false;
+                    }else{
+                        $('.tdpw').html('<b>적합한 패스워드입니다.</b>');
+                    }
+                    
+                });
+                //password check
+                $('#userPassCheck').keyup(function(){
+                    if($('#userPass').val() != $('#userPassCheck').val()) {
+                        $('.tdpwch').html('<b style="color:red">비밀번호가 다릅니다.</b>');
+                        validate=false;
+                    }else{
+                        $('.tdpwch').html('<b>비밀번호가 일치합니다.</b>');
+                    }
+                });
+
+                //email
+                $('#userEmail').keyup(function(){
+                    let email =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+                    if(!email.test($(this).val())){
+                        $('.tdemail').html('<b style="color:red">적합하지 않은 이메일 형식입니다.</b>');
+                        validate=false;
+                    }else{
+                        $('.tdemail').html('<b>적합한 이메일입니다.</b>');
+                    }
+                });
+
+                 //phone
+                 $('#userPhone').keyup(function(){
+                    let phone =/^(01[01679]{1})[-.\s]?([0-9]{3,4})[-.\s]?([0-9]{4})$/;
+                    if(!phone.test($(this).val())){
+                        $('.tdphone').html('<b style="color:red">적합하지 않은 형식입니다. "01X-XXX(X)-XXXX"형식으로 입력하세요.</b>');
+                        validate=false;
+                    }else{
+                        $('.tdphone').html('<b>적합한 형식입니다.</b>');
+                    }
+                });
+
+
+                //입력 다 했는지 검증
+                $('input:not([type=checkbox]').prop("required",true);
+                // $('#userId').attr("required","required");
+                
+                 //올바르지 않은 입력 검증
+                $('input:submit').click(function(){
+                    if(!$('input:checkbox').is(":checked")) {
+                        alert("취미를 선택해 주세요");
+                        return false;
+                    }else if(!validate){ 
+                        alert("올바르지 않은 입력이 있습니다.");
+                        return false;
+                    };
+                });
+
+                // });
+                // $('input:submit').click(function(){
+                // if($('#userId').val()=="") {
+                //     alert("아이디를 입력해 주세요");
+                //     $('#userId').focus();
+                //     return false;
+                // }else if($('#userPass').val()=="") {
+                //     alert("패스워드를 입력해 주세요");
+                //     $('#userPass').focus();
+                //     return false;
+                // }else if($('#userPassCheck').val()=="") {
+                //     alert("패스워드 확인란을 입력해 주세요");
+                //     $('#userPassCheck').focus();
+                //     return false;
+                // }else if($('#userEmail').val()=="") {
+                //     alert("이메일을 입력해 주세요");
+                //     $('#userEmail').focus();
+                //     return false;
+                // }else if($('#userPhone').val()=="") {
+                //     alert("핸드폰 번호를 입력해 주세요");
+                //     $('#userPhone').focus();
+                //     return false;
+                // }else if($('#userSsn1').val()=="") {
+                //     alert("주민번호 앞자리를 입력해 주세요");
+                //     $('#userSsn1').focus();
+                //     return false;
+                // }else if($('#userSsn2').val()=="") {
+                //     alert("주민번호 뒷자리를 입력해 주세요");
+                //     $('#userSsn2').focus();
+                //     return false;
+                // }else if($('#userName').val()=="") {
+                //     alert("이름을 입력해 주세요");
+                //     $('#userName').focus();
+                //     return false;
+                // }else if($('#userZipCode').val()=="") {
+                //     alert("우편번호를 입력해 주세요");
+                //     $('#userZipCode').focus();
+                //     return false;
+                // }else if($('#userAddr1').val()=="") {
+                //     alert("기본주소를 입력해 주세요");
+                //     $('#userAddr1').focus();
+                //     return false;
+                // }else if($('#userAddr2').val()=="") {
+                //     alert("상세주소를 입력해 주세요");
+                //     $('#userAddr2').focus();
+                //     return false;
+                // }else if($('#year').val()=="") {
+                //     alert("출생년도를 입력해 주세요");
+                //     $('#year').focus();
+                //     return false;
+                // }
+
+                // });
+                
+          
+                
+            });
+        
+	
+	</script>
+  <!--  
+      조별과제 : 
+    jquery 를 사용하여 유효성 검증 코드를 만드시고
+    MemberJoinOK.jsp 를 통해서 데이터 받아서 결과 출력하세요
+     
+    userId : keyup 이벤트  정해진 표현에 맞지 않으면 ID 추가 입력
+    ex) let id ="정규표현식" 
+    ex) if(id.test($(this).val()) != true) { 확인요청 } else {}
+    
+    userPass : keyup 이벤트에서 정해진 표현과 일치 하지 않으면 (정규표현 가능)
+    
+    userPassCheck : keyup  >> userPass 같은 값인지 확인 일치여부 확인
+    
+    userEmail : keyup 이벤트에서 email 형식과 일치여부 확인
+    
+    userPhone : keyup 이벤트에서 phone 형식과 일치여부 확인
+    
+    
+    submit 전송시 
+    userId , userPass , userPassCheck , userEmail , userPhone
+    , userSsn1 , userSsn2 , userZipCode , userPhone
+       값이 입력되지 않으면 다시 입력을 요청
+  -->
+  <style>
+    body{font-family:"malgun gothic";font-size:9pt;}
+    th { text-align:right; background-color:#dbdbdb}
+    th.title { text-align:center; font-size:12pt;background-color:#ffffff;}
+  </style>
+ </head>
+ <body>
+    <form name="signForm" id="signForm" method="post" action="MemberJoinOK.jsp">
+        <table>
+            <tr>
+                <th colspan="2" class="title">회원가입</th>
+            </tr>
+            <tr>
+                <th>아이디</th>
+                <td>
+                    <input type="text" maxlength="20" id="userId" name="userId" title="5~16자리의 영문+숫자 조합으로 입력해주세요">
+                   </td>
+                <td class="tdid"></td>
+            </tr>
+            <tr>
+                <th>패스워드</th>
+                <td>
+                    <input type="password" maxlength="20" id="userPass" name="userPass" title="8~20자 사이에 적어도 하나의 영어대문자,숫자, 특수문자가 포함되어야 합니다.">
+                </td>
+                <td class="tdpw"></td>
+            </tr>
+            <tr>
+                <th>패스워드 확인</th>
+                <td><input type="password" maxlength="20" id="userPassCheck" name="userPassCheck"  title="패스워드 확인"></td>
+                <td class="tdpwch"></td>
+            </tr>
+            <tr>
+                <th>이름</th>
+                <td>
+                    <input type="text" maxlength="20" id="userName" name="userName" title="이름" >
+                </td>
+            </tr>
+           
+            <tr>
+                <th>성별</th>
+                <td><input type="radio" name="gender" value="male" checked>남 &nbsp&nbsp;
+                       <input type="radio" name="gender" value="female">여  </td>
+            </tr>
+            <tr>
+                <th>이메일</th>
+                <td><input type="text" maxlength="50" id="userEmail" name="userEmail"  title="이메일"></td>
+                <td class="tdemail"></td>
+            </tr>
+            <tr>
+                <th>주민번호</th>
+                <td>
+                    <input type="text" maxlength="6" id="userSsn1" name="userSsn1"                 title="주민번호1"> -
+                    <input type="text" maxlength="7" id="userSsn2" name="userSsn2" title="주민번호2 ">
+                </td>
+            </tr>
+            <tr>
+                <th>우편번호</th>
+                <td>
+                    <input type="text" maxlength="10" id="userZipCode" name="userZipCode" size="9" title="주소-우편번호" > 
+                    <input type="button" value="우편번호검색"  />
+                </td> 
+            </tr>
+            <tr>
+               <th>주소1</th>
+                <td>
+                    <input type="text" maxlength="20" size="45" id="userAddr1" name="userAddr1" title="주소-기본주소" >
+                </td>
+            </tr>
+            <tr>
+                <th>주소2</th>
+                <td>
+                    <input type="text" maxlength="20" size="45" id="userAddr2" name="userAddr2" title="주소-상세주소">
+                </td>
+            </tr>
+            <tr>
+                <th>핸드폰번호</th>
+                <td>
+                    <input type="text" size="30" maxlength="20" id="userPhone" name="userPhone" title="'01X-XXX(X)-XXXX'형식으로 입력하세요">
+                </td>
+                <td class="tdphone"></td>
+            </tr>
+            <tr>
+                <th>취미</th>
+                <td>
+                    <input type="checkbox" name="hobby" value="등산">등산 
+                    &nbsp;&nbsp;
+                    <input type="checkbox" name="hobby" value="자전거">자전거 
+                    &nbsp;&nbsp;
+                    <input type="checkbox" name="hobby" value="컴퓨터">컴퓨터
+                    &nbsp;&nbsp;
+                    <input type="checkbox" name="hobby" value="영화감상">영화감상
+                </td>
+            </tr>
+            <tr>
+                <th>생년월일</th>
+                <td>
+                    <input type="text" name="year" id="year"> 년
+                    <select name="month">
+                          <option value="01">01</option>
+                          <option value="02">02</option>
+                          <option value="03">03</option>
+                          <option value="04">04</option>
+                    </select> 월 
+                    <select name="day">
+                          <option value="01">01</option>
+                          <option value="02">02</option>
+                          <option value="03">03</option>
+                          <option value="04">04</option>
+                    </select> 일
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="가입완료" >    
+                    <input type="reset" value="입력취소">        
+                </td> 
+            </tr>
+        </table>
+    </form>
+ </body>
+</html>

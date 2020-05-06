@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    	/* window.onload = function(){
+    		document.getElementById("btn").onclick = function(){
+    			alert("DOM Script");
+    		};
+    	} 
+    	*/
+        /*
+        $(document).ready(function(){
+    		$("#btn").click(function(){
+    			$(this).hide();
+    		});
+        });
+        */
+       $(function(){
+           $('btn').click(function(){
+               $(this).hide();
+           });
+       });
+       //https://www.w3schools.com/jquery/jquery_selectors.asp
+       //가장 기본적인 셀럭터 문법
+    </script>
+</head>
+<body>
+    <button id="btn">버튼 감추기</button>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	/*
+		DOM Script 사용
+		https://www.w3schools.com/js/js_htmldom_eventlistener.asp
+
+		jQuery도 다중 이벤트 처리(on, off) JSON 객체 형태로 ...
+		event attach
+		2.x: bind() >unbind()
+		3.x: on() >off()
+	*/
+	$(function(){
+		//$('p').click(function(){});  이런 방식으론 이벤트를 하나씩 밖에 걸 수 없음
+		//$('p').mouseenter(function(){});
+		$('p').on(
+			{//parameter json객체
+				mouseleave:function(){$(this).css('background-color','red')},
+				click:function(){$(this).css('background-color','green')},
+				mouseenter:function(){$(this).css('background-color','blue')},
+			}
+		);
+
+		$('button').click(function(){
+			$('p').off('click');
+		});
+	});
+
+	</script>
+</head>
+<body>
+	<p>on함수를 사용해서 다중 이벤트 처리하기</p>
+	<hr>
+	<button>이벤트 제거</button>
+</body>
+</html>

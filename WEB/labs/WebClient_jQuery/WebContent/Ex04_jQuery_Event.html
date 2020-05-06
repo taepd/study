@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+            /*
+            Mouse Events	Keyboard Events	Form Events	    Document/Window Events
+            click	        keypress	    submit	        load
+            dblclick	    keydown	        change	        resize
+            mouseenter	    keyup	        focus	        scroll
+            mouseleave	 	                blur	        unload
+
+            */
+        $(function(){
+			$('#btncopy').click(function(){
+                //let data = $('#txtuserid').val();
+                //$('#txtcopyuserid').val(data);
+                $('#txtcopyuserid').val($('#txtuserid').val());
+            });
+
+            //DOM: onChange >> jQuery: change
+            //<input value="값" >> val()
+            //<p>값</p> >> DOM:innerHTML, innerText >>jQuery: text(), html()
+
+            $('#select_hobby').change(function(){
+                let text = $(':selected').text(); //[body안에 select가 1개만 존재하면 id값 생략가능]
+                let text2 = $('#select_hobby option:selected').text(); //이게 정식
+                let val = $('#select_hobby').val(); //value가 없으면 text를 value로 인정
+                $('#txtselect').val(text +"/"+text2+"/"+val);
+            });
+            $('#txtpwd2').keyup(function(){
+                if($('#txtpwd').val() != $('#txtpwd2').val()){
+                    $('#message').text('암호가 일치하지 않습니다');
+                }else{
+                    $('#message').text('암호가 일치합니다');
+                }
+            });
+            $('input').focus(function(){
+                $(this).css('background-color',"pink");
+            });
+            $('input').blur(function(){
+                $(this).css('background-color',"white");
+            });
+
+            //하나의 이벤트가 여러 개의 함수를 가질 수 있다(hover 내부에 이벤트 2개)
+            $('p').hover(function(){
+                $(this).css('background-color',"yellow");
+            },function(){
+                $(this).css('background-color',"pink");
+            });
+        });
+        
+	</script>
+</head>
+<body>
+	<p>Jquery hover(mouseover , mouseleave)</p>
+	
+	ID:<input type="text" id="txtuserid">
+	<hr>
+	<input type="button" id="btncopy" value="copy">
+	<hr>
+	Copy ID:<input type="text" id="txtcopyuserid">
+	
+	<hr>
+	<select id="select_hobby">
+		<option value="JAVA">java</option>
+		<option>script</option>
+		<option>jdbc</option>
+	</select>
+	<br>
+	<input type="text" id="txtselect">
+	<hr>
+	<table style="border: 1px solid red;">
+		<tr>
+			<td>암호</td>
+			<td>
+				<input type="text" id="txtpwd" size="20" maxlength="5">
+			</td>
+		</tr>
+		<tr>
+			<td>암호확인</td>
+			<td>
+				<input type="text" id="txtpwd2" size="20" maxlength="5">
+			</td>
+		</tr>
+	</table>
+	<div id="message" style="color: red"></div>
+</body>
+</html>
