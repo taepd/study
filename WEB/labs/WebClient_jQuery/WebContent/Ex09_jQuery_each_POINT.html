@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		/*
+			JAVA: for(String str : 배열(Collection)){}
+
+			JavaScript: for(let index in Array){Array[index]}
+			JavaScript(Object json): for(let key in Object(json)){key}
+									 {Object[key]}
+									 
+			jQuery: each() 반복 구문
+
+			jQuery:
+			1. $(selector).each(function(){this});
+			2. $(selector).each(function(index){this});
+			3. $(selector).each(function(index,element){element}); >> 이걸 70%사용
+
+			jQuery:
+			1. $.each(selector, function(){this});
+			2. $.each(selector, function(index){this});
+			3. $.each(selector, function(index,element){element});  >>70%
+
+			selector가 json인 경우
+			var obj= {name:"홍길동", age:100}
+			$(obj).each(function(key, value){});
+
+		*/
+		
+		$(document).ready(function(){
+			//$(selector).each(function(){this});
+			$('p').each(function(){  //3번호출 p태그 개수만큼 콜백
+				console.log("this : "+$(this).text());
+			});
+
+			//$(selector).each(function(index){this});
+			$('p').each(function(index){  //3번호출 p태그 개수만큼 콜백
+				console.log("index : "+ index);
+				console.log("this : "+$(this).text());
+
+				//$(this).attr("id","param-"+index);
+				//다수의 동일한 p태그에 식별값
+
+				//응용 attr() 사용해서 다수의 속성을 정의
+				//jQuery함수 다수의 parameter 가능 >> json객체 형태로
+				$(this).attr(
+					{
+						"id" : "param-"+index,
+						"style" : "color:red"
+					}
+				)
+			});
+			//활용도 70%
+			//$(selector).each(function(index,element){element});
+			$('p').each(function(index,element){
+				console.log("index : "+ index);
+				//element parameter >> <p>java</p>
+				console.log("element : "+ element + "/"+$(element).text());
+			});
+			$('#btn').click(function(){
+				alert($('#param-1').text());
+			});
+			/*
+			응용학습
+			JavaScript
+			let arr=['사과','배','수박'];
+			let obj={} //객체(json)
+			let arrobj=[{},{},{}] //객체배열
+			*/
+			var array = [
+				{"name":"naver","link":"www.naver.com"},
+				{"name":"daum","link":"www.daum.com"},
+				{"name":"bit","link":"www.bit.or.kr"}
+			];
+
+			//문제: name값, link값을 출력
+			//객체$(obj).each(function(key,value){})
+			//$(selector).each(function(index,element){element});
+			$(array).each(function(key,value){
+				console.log("name : "+ value.name +" / 	"+ "link: "+value["link"]);
+
+			});
+
+			//구분
+			//**body안의 태그 정보를 읽어 올 때 사용하면 좋음
+			//$(selector).each(function(index,element){element});  
+			//ex)$('p')
+			//**script안에 있는 배열, 객체에 하면 좋음
+			//$.each(selector, function(index,element){element});  
+			//$.each(Array)
+
+			var board ={
+				values:[
+							{no:1, title:"hello world"},
+							{no:2, title:"korea"},
+							{no:3, title:"bit"}
+					   ],
+				search:"검색"
+			}
+			//1. $.each()사용해서 no값, title값 출력하세요
+			$.each(board.values, function(index, element){
+				console.log(index + " / "+ "no: "+ element.no +" / "+"title: " + element.title);
+			});
+
+			//2. $.each(board) >> key. value
+			$.each(board, function(key, value){
+				console.log(key + " / " + value);
+			});
+
+			//3. $.each() no, title, search값을 출력하세요
+			$.each(board, function(key, value){
+				//value >> text, Array...
+				//타입 비교 조건 필요
+				if(typeof(value)=="object"){ //배열인 경우
+					$.each(value, function(index, element){
+						console.log(index + " / " + element.no +  " / "+ element['title']);
+					});
+				}else{ //text인 경우
+					console.log(key + " / " + value);
+				}
+			});
+
+			
+
+
+
+
+		});
+	</script>
+</head>
+<body>
+	<p>java</p>
+	<p>jsp</p>
+	<p>oracle</p>
+	<input type="button" value="click" id="btn">
+</body>
+</html>

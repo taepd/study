@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Media player</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/mediapalyer.css" />
+	<!--icon -->
+	<script src="https://kit.fontawesome.com/yourcode.js"></script>
+
+
+
+
+
+
+	<script type="text/javascript">
+		window.onload = function () {
+			var video = document.getElementById("video");
+			var playPause = document.getElementById("playPause");
+			var stop = document.getElementById("stop");
+			var mute = document.getElementById("mute");
+			var totalTime = document.getElementById("totalTime");
+			var currentTime = document.getElementById("currentTime");
+			var seekBar = document.getElementById("seekBar");
+			var volBar = document.getElementById("volumeBar");
+			var fullScreen = document.getElementById("fullScreen");
+			var beforSec = document.getElementById("beforeSec");
+			var afterSec = document.getElementById("afterSec");
+			var preVideo = document.getElementById("preVideo");
+			var nextVideo = document.getElementById("nextVideo");
+			var currentVolume = 0; //현재 볼륨값을 넣기 위한 변수
+			var videoNum = 1; //비디오 번호
+
+
+
+			//재생, 일시정지
+			playPause.addEventListener("click", function () {
+				if (video.paused == true) {
+					video.play();
+					playPause.innerHTML = "일시정지";
+				} else {
+					video.pause();
+					playPause.innerHTML = "재생";
+				}
+			})
+
+			//정지
+			stop.addEventListener("click", function () {
+				video.pause();
+				video.currentTime = 0;
+				playPause.innerHTML = "재생";
+			})
+
+			//10초 전
+			beforSec.addEventListener("click", function () {
+				video.currentTime -= 10;
+			})
+			//30초 후
+			afterSec.addEventListener("click", function () {
+				video.currentTime += 30;
+			})
+
+			//이전 영상으로
+			preVideo.addEventListener("click", function () {
+				videoNum--;
+				if (videoNum == 0) {
+					videoNum = 3;
+				}
+				var video = document.getElementById("video");
+				var preVideo = "video" + videoNum + ".mp4";
+				video.src = preVideo;
+				video.play();
+				playPause.innerHTML = "일시정지";
+			})
+
+			//다음 영상으로
+			nextVideo.addEventListener("click", function () {
+				videoNum++;
+				if (videoNum == 4) {
+					videoNum = 1;
+				}
+				var video = document.getElementById("video");
+				var nextVideo = "video" + videoNum + ".mp4";
+				video.src = nextVideo;
+				video.play();
+				playPause.innerHTML = "일시정지";
+			})
+
+
+
+			//볼륨 조절
+			mute.addEventListener("click", function () {
+				if (video.muted == true) { //음소거가 되어 있을 경우
+					video.muted = false; //음소거를 푼다
+					volBar.value = currentVolume; //볼륨바의 값에 현재 볼륨 저장
+					video.volume = volBar.value; //비디오 볼륨을 볼륨바 값에 맞춘다
+
+					mute.innerHTML = "음소거";
+				} else { //볼륨이 켜져있을 경우
+					currentVolume = volBar.value; //현재 볼륨바의 값을 currentVolume에 저장(음소거를 풀었을 경우 음소거 전 볼륨으로 돌아가기 위해 사용)
+					video.muted = true; //음소거를 건다
+
+					volBar.value = 0;
+					video.volume = volBar.value;
+					mute.innerHTML = "볼륨on";
+				}
+			})
+			volBar.addEventListener("mousedown", function () {
+				currentVolume = volBar.value; //마우스로 볼륨 조절시 처음으로 볼륨바를 눌렀을때의 볼륨값을 currentVolume에 저장(위와 마찬가지 이유로 사용)
+				//console.log("마우스다운 ct : " +currentVolume);
+			})
+
+			volBar.addEventListener("change", function () {
+				video.volume = volBar.value;
+				//console.log("change볼륨 : " + video.volume);
+				if (video.volume == 0) {
+					video.muted = true;
+					mute.innerHTML = "볼륨on";
+				} else {
+					video.muted = false;
+					mute.innerHTML = "음소거";
+				}
+
+			})
+
+			//재생 바 
+			seekBar.addEventListener("change", function () {
+				var time = video.duration * (seekBar.value / 100);
+				//video.duration은 비디오 전체 길이를 초로 나타내주는것
+				video.currentTime = time;
+			})
+
+			video.addEventListener("timeupdate", function () {
+				var value = (100 / video.duration) * video.currentTime
+				seekBar.value = value;
+			})
+			video.addEventListener("durationchange", function () { //전체 재생 시간
+				var duration = video.duration;
+				var durationhour = Math.floor(duration / (60 * 60));
+				var durationmin = Math.floor(duration / 60) - 60 * durationhour;
+				var durationsec = Math.floor(duration - (Math.floor(duration / 60) * 60));
+				if (durationhour < 10) {
+					durationhour = "0" + durationhour;
+				}
+				if (durationmin < 10) {
+					durationmin = "0" + durationmin;
+				}
+				if (durationsec < 10) {
+					durationsec = "0" + durationsec;
+				}
+				var durationTotal = durationhour + ":" + durationmin + ":" + durationsec;
+				totalTime.innerHTML = durationTotal;
+
+
+			})
+			video.addEventListener("timeupdate", function () { //현재 재생 시간
+				if (video.duration == video.currentTime) {
+					playPause.innerHTML = "재생";
+				}
+				var current = video.currentTime;
+				var currenthour = Math.floor(current / (60 * 60));
+				var currentmin = Math.floor(current / 60) - 60 * currenthour;
+				var currentsec = Math.floor(current - (Math.floor(current / 60) * 60));
+				if (currenthour < 10) {
+					currenthour = "0" + currenthour;
+				}
+				if (currentmin < 10) {
+					currentmin = "0" + currentmin;
+				}
+				if (currentsec < 10) {
+					currentsec = "0" + currentsec;
+				}
+				var currentTotal = currenthour + ":" + currentmin + ":" + currentsec;
+				currentTime.innerHTML = currentTotal;
+			})
+
+
+
+			//전체화면
+			fullScreen.addEventListener("click", function () {
+				if (video.requestFullscreen) {
+					video.requestFullscreen();
+				} else if (video.mozRequestFullScreen) { /* Firefox */
+					video.mozRequestFullScreen();
+				} else if (video.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+					video.webkitRequestFullscreen();
+				} else if (video.msRequestFullscreen) { /* IE/Edge */
+					video.msRequestFullscreen();
+				}
+			})
+
+			//더블 클릭시 전체화면
+			video.addEventListener("dblclick", function () {
+				if (video.requestFullscreen) {
+					video.requestFullscreen();
+				} else if (video.mozRequestFullScreen) { /* Firefox */
+					video.mozRequestFullScreen();
+				} else if (video.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+					video.webkitRequestFullscreen();
+				} else if (video.msRequestFullscreen) { /* IE/Edge */
+					video.msRequestFullscreen();
+				}
+			})
+
+			video.addEventListener("ended", function () {
+				videoNum++;
+				if (videoNum == 4) {
+					videoNum = 1;
+				}
+				var video = document.getElementById("video");
+				var nextVideo = "video" + videoNum + ".mp4";
+				video.src = nextVideo;
+				video.play();
+				playPause.innerHTML = "일시정지";
+			})
+
+
+
+
+		}
+		var list = [];
+
+		function myCanvas() {
+			var c = document.createElement("canvas");
+			c.setAttribute("width", "240");
+			c.setAttribute("height", "320");
+			var ctx = c.getContext("2d");
+			var img = document.getElementById("video");
+			ctx.drawImage(img, 0, 0, 240, 320);
+			data = c.toDataURL();
+			list.push(data);
+			var img = document.createElement("img");
+			img.setAttribute("src", data);
+			img.setAttribute("width", "260");
+			img.setAttribute("height", "150");
+			document.getElementById("canvas").appendChild(img);
+
+		}
+
+		//슬라이드쇼 관련 함수
+		var index = 0;
+		var interval;
+		//슬라이드 넘기는 함수
+		function slideShow() {
+
+			document.getElementById("imgs").setAttribute("src", list[index++]);
+			if (index >= list.length) {
+				clearInterval(interval);
+				index = 0;
+			}
+		}
+		//인터벌을 이용해서 자동으로 시간 간격마다 넘겨주는 함수
+		function slideShowStart(time) {
+			interval = setInterval(slideShow, time);
+
+		}
+
+		//이미지 삭제하는 함수
+		function delete_img() {
+			var c = document.getElementById("canvas");
+			c.removeChild(c.childNodes[list.length - 1]);
+			index--;
+			list.pop();
+			if (index < 0) {
+				index = 0;
+			}
+		}
+
+
+		//이미지 파일로 저장하는 함수
+		function download_img(el) {
+			// get image URI from canvas object
+			var imageURI = data;
+			el.href = imageURI;
+
+		}
+
+
+
+
+
+	</script>
+
+</head>
+
+<body>
+	<ol id="songList">
+		
+	</ol>
+	<div class="row">
+		<div class="col-sm-6">
+
+			<div id="livevideo">
+				<video id="video">
+					<source src="video1.mp4" type="video/mp4" onclick="myCanvas()">
+				</video>
+				<div class="row">
+					<input type="range" id="seekBar" value="0" />
+					<div id="timebar">
+						<span id="currentTime">00:00:00</span>
+						<span>/</span>
+						<span id="totalTime">00:00:00</span>
+					</div>
+				</div>
+				<div class="row" id="firstarea">
+
+					<div class="col-sm-5" id="fr">
+						<button type="button" id="playPause" class="btn btn-secondary">재생</button>
+						<button type="button" id="stop" class="btn btn-secondary">정지</button>
+						<button type="button" id="fullScreen" class="btn btn-secondary">전체화면</button>
+					</div>
+					<div class="col-sm-3" id="se">
+
+						<button type="button" id="beforeSec" class="btn btn-secondary">10초전</button>
+						<button type="button" id="afterSec" class="btn btn-secondary">30초후</button>
+					</div>
+
+					<div class="col-sm-4" id="tht">
+						<div class="row" id="searea">
+							<div class="col-sm-6" id="volbar">
+								<input type="range" id=volumeBar min="0" max="1" step="0.01" value="1" />
+							</div>
+		
+							<div class="col-sm-4" id="volbuttonbar">
+								<button type="button" id="mute" class="btn btn-secondary">음소거</button>
+							</div>
+						</div>	
+					
+						
+					</div>
+				</div>
+				<div id="prebutton">
+					<button type="button" id="preVideo" class="btn btn-secondary">이전 영상</button>
+					<button type="button" id="nextVideo" class="btn btn-secondary">다음 영상</button>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="col-sm-4" id="images">
+			<p>캡쳐 화면</p>
+			<div id="canvas"></div>
+
+		</div>
+
+		<div class="col-sm-2" id="slideShowarea">
+			<img src="images/slide.png" id="imgs" width="260" height="150" alt="이미지">
+			<div id="button">
+
+				<button class="btn btn-secondary" id="cbo" onclick ="myCanvas()">이미지 캡처</button>
+				<button class="btn btn-secondary" id="dbo" onclick="delete_img()">이미지 삭제</button>
+				<button class="btn btn-secondary" id="slib"onclick="slideShowStart(1000)">슬라이드쇼</button>
+
+				<div id="downloadarea">
+					<a id="download" download="myImage.png" onclick="download_img(this);">
+						<p>이미지 다운로드</p>
+					</a>
+				</div>
+
+			</div>
+		</div>
+		
+
+	</div>
+
+
+</body>
+
+</html>

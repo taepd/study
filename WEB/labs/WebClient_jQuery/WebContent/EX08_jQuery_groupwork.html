@@ -78,15 +78,12 @@
            
 
                 //입력 다 했는지 검증
-                $('input:not([type=checkbox]').prop("required",true);
-                // $('#userId').attr("required","required");
-               
+                $('input:not([type=checkbox])').prop("required",true);
+                // $('input:not([type=checkbox])').attr("required","required");
+      
+                
                 //올바르지 않은 입력 검증
-                $('input:submit').click(function(){
-                    if(!($('input:checkbox').is(":checked"))) {
-                        alert("취미를 선택해 주세요");
-                        return false;
-                    };                 
+                $('input:submit').click(function(){                                 
                     for(let i=0; i<validate.length;i++){
                             if(validate[i]==false){
                                 alert("올바르지 않은 입력이 있습니다.");
@@ -110,7 +107,11 @@
                                 }
                             }                      
                                
-                        };
+                    };
+                    if(!($('input:checkbox').is(":checked"))) {
+                        alert("취미를 선택해 주세요");
+                        return false;
+                    };  
                     
                 });
 
