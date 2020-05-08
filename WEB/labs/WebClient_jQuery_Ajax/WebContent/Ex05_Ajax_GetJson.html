@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		//jQuery.getJSON()
+		//Load JSON-encoded data from the server using a GET HTTP request.
+
+		//dataType >>getJSON() >> json이 기본값
+		$(function(){
+			$('#btn .btnload').click(function(){
+				$.getJSON("Ex05_json.json", function(data){ //도착(성공)
+					// console.log(data);
+					//[{},{},{},{}]
+					//문제) Table 만들고 let table ="<table>" Table td 안에
+					//num 값, name 값 출력하세요
+					//$.each()
+					//최종 Table display append 하세요
+					let table="<table border='1'>"
+					table+="<tr><th>INDEX</th><th>"+Object.keys(data[0])[0]+"</th><th>NAME</th></tr>"; //키값 받아오기 Object.keys(data[0])[0]
+					$.each(data, function(key, value){
+						table+="<tr><td>" + key +"</td><td>" + value.num +"</td><td>" + value.Name +"</td></tr>";
+					});
+					table+="</table>";
+					$('#display').append(table);	
+	
+				});
+			});
+		});
+
+	</script>
+
+</head>
+<body>
+	<div id="btn">
+		<div class="btnload">JSON DATA LOAD</div>
+	</div>
+	<div id="display"></div>
+</body>
+</html>

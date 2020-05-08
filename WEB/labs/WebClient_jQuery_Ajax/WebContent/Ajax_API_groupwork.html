@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
+	<style type="text/css">
+		table {
+			border-collapse: collapse;
+			border: 2px solid darkgreen;
+		}
+
+		th {
+			font-size: 20px;
+			color: darkgreen;
+		}
+
+		.jumbotron {}
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<title>서울시 문화위치정보</title>
+
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		/*  
+		 조별 과제 
+		 
+		 조에서 원하는 데이터를를 찿아서 아래 처럼 활용하여 출력하세요
+		 
+		 날씨 ,영화 , 취미 등등 
+		 회원가입이 필요하시면 회원가입 하시고 정보를 받으세요 (인증키도 받아 보세요)
+		 제출:
+		 소스 출처 , 소스 	 
+			 
+		 
+		 
+		 http://shlee0882.tistory.com/2
+		 http://shlee0882.tistory.com/59?category=729958
+		
+		
+		 공공데이터 포털의 오픈API 활용해 데이터 가져오는 방법
+		 http://data.seoul.go.kr/
+		
+		 >xml
+		 http://openapi.seoul.go.kr:8088/sample/xml/SdePo1W/1/5/
+		
+		 >json
+		 http://openapi.seoul.go.kr:8088/sample/json/SdePo1W/1/5/
+		
+		 
+		 */
+		var data = {
+
+
+			"Traf": [
+				{
+
+					"head":
+					{
+
+						"FAC_NAME": "문화공간명",
+						"FAC_CODE": "문화공간코드",
+						"TRAFTYPE": "교통구분코드",
+						"TRAFINFO": "교통정보",
+						"TRAFTYPE_NM": "교통구분명"
+
+					}
+
+				},//
+
+
+				{
+
+					"DATA": [
+
+						{
+							"trafinfo": "서울애니메이션숭의여대",
+							"traftype": "T",
+							"fac_name": "서울애니시네마",
+							"traftype_nm": "버스정류장",
+							"fac_code": "100517"
+
+						},
+
+						{
+							"trafinfo": "4호선 명동역1번출구",
+							"traftype": "S",
+							"fac_name": "서울애니시네마",
+							"traftype_nm": "지하철",
+							"fac_code": "100517"
+
+						},
+
+						{
+							"trafinfo": "02",
+							"traftype": "Y",
+							"fac_name": "서울애니시네마",
+							"traftype_nm": "순환버스",
+							"fac_code": "100517"
+
+						},
+
+
+						{
+							"trafinfo": "잠실역",
+							"traftype": "T",
+							"fac_name": "롯데월드 아이스링크",
+							"traftype_nm": "버스정류장",
+							"fac_code": "100257"
+
+						},
+
+						{
+							"trafinfo": "2225(건대역방향), 2225(잠실역방향), 2311, 2412, 3215, 3216, 3217, 3312, 3313, 3314, 3315, 3411", "traftype": "G",
+							"fac_name": "롯데월드 아이스링크",
+							"traftype_nm": "지선버스",
+							"fac_code": "100257"
+
+						},
+
+						{
+							"trafinfo": "4노선(잠실), 600, 606",
+							"traftype": "A",
+							"fac_name": "롯데월드 아이스링크",
+							"traftype_nm": "공항버스",
+							"fac_code": "100257"
+
+						},
+
+						{
+							"trafinfo": "2호선 잠실",
+							"traftype": "S",
+							"fac_name": "롯데월드 아이스링크",
+							"traftype_nm": "지하철",
+							"fac_code": "100257"
+
+						},
+
+						{
+							"trafinfo": "9202, 9203, 9403",
+							"traftype": "R",
+							"fac_name": "롯데월드 아이스링크",
+							"traftype_nm": "광역버스",
+							"fac_code": "100257"
+
+						},
+
+						{
+							"trafinfo": "301, 302, 303, 360, 361, 362, 730",
+							"traftype": "B",
+							"fac_name": "롯데월드 아이스링크",
+							"traftype_nm": "간선버스",
+							"fac_code": "100257"
+
+						},
+
+
+						{
+							"trafinfo": "01,02",
+							"traftype": "Y",
+							"fac_name": "명동난타극장",
+							"traftype_nm": "순환버스",
+							"fac_code": "100873"
+
+						},
+
+						{
+							"trafinfo": "9701,9400, 9401, 9402,9701,9705,9710",
+							"traftype": "R",
+							"fac_name": "명동난타극장",
+							"traftype_nm": "광역버스",
+							"fac_code": "100873"
+
+						},
+
+						{
+							"trafinfo": "2호선을지로입구역 5,6번 출구사이",
+							"traftype": "S",
+							"fac_name": "명동난타극장",
+							"traftype_nm": "지하철",
+							"fac_code": "100873"
+
+						},
+
+						{
+							"trafinfo": "406,500,501,701,702",
+							"traftype": "B",
+							"fac_name": "명동난타극장",
+							"traftype_nm": "간선버스",
+							"fac_code": "100873"
+
+						},
+
+						{
+							"trafinfo": "을지로입구역",
+							"traftype": "T",
+							"fac_name": "명동난타극장",
+							"traftype_nm": "버스정류장",
+							"fac_code": "100873"
+
+						},
+
+						{
+							"trafinfo": "0014,0015,7015,7020,7021,7023",
+							"traftype": "G",
+							"fac_name": "명동난타극장",
+							"traftype_nm": "지선버스",
+							"fac_code": "100873"
+
+						},
+
+
+						{
+							"trafinfo": "1111, 2112, 성북02, 성북03",
+							"traftype": "G",
+							"fac_name": "간송미술관",
+							"traftype_nm": "지선버스",
+							"fac_code": "100228"
+
+						},
+
+						{
+							"trafinfo": "4호선 한성대입구 6번출구",
+							"traftype": "S",
+							"fac_name": "간송미술관",
+							"traftype_nm": "지하철",
+							"fac_code": "100228"
+
+						},
+
+						{
+							"trafinfo": "한성대입구3거리",
+							"traftype": "T",
+							"fac_name": "간송미술관",
+							"traftype_nm": "버스정류장",
+							"fac_code": "100228"
+
+						},
+
+
+						{ "trafinfo": "104, 105, 263, 604", "traftype": "B", "fac_name": "남산골 한옥마을", "traftype_nm": "간선버스", "fac_code": "100548" },
+						{ "trafinfo": "한옥마을,한국의 집", "traftype": "T", "fac_name": "남산골 한옥마을", "traftype_nm": "버스정류장", "fac_code": "100548" },
+						{ "trafinfo": "3호선, 4호선 충무로역(3번, 4번 출구)", "traftype": "S", "fac_name": "남산골 한옥마을", "traftype_nm": "지하철", "fac_code": "100548" },
+						{ "trafinfo": "7011", "traftype": "G", "fac_name": "남산골 한옥마을", "traftype_nm": "지선버스", "fac_code": "100548" },
+						{ "trafinfo": "02", "traftype": "Y", "fac_name": "남산골 한옥마을", "traftype_nm": "순환버스", "fac_code": "100548" },
+
+						{ "trafinfo": "151, 162, 171, 172, 272, 601", "traftype": "B", "fac_name": "창덕궁", "traftype_nm": "간선버스", "fac_code": "100564" },
+						{ "trafinfo": "1012", "traftype": "G", "fac_name": "창덕궁", "traftype_nm": "지선버스", "fac_code": "100564" },
+						{ "trafinfo": "3호선 안국 (3번출구) ", "traftype": "S", "fac_name": "창덕궁", "traftype_nm": "지하철", "fac_code": "100564" },
+
+						{ "trafinfo": "삼성역", "traftype": "T", "fac_name": "코엑스 오디토리움", "traftype_nm": "버스정류장", "fac_code": "100020" },
+						{ "trafinfo": "2413, 3412, 3422, 4411, 4418, 4419, 4420", "traftype": "G", "fac_name": "코엑스 오디토리움", "traftype_nm": "지선버스", "fac_code": "100020" },
+						{ "trafinfo": "2호선 삼성 5,6번출구", "traftype": "S", "fac_name": "코엑스 오디토리움", "traftype_nm": "지하철", "fac_code": "100020" },
+						{ "trafinfo": "600", "traftype": "R", "fac_name": "코엑스 오디토리움", "traftype_nm": "광역버스", "fac_code": "100020" },
+						{ "trafinfo": "143, 146, 363, 401", "traftype": "B", "fac_name": "코엑스 오디토리움", "traftype_nm": "간선버스", "fac_code": "100020" },
+
+						{ "trafinfo": "5413, 4423, 4511, 5413,  4423, 4511", "traftype": "G", "fac_name": "예술의 전당 자유소극장", "traftype_nm": "지선버스", "fac_code": "100197" },
+						{ "trafinfo": "406 , 461, 641", "traftype": "B", "fac_name": "예술의 전당 자유소극장", "traftype_nm": "간선버스", "fac_code": "100197" },
+						{ "trafinfo": "3호선 남부터미널(예술의전당)역  5번 출구이용. 도보로 10분", "traftype": "S", "fac_name": "예술의 전당 자유소극장", "traftype_nm": "지하철", "fac_code": "100197" },
+
+						{ "trafinfo": "0212, 1020, 0212, 1020, 1711, 7016, 7018, 7022, 7025, 종로09, 종로11", "traftype": "G", "fac_name": "국립고궁박물관", "traftype_nm": "지선버스", "fac_code": "100431" },
+						{ "trafinfo": "109, 171, 272, 601, 606, 708", "traftype": "B", "fac_name": "국립고궁박물관", "traftype_nm": "간선버스", "fac_code": "100431" },
+						{ "trafinfo": "602-1", "traftype": "A", "fac_name": "국립고궁박물관", "traftype_nm": "공항버스", "fac_code": "100431" },
+						{ "trafinfo": "9602, 9708", "traftype": "R", "fac_name": "국립고궁박물관", "traftype_nm": "광역버스", "fac_code": "100431" },
+						{ "trafinfo": "경복궁, 경복궁역", "traftype": "T", "fac_name": "국립고궁박물관", "traftype_nm": "버스정류장", "fac_code": "100431" },
+						{ "trafinfo": "3호선 경복궁역 (5번출구), 5호선 광화문역 (1번출구)", "traftype": "S", "fac_name": "국립고궁박물관", "traftype_nm": "지하철", "fac_code": "100431" },
+
+						{ "trafinfo": "경복궁역", "traftype": "T", "fac_name": "대림미술관", "traftype_nm": "버스정류장", "fac_code": "100478" },
+						{ "trafinfo": "3호선 경복궁역 4번출구", "traftype": "S", "fac_name": "대림미술관", "traftype_nm": "지하철", "fac_code": "100478" },
+						{ "trafinfo": "0212, 1020, 1711, 7016, 7018, 7022, 종로09", "traftype": "G", "fac_name": "대림미술관", "traftype_nm": "지선버스", "fac_code": "100478" },
+
+						{ "trafinfo": "4호선 대학로 4번 출구", "traftype": "S", "fac_name": "대학로 열린 극장", "traftype_nm": "지하철", "fac_code": "100413" },
+						{ "trafinfo": "0211", "traftype": "G", "fac_name": "국립중앙박물관 극장 용", "traftype_nm": "지선버스", "fac_code": "100294" },
+						{ "trafinfo": "4호선, 국철 이촌역", "traftype": "S", "fac_name": "국립중앙박물관 극장 용", "traftype_nm": "지하철", "fac_code": "100294" },
+						{ "trafinfo": "국립중앙박물관", "traftype": "T", "fac_name": "국립중앙박물관 극장 용", "traftype_nm": "버스정류장", "fac_code": "100294" },
+						{ "trafinfo": "9502", "traftype": "R", "fac_name": "국립중앙박물관 극장 용", "traftype_nm": "광역버스", "fac_code": "100294" },
+
+						{ "trafinfo": "172, 405, 472, 600, 602, 603, 700", "traftype": "B", "fac_name": "서울시립미술관", "traftype_nm": "간선버스", "fac_code": "100511" },
+						{ "trafinfo": "9600, 9601", "traftype": "R", "fac_name": "서울시립미술관", "traftype_nm": "광역버스", "fac_code": "100511" },
+						{ "trafinfo": "서소문", "traftype": "T", "fac_name": "서울시립미술관", "traftype_nm": "버스정류장", "fac_code": "100511" },
+						{ "trafinfo": "7012", "traftype": "G", "fac_name": "서울시립미술관", "traftype_nm": "지선버스", "fac_code": "100511" },
+						{ "trafinfo": "1, 2호선 시청 정동극장 방향", "traftype": "S", "fac_name": "서울시립미술관", "traftype_nm": "지하철", "fac_code": "100511" },
+
+						{ "trafinfo": "0014, 0015, 0015(용산방향), 1011, 1711, 7012, 7017, 7020, 7022", "traftype": "G", "fac_name": "덕수궁미술관", "traftype_nm": "지선버스", "fac_code": "100534" },
+						{ "trafinfo": "601, 605", "traftype": "A", "fac_name": "덕수궁미술관", "traftype_nm": "공항버스", "fac_code": "100534" },
+						{ "trafinfo": "150, 162, 172, 200, 402, 405, 406, 472, 501, 600, 602, 603, 700, 703", "traftype": "B", "fac_name": "덕수궁미술관", "traftype_nm": "간선버스", "fac_code": "100534" },
+						{ "trafinfo": "시청", "traftype": "T", "fac_name": "덕수궁미술관", "traftype_nm": "버스정류장", "fac_code": "100534" },
+						{ "trafinfo": "5500, 9301(마방집), 9301(신장시장), 9301(하남시청), 9601, 9703, 9704, 9706, 9711, 9712, 9713", "traftype": "R", "fac_name": "덕수궁미술관", "traftype_nm": "광역버스", "fac_code": "100534" },
+						{ "trafinfo": "02", "traftype": "Y", "fac_name": "덕수궁미술관", "traftype_nm": "순환버스", "fac_code": "100534" },
+						{ "trafinfo": "1,2호선 시청역", "traftype": "S", "fac_name": "덕수궁미술관", "traftype_nm": "지하철", "fac_code": "100534" },
+
+						{ "trafinfo": "지하철 2호선 잠실역", "traftype": "S", "fac_name": "롯데월드 가든스테이지", "traftype_nm": "지하철", "fac_code": "100251" },
+						{ "trafinfo": "600", "traftype": "A", "fac_name": "롯데월드 가든스테이지", "traftype_nm": "공항버스", "fac_code": "100251" },
+						{ "trafinfo": "9202, 9203, 9403, 606", "traftype": "R", "fac_name": "롯데월드 가든스테이지", "traftype_nm": "광역버스", "fac_code": "100251" },
+						{ "trafinfo": "301, 302, 303, 360, 361, 362, 730 번", "traftype": "B", "fac_name": "롯데월드 가든스테이지", "traftype_nm": "간선버스", "fac_code": "100251" },
+						{ "trafinfo": "2225, 2311, 2412, 3215, 3216, 3217, 3312, 3313, 3314, 3315, 3411, 3412, 3413, 3414, 3415 번", "traftype": "G", "fac_name": "롯데월드 가든스테이지", "traftype_nm": "지선버스", "fac_code": "100251" },
+
+						{ "trafinfo": "경복궁 (3호선 5번출구) ", "traftype": "S", "fac_name": "경복궁", "traftype_nm": "지하철", "fac_code": "100560" },
+						{ "trafinfo": "9602", "traftype": "R", "fac_name": "경복궁", "traftype_nm": "광역버스", "fac_code": "100560" },
+						{ "trafinfo": "162, 171, 272, 601, 606", "traftype": "B", "fac_name": "경복궁", "traftype_nm": "간선버스", "fac_code": "100560" },
+
+						{ "trafinfo": "402", "traftype": "B", "fac_name": "안중근의사기념관", "traftype_nm": "간선버스", "fac_code": "100503" },
+						{ "trafinfo": "1호선 서울역 (3번출구) → 남산 방향", "traftype": "S", "fac_name": "안중근의사기념관", "traftype_nm": "지하철", "fac_code": "100503" },
+						{ "trafinfo": "0014", "traftype": "G", "fac_name": "안중근의사기념관", "traftype_nm": "지선버스", "fac_code": "100503" },
+						{ "trafinfo": "남산도서관", "traftype": "T", "fac_name": "안중근의사기념관", "traftype_nm": "버스정류장", "fac_code": "100503" },
+
+						{ "trafinfo": "605", "traftype": "A", "fac_name": "경희궁", "traftype_nm": "공항버스", "fac_code": "100561" },
+						{ "trafinfo": "9602, 9701, 9705, 9709, 9710", "traftype": "R", "fac_name": "경희궁", "traftype_nm": "광역버스", "fac_code": "100561" },
+						{ "trafinfo": "160, 161, 260, 270, 271, 300, 370, 470, 471, 600, 601, 602, 702, 704, 720", "traftype": "B", "fac_name": "경희궁", "traftype_nm": "간선버스", "fac_code": "100561" },
+						{ "trafinfo": "7023", "traftype": "G", "fac_name": "경희궁", "traftype_nm": "지선버스", "fac_code": "100561" },
+						{ "trafinfo": "5호선 서대문 (4번출구) ", "traftype": "S", "fac_name": "경희궁", "traftype_nm": "지하철", "fac_code": "100561" },
+
+						{ "trafinfo": "4호선 혜화 (4번출구) ", "traftype": "S", "fac_name": "창경궁", "traftype_nm": "지하철", "fac_code": "100563" },
+						{ "trafinfo": "9101, 9410", "traftype": "R", "fac_name": "창경궁", "traftype_nm": "광역버스", "fac_code": "100563" },
+						{ "trafinfo": "104, 162, 272", "traftype": "B", "fac_name": "창경궁", "traftype_nm": "간선버스", "fac_code": "100563" },
+						{ "trafinfo": "1011, 1018, 1019", "traftype": "G", "fac_name": "창경궁", "traftype_nm": "지선버스", "fac_code": "100563" },
+
+						{ "trafinfo": "9706", "traftype": "R", "fac_name": "덕수궁", "traftype_nm": "광역버스", "fac_code": "100562" },
+						{ "trafinfo": "01", "traftype": "Y", "fac_name": "덕수궁", "traftype_nm": "순환버스", "fac_code": "100562" },
+						{ "trafinfo": "1호선 시청 (2번출구) , 2호선 시청 (12번출구) ", "traftype": "S", "fac_name": "덕수궁", "traftype_nm": "지하철", "fac_code": "100562" },
+
+						{ "trafinfo": "국립중앙도서관", "traftype": "T", "fac_name": "국립중앙도서관", "traftype_nm": "버스정류장", "fac_code": "100189" },
+						{ "trafinfo": "2호선 서초역, 7호선 고속버스터미널역", "traftype": "S", "fac_name": "국립중앙도서관", "traftype_nm": "지하철", "fac_code": "100189" },
+						{ "trafinfo": "730", "traftype": "B", "fac_name": "국립중앙도서관", "traftype_nm": "간선버스", "fac_code": "100189" },
+						{ "trafinfo": "5413", "traftype": "G", "fac_name": "국립중앙도서관", "traftype_nm": "지선버스", "fac_code": "100189" },
+
+						{ "trafinfo": "143, 146, 363, 401", "traftype": "B", "fac_name": "코엑스전시장", "traftype_nm": "간선버스", "fac_code": "100026" },
+						{ "trafinfo": "9407", "traftype": "R", "fac_name": "코엑스전시장", "traftype_nm": "광역버스", "fac_code": "100026" },
+						{ "trafinfo": "2413, 3412, 3422, 4411, 4418, 4419, 4420", "traftype": "G", "fac_name": "코엑스전시장", "traftype_nm": "지선버스", "fac_code": "100026" },
+						{ "trafinfo": "삼성역", "traftype": "T", "fac_name": "코엑스전시장", "traftype_nm": "버스정류장", "fac_code": "100026" },
+						{ "trafinfo": "600", "traftype": "A", "fac_name": "코엑스전시장", "traftype_nm": "공항버스", "fac_code": "100026" },
+						{ "trafinfo": "2호선 삼성역", "traftype": "S", "fac_name": "코엑스전시장", "traftype_nm": "지하철", "fac_code": "100026" },
+
+						{ "trafinfo": "6011", "traftype": "A", "fac_name": "운현궁", "traftype_nm": "공항버스", "fac_code": "100462" },
+						{ "trafinfo": "창덕궁", "traftype": "T", "fac_name": "운현궁", "traftype_nm": "버스정류장", "fac_code": "100462" },
+						{ "trafinfo": "3호선 안국역(4번출구) , 3,5호선 종로3가역", "traftype": "S", "fac_name": "운현궁", "traftype_nm": "지하철", "fac_code": "100462" },
+						{ "trafinfo": "109, 151, 162, 171, 172, 272", "traftype": "B", "fac_name": "운현궁", "traftype_nm": "간선버스", "fac_code": "100462" },
+						{ "trafinfo": "종로01 , 종로02", "traftype": "G", "fac_name": "운현궁", "traftype_nm": "지선버스", "fac_code": "100462" },
+
+						{ "trafinfo": "1161, 1119번", "traftype": "G", "fac_name": "창동스포츠문화컴플렉스", "traftype_nm": "지선버스", "fac_code": "100778" },
+						{ "trafinfo": "1호선, 4호선 창동역 1번출구 하차", "traftype": "S", "fac_name": "창동스포츠문화컴플렉스", "traftype_nm": "지하철", "fac_code": "100778" },
+
+
+						{ "trafinfo": "160, 260, 270, 271, 273, 370, 470, 600, 602, 702A, 702B, 705, 720, 721", "traftype": "B", "fac_name": "돈의문박물관마을", "traftype_nm": "간선버스", "fac_code": "100968" },
+						{ "trafinfo": "9701, 1004, 8600, 8601, 8601A", "traftype": "R", "fac_name": "돈의문박물관마을", "traftype_nm": "광역버스", "fac_code": "100968" },
+						{ "trafinfo": "서울역사박물관. 경희궁 앞 정류장", "traftype": "T", "fac_name": "돈의문박물관마을", "traftype_nm": "버스정류장", "fac_code": "100968" },
+						{ "trafinfo": "5호선 서대문역 4번 출구(도보 5분)", "traftype": "S", "fac_name": "돈의문박물관마을", "traftype_nm": "지하철", "fac_code": "100968" },
+						{ "trafinfo": "6002", "traftype": "A", "fac_name": "돈의문박물관마을", "traftype_nm": "공항버스", "fac_code": "100968" },
+
+						{ "trafinfo": "N13, N16, N30, N62, 105, 152, 301, 144, 261, 407, 420, 202, 507, 100", "traftype": "B", "fac_name": "동대문디자인플라자(DDP)", "traftype_nm": "간선버스", "fac_code": "101432" },
+						{ "trafinfo": "동대문역사문화공원 / 동대문디자인플라자 / 광희동 / 을지로 6가 국립중앙의료원", "traftype": "T", "fac_name": "동대문디자인플라자(DDP)", "traftype_nm": "버스정류장", "fac_code": "101432" },
+						{ "trafinfo": "7212, 2014, 2233, 2012, 2015", "traftype": "G", "fac_name": "동대문디자인플라자(DDP)", "traftype_nm": "지선버스", "fac_code": "101432" },
+						{ "trafinfo": "동대문역사문화공원역 (2, 4, 5호선)", "traftype": "S", "fac_name": "동대문디자인플라자(DDP)", "traftype_nm": "지하철", "fac_code": "101432" },
+						{ "trafinfo": "9403", "traftype": "R", "fac_name": "동대문디자인플라자(DDP)", "traftype_nm": "광역버스", "fac_code": "101432" },
+						{ "trafinfo": "90S투어", "traftype": "Y", "fac_name": "동대문디자인플라자(DDP)", "traftype_nm": "순환버스", "fac_code": "101432" },
+
+						{ "trafinfo": "103, 150, 401, 402, 406", "traftype": "B", "fac_name": "국립현대미술관 덕수궁관", "traftype_nm": "간선버스", "fac_code": "101106" },
+						{ "trafinfo": "1호선, 2호선 시청역 1번 출구 도보 약 4분", "traftype": "S", "fac_name": "국립현대미술관 덕수궁관", "traftype_nm": "지하철", "fac_code": "101106" },
+						{ "trafinfo": "6005(인천공항 방면) 시청덕수궁역 하차", "traftype": "A", "fac_name": "국립현대미술관 덕수궁관", "traftype_nm": "공항버스", "fac_code": "101106" },
+						{ "trafinfo": "1711, 7016, 7022", "traftype": "G", "fac_name": "국립현대미술관 덕수궁관", "traftype_nm": "지선버스", "fac_code": "101106" },
+						{ "trafinfo": "시청앞. 덕수궁 역", "traftype": "T", "fac_name": "국립현대미술관 덕수궁관", "traftype_nm": "버스정류장", "fac_code": "101106" }
+
+
+					]//DATA
+
+				}//[1]
+
+			]//Traf
+
+		}//data
+
+
+
+		window.onload = function () {
+			getLocation();
+
+			document.getElementById("sel").onchange = function () {
+				var control = document.getElementById("sel");
+				chagenTable(control.options[control.selectedIndex].value);
+			}
+
+			var tableName = "testTable";
+			function chagenTable(location) {
+				if (document.getElementById(tableName) != null) {
+					document.getElementById(tableName).remove();
+
+				}
+
+
+
+
+				var row = data.Traf[1].DATA;
+				var target = [];
+
+				for (var index in row) {
+					if (row[index].fac_name === location)
+						target.push(row[index]);
+				}
+
+
+				var headers = ["문화공간명", "교통정보", "교통구분명"];
+				var table = document.createElement("table");
+				table.setAttribute("id", tableName);
+				table.setAttribute("class", "table table-hover");
+
+				for (var i = 0; i < target.length; i++) {
+
+					var tr = document.createElement("tr");
+					var innerEle = "";
+					var text = "";
+
+					if (i === 0) {
+						tr.setAttribute("class", "table-dark");
+
+						innerEle = "th";
+						for (var j = 0; j < headers.length; j++) {
+							var td = document.createElement(innerEle);
+							td.innerHTML = headers[j];
+							tr.appendChild(td);
+						}
+
+
+						table.appendChild(tr);
+						document.body.appendChild(table);
+						tr = document.createElement("tr");
+					}
+
+
+
+					innerEle = "td";
+					var td1 = document.createElement(innerEle);
+					td1.innerHTML = target[i].fac_name;
+					tr.appendChild(td1);
+
+					var td2 = document.createElement(innerEle);
+					td2.innerHTML = target[i].trafinfo;
+					tr.appendChild(td2);
+
+					var td3 = document.createElement(innerEle);
+					td3.innerHTML = target[i].traftype_nm;
+					tr.appendChild(td3);
+
+
+					table.appendChild(tr);
+				}
+
+				document.body.appendChild(table);
+			}
+
+		}//func
+
+
+
+
+
+
+		function getLocation() {
+			var row = data.Traf[1].DATA;
+			var loactions = [];
+
+
+			for (var index in row) {
+				//console.log(index);
+				var loaction = row[index].fac_name;
+
+				if (loactions.indexOf(loaction) < 0) {
+					if (loactions.length == 0) {
+						var option = document.createElement("option");
+						option.innerHTML = "선택해주세요";
+						option.setAttribute("value", "선택해주세요");
+						document.getElementById("sel").appendChild(option);
+
+					}
+
+
+
+					var option = document.createElement("option");
+
+
+					option.innerHTML = loaction;
+
+					option.setAttribute("value", loaction);
+
+					document.getElementById("sel").appendChild(option);
+
+					loactions.push(loaction);
+				}//if
+			}//for
+
+
+		}
+	</script>
+</head>
+
+<!-- ---------------------------------------------------------- -->
+
+<body>
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#"> 서울시 문화위치정보 </a>
+		<div class="collapse navbar-collapse" id="alt">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link">More Info >></a>
+			</div>
+
+
+
+
+			<button class="btn btn-outline-success" type="submit" onclick="location.href='https://m.map.naver.com/'">네이버
+				지도</button>
+
+		</div>
+	</nav>
+
+
+	<select class="form-control" id="sel" name="sel">
+	</select>
+
+
+
+	<div class="container my-3">
+		<div class="jumbotron">
+			<h1><strong>서울시 문화위치정보</strong></h1>
+			<p>서울에 있는 문화공간에 대한 교통정보를 볼 수 있는 공간입니다.</p>
+		</div>
+
+
+
+
+</body>
+
+</html>

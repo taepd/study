@@ -15,7 +15,7 @@
 		}else{
 			strEx += strArray[no][i];
 		}
-	}
+	}  
 %>
 <%=strEx%>
 

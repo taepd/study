@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		/*
+			jQuery가 제공하는 비동기(Ajax 관련)함수
+			https://www.w3schools.com/jquery/jquery_ref_ajax.asp
+			https://api.jquery.com/category/ajax/
+
+			Ajax 관련 함수는 xmlHttpRequest 객체를 사용하는 함수
+
+			종류
+				Global Ajax Event Handlers
+				Helper Functions
+				Low-Level Interface : 모든 옵션을 개발자가 설정
+				Shorthand Methods : 기본적인 설정(옵션)이 세팅되어 있음
+
+				
+				**load함수
+
+				$(selector).load(url,data,callback(response,status,xhr))
+				>> callback >> 함수 >> 호출(특정 상황 자동 호출)
+				.load( url [, data ] [, complete ] )
+
+				The load() method loads data from a server and puts the returned data into the selected element.
+
+				complete
+				Type: Function( String responseText, String textStatus, jqXHR jqXHR )
+				A callback function that is executed when the request completes.
+
+				Callback Function
+				If a "complete" callback is provided, it is executed after post-processing and 
+				HTML insertion has been performed. The callback is fired once for each element 
+				in the jQuery collection, and this is set to each DOM element in turn.
+
+				1. 서버에서 받은 데이터가 
+				2. Client 정한 특정요소에 자동으로 삽입할 목적(내부적으로 innerHTML())
+
+				[data]
+				parameter 설정
+				?msg=hello
+
+				json객체 parameter 설정
+				{name: "kglim", age:100}
+				?name=kglim&age=100 이라고 보내겠다
+
+		*/
+
+
+		$(function(){
+			$('#btn').click(function(){
+				// $('#display').load("Ex01_Ajax_Load.jsp",$('#msg2'));
+				$('#display').load("Ex01_Ajax_Load.jsp",
+									{"msg":$('#msg2').val()},
+									//함수가 자동 호출(서버로부터 응답이 도착하면)
+									function(responseText, textStatus, jqXHR){
+										//responseText: 서버가 응답한 결과물(html, text)
+										//응답이 왔어요(정상(200,300(수정)), 비정상(404,500))
+										//textStatus: success, error
+										if(textStatus=="success"){
+											//응답: 4, status code: 200
+											//그 결과를 자동으로 #display에 넣어 주는 것
+											alert("responseText : "+responseText);
+										}else{
+											//응답: 4, but, status code: 404, 500
+											alert('response fail : '+ jqXHR.status + " / "+ jqXHR.statusText);
+										}
+									});
+			});
+			
+
+		});
+	</script>
+</head>
+<body>
+	<h3>동기식처리</h3>
+	<div id="frmsend">
+		<form action="Ex01_Ajax_Load.jsp" method="get">
+			<input type="text" name="msg" id="msg">
+			<input type="submit" value="동기전송">
+		</form>
+	</div>
+
+
+	<h3>비동기처리</h3>
+
+		<input type="text" name="msg2" id="msg2">
+		<input type="button" id="btn" value="비동기전송">
+	<div id="display"></div>
+
+	
+</body>
+</html>
