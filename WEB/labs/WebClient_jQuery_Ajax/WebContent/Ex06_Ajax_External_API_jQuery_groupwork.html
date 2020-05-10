@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        //https://api.flickr.com/services/feeds/photos_public.gne?tags=raccoon&tagmode=any&format=json&jsoncallback=?
+        //tags=raccoon&tagmode=any&format=json
+
+        $(function () {
+            $("#title").text("서울시 문화위치 및 교통정보");
+            $("#subtitle").text("비트155기 2조");
+
+
+            $('#btn').click(function () {
+                let api = "http://openapi.seoul.go.kr:8088/734b676b6874616537376145537366/json/SearchCulturalFacilitiesTrafficService/1/100/"
+                //let data = {FAC_CODE:$('#search').val()};
+                $.getJSON((api+$('#search').val()), function (data, textStatus, xhr) {
+                	console.log(data);
+                    console.log(data.SearchCulturalFacilitiesTrafficService.row);
+                    var list = data.SearchCulturalFacilitiesTrafficService.row;
+                    // $('#images').empty();
+                    // $.each(data.items,function(index, obj){
+                    //     $('<img>').attr("src",obj.media.m).appendTo('#images');
+                    // });
+                    var description = {"FAC_NAME":"문화공간명","FAC_CODE":"문화공간코드","TRAFTYPE":"교통구분코드","TRAFINFO":"교통정보","TRAFTYPE_NM":"교통구분명"};       
+                    console.log(description);
+		                                 
+                    
+                    let table="<table class='table table-dark table-striped'><tr>"
+                    $.each(description, function(key,value){
+                    	table+="<th>"+value+"</th>"; 
+                    });
+           
+                    table+="</tr>";
+                    
+                    $.each(list, function(key, value){
+						table+="<tr><td>" + value.FAC_NAME +"</td><td>" + value.FAC_CODE +
+								"</td	><td>" + value.TRAFTYPE +"</td><td>" + value.TRAFINFO +
+								"</td><td>" + value.TRAFTYPE_NM +"</td></tr>";
+					});
+					table+="</table>";
+					$('#display').append(table);	
+                    
+                    /* for (let index in description) {
+                        $("#thead").children.eq(0).html("<th>" + description[index] + "</th>");
+                    }
+
+                    var tbody = document.getElementById("tbody"); // tbody = <tbody id="tbody"></tbody>;
+                    for (let index in list) {
+                        let tr = tbody.appendChild(document.createElement("tr")); //<tbody id="tbody"><tr></tr></tbody>;
+                        for (let key in description) {
+                            let td = tr.appendChild(document.createElement("td")); //<tbody id="tbody"><tr><td></td></tr></tbody>;
+                            td.innerText = list[index][key];
+                           
+                        }
+                    } */
+                    
+                    
+    				
+    				/* 	$.each(data, function(key, value){
+    						table+="<tr><td>" + key +"</td><td>" + value.num +"</td><td>" + value.Name +"</td></tr>";
+    					});
+    					table+="</table>";
+    					$('#display').append(table);	
+ */
+
+                });
+            });
+
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <!--https://api.flickr.com/services/feeds/photos_public.gne?tags=raccoon&tagmode=any&format=json&jsoncallback=?-->
+    <div class="container">
+        <input type="text" id="search">
+        <input type="button" value="검색하기" id="btn">
+        <hr>
+        <h2 id="title"></h2>
+        <p id="subtitle"></p>
+        <div id="display"></div>       
+    </div>
+</body>
+
+</html>

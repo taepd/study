@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--구글 차트-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $("#title").text("일별 박스오피스");
+            $("#subtitle").text("비트155기 2조");
+
+           
+            $('#btn').click(function () {
+                let api = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
+                let data = {
+                    key: "825a9968031e1fb1d020d6c5cacd33a1",
+                    targetDt: $('#search').val()
+                };
+                var dataArr =[['', '당일 관객수', '누적 관객수']];
+                $.getJSON(api, data, function (data, textStatus, xhr) {
+                    console.log(data.boxOfficeResult.dailyBoxOfficeList);
+                    var dataSet = data.boxOfficeResult.dailyBoxOfficeList;
+                    google.charts.load('current', { 'packages': ['bar'] });
+                    google.charts.setOnLoadCallback(drawChart);
+
+                   
+                    $.each(dataSet, function(key, value){
+                        var movieArr =[(value.rank+". "+value.movieNm), Number(value.audiCnt), Number(value.audiAcc)];
+                        console.log(value.rank+". "+value.movieNm);
+                        console.log("ket: "+key);
+                        dataArr.push(movieArr);
+                    });
+                    console.log(dataArr);
+                    function drawChart() {
+                        var data = google.visualization.arrayToDataTable(dataArr);
+                      
+                        var options = {
+                            chart: {
+                                title: 'Company Performance',
+                                subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                            },
+                            bars: 'horizontal' // Required for Material Bar Charts.
+                        };
+
+                        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+                        chart.draw(data, google.charts.Bar.convertOptions(options));
+                    }
+                });
+            });
+
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="search">
+        <input type="button" value="검색하기" id="btn">
+        <hr>
+        <h2 id="title"></h2>
+        <p id="subtitle"></p>
+        <div id="display"></div>
+        <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+    </div>
+   
+
+</body>
+
+</html>

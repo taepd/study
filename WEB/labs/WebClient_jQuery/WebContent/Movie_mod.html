@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구글 차트</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body{
+            text-align: center;
+        }
+        #boot{
+            margin: auto;
+            margin-top: 20px;
+            width: 40%;
+           
+        }
+        #title{
+            margin-top: 30px;
+        }
+        #chart_div{
+            text-align: center;
+            width: 70%;
+            height: 500px;
+            margin: 0 auto;
+            padding: 0;
+        }
+    </style>
+
+
+    <!-- AJAX API 로드  -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+
+
+        google.charts.load('current', { packages: ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(drawBasic);
+
+        function drawBasic() {
+            let url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
+            var day;
+
+
+            $('#btn').click(function () {
+
+                let data = { targetDt: $('#search').val(), key: "d92ca5bb6029c82bbaa02c2bff98dd7e" };
+                var jsonarr = [["영화명/개봉일", "일관객수", { role: 'annotation' },{ role: "style" }]];
+                $.getJSON(url, data, function (data) {
+                    day = data.boxOfficeResult.showRange.split("~")[0];
+                    JSON.stringify(day);
+	      
+                    //console.log(data.boxOfficeResult.dailyBoxOfficeList);
+                    $.each(data.boxOfficeResult.dailyBoxOfficeList, function (index, obj) {
+	          var stylearr =["#311b92","#4527a0", "#512da8", "#5e35b1","#673ab7", "#7e57c2","#9575cd","#b39ddb","#d1c4e9","#ede7f6"];
+	          var json =[obj.movieNm+ " / 개봉일 : " + obj.openDt, Number(obj.audiCnt), obj.rank+" 위",stylearr[index] ]; 
+                         jsonarr.push(json);
+                    });	
+                    //console.log(jsonarr);
+                    var dataa = google.visualization.arrayToDataTable(jsonarr);
+
+                    var options = {
+                        title: "[" + day + "] 일일 박스오피스",
+                        bar: { groupWidth: "80%" },
+                    };
+
+                    var chart = new google.visualization.ColumnChart(
+                        document.getElementById('chart_div'));
+                    chart.draw(dataa, options);
+                });
+            });
+        };
+
+    </script>
+</head>
+
+<body>
+    <div id="title">
+        <h1>일간 박스 오피스 관객수별 차트 검색</h1>
+    </div>
+
+    <div class="input-group mb-3" id="boot">
+        <input type="text" class="form-control" id="search"  placeholder="YYYYMMDD 형식으로 입력해 주세요">
+        <div class="input-group-append">
+          <input type="button" class="btn btn-dark" id="btn" value="검색하기">
+         </div>
+    </div>
+    <hr>
+    <div id="chart_div"></div>
+    
+</body>
+
+</html>
