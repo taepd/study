@@ -17,7 +17,7 @@ import java.sql.*;
  * 3.1 java 프로젝트 > 속성> bulid path > add external jar >> 추가
  * 3.2 드라이버 사용할 준비 완료 >> 메모리에 load해서 사용 (new ...)
  * 3.3 class.forName("클래스 이름") >> new 동일한 효과
- * 4.  java code(jdbc api) : 만들어 진 class 제공 받아서 사용
+ * 4.  java code(jdbc api) : 만들어진 class 제공 받아서 사용
  * 4.1 import java.sql.* >> interface, class >>DB작업
  * 4.2 개발자는 interface를 통해서 작업(다형성)
  * point: interface 만들어서 각 제조사 배포 ...>>

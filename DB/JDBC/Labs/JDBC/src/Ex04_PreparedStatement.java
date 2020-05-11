@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import kr.or.bit.utils.SingletonHelper;
 
 /*
+ * 
+ * https://devbox.tistory.com/entry/Comporison 참고
   PreparedStatement (준비된 Statement )
   (1) 설명 
      미리 SQL문이 셋팅된 Statement가 DB가 전송되어져서   컴파일되어지고, SQL문의 ?(parameter)만 나중에 추가 셋팅해서 실행 
@@ -53,7 +55,7 @@ public class Ex04_PreparedStatement {
 			
 			//이후에는 parameter 정보만 설정해서 실행
 			//? 자리... 설정
-			pstmt.setInt(1, 30); //where deptno=30
+			pstmt.setInt(1, 30); //where deptno=30  1번 매개변수에 30을 입력
 			
 			rs=pstmt.executeQuery();
 			
@@ -71,7 +73,7 @@ public class Ex04_PreparedStatement {
 			}
 			
 			
-		} catch (Exception e) {
+		}catch (Exception e) {
 		}finally {
 			SingletonHelper.close(rs);
 			SingletonHelper.close(pstmt);

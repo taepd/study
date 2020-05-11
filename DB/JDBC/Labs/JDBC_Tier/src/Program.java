@@ -22,6 +22,7 @@ public class Program {
 		DeptDao dao = new DeptDao();
 		System.out.println("[전체조회]**********");
 		List<Dept> deptlist = dao.getDeptAllList();
+		
 		//화면출력
 		if(deptlist != null) {
 			DeptPrint(deptlist);
@@ -37,6 +38,7 @@ public class Program {
 		deptno = Integer.parseInt(sc.nextLine());
 		dept = dao.getDeptListByDeptno(deptno);
 		System.out.println(dept.toString());
+		
 	
 		//데이터 삽입
 		System.out.println("[데이터 삽입]**********");

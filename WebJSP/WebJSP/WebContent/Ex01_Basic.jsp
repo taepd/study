@@ -8,12 +8,12 @@
 	>> 디자인 코드 + 서버 로직 코드 >> 혼재된 방식(불편하다... 특히 서버로직 불편)
 	>> [결론]
 	>> Servlet (Java 페이지로 web 서비스 기술) >> 디자인 작업 어려움
-	>> JSO(UI)
+	>> JSP(UI)
 	>> Servlet (Controller (조정: 요청 응답 처리))
 	>> MVC(Model(DAO,DTO,Service)>> JAVA
 		   View(UI)>> JSP,HTML
 		   Controller >> Servlet)
-	>> 잘하는 것만 해 >> model2기반의 MVC패턴 (중간 프로젝트)
+	>> 잘하는 것만 해 >> model 2기반의 MVC패턴 (중간 프로젝트)
 	
 	>> JSP와 HTML의 차이점
 	>> Tomcat(WAS) 처리

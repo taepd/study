@@ -11,9 +11,7 @@ public class Dept {
 	private int deptno;
 	private String dname;
 	private String loc;
-	public int getDetpno() {
-		return deptno;
-	}
+
 	public Dept(){};
 	
 	public Dept(int deptno, String dname, String loc){
