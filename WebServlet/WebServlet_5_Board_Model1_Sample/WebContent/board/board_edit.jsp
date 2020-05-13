@@ -1,8 +1,22 @@
+<%@page import="kr.or.bit.dto.Board"%>
+<%@page import="kr.or.bit.service.BoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	//수정하기
-
+	String idx = request.getParameter("idx");
+	if(idx == null || idx.trim().equals("")){
+		response.sendRedirect("board_list.jsp"); //cpage=1 , ps=5
+		return;
+	}
+	BoardService service = BoardService.getInBoardService();
+	Board board = service.board_EditContent(idx);
+	if(board == null){
+		out.print("데이터 오류");
+		out.print("<hr><a href='board_list.jsp'>목록가지</a>");
+		return;
+	}
+	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -62,50 +76,50 @@
 						<tr>
 							<td width="20%" align="center"><b> 글번호 </b></td>
 							<td width="30%">
-									<%=%> 
-									<input type="hidden" name="idx" value="<%=%>"></td>
+									<%=idx%> 
+									<input type="hidden" name="idx" value="<%=idx%>"></td>
 							<td width="20%" align="center"><b>작성일</b></td>
-							<td><%=%></td>
+							<td><%=board.getWritedate()%></td>
 						</tr>
 						<tr>
 							<td width="20%" align="center"><b>글쓴이</b></td>
 							<td width="30%">
-								<input type="text" name="writer" value="<%=%>">
+								<input type="text" name="writer" value="<%=board.getWriter()%>">
 							</td>
 							<td width="20%" align="center"><b>홈페이지</b></td>
 							<td>
-								<input type="text" name="homepage" value="<%=%>">
+								<input type="text" name="homepage" value="<%=board.getHomepage()%>">
 							</td>
 						</tr>
 						<tr>
-							<td width="20%" align="center"><b>비밀번호</b></td>
+							<td width="20%" align="center"><b>비밀번호(기존)</b></td>
 							<td>
 								<input type="text" name="pwd">
 							</td>
 							<td width="20%" align="center"><b>이메일</b></td>
 							<td>
-								<input type="text" name="email" value="<%=%>">
+								<input type="text" name="email" value="<%=board.getEmail()%>">
 							</td>
 						</tr>
 
 						<tr>
 							<td width="20%" align="center"><b>제목</b></td>
 							<td colspan="3">
-								<input type="text" name="subject" value="<%=%>" size="40">
+								<input type="text" name="subject" value="<%=board.getSubject()%>" size="40">
 							</td>
 						</tr>
 						<tr height="100">
 							<td width="20%" align="center"><b>글내용</b></td>
 							<td colspan="3">
 								<textarea rows="7" cols="50" name="content">
-									<%=%>
+									<%=board.getContent()%>
 								</textarea>
 							</td>
 						</tr>
 
 						<tr>
 							<td width="20%" align="center"><b>첨부파일</b></td>
-							<td colspan="3"><%=%> (<%=%>bytes)<br /> 
+							<td colspan="3"><%=board.getFilename()%> (<%=board.getFilesize()%>bytes)<br /> 
 								<input type="file" name="filename">
 							</td>
 						</tr>
@@ -117,9 +131,7 @@
 						</tr>
 						<tr>
 							<td colspan="4" align="center">
-								<a href="board_list.jsp">목록</a>|
-								<a href="board_edit.jsp?idx=<%=%>">편집</a> |
-								<a href="board_delete.jsp?idx=<%=%>">삭제</a>|<a href="">답변</a>|
+								<a href="board_list.jsp">목록</a>
 							</td>
 						</tr>
 					</table>

@@ -3181,5 +3181,34 @@ NOCACHE;
 SELECT * FROM jspboard;
 SELECT * FROM reply;
 
+create table mvcregister(
+ id number constraint pk_mvcregister_id primary key,
+ pwd varchar2(20) not null,
+ email varchar2(20) not null
+);
+
+select * from mvcregister;
+
+desc emp;
+
+select * from emp;
+
+desc dept;
+
+select * from dept;
+
+alter table emp
+add constraint pk_emp_empno primary key(empno);
+
+select* from user_constraints where table_name='EMP';
+select* from user_constraints where table_name='DEPT';
+
+alter table dept
+add constraint pk_emp_deptno primary key(deptno);
 
 
+alter table emp
+add constraint fk_emp_deptno foreign key(deptno)
+                                                    references dept(deptno);    
+                                                    
+                                                    

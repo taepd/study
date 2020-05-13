@@ -17,7 +17,6 @@ public class LoginServlet extends HttpServlet {
    
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     //개발자가 편의해 의해 직접 설계한 함수 .....

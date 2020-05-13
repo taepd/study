@@ -7,7 +7,7 @@
 	//Board board = new Board();
 	//board.setName = 값
 %>
-<jsp:useBean id="board" class="kr.or.bit.dto.Board">
+<jsp:useBean id="board" class="kr.or.bit.dto.Board"> <!-- Board board = new Board(); -->
 	<jsp:setProperty property="*" name="board" />
 </jsp:useBean>
 <%
