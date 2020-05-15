@@ -3197,18 +3197,22 @@ desc dept;
 
 select * from dept;
 
+--emp테이블 empno에 pk걸기
 alter table emp
 add constraint pk_emp_empno primary key(empno);
 
+--emp테이블 제약사항 조회
 select* from user_constraints where table_name='EMP';
-select* from user_constraints where table_name='DEPT';
 
+--dept테이블 deptno에 pk걸기
 alter table dept
 add constraint pk_emp_deptno primary key(deptno);
 
-
+--emp테이블 deptno에 fk걸기
 alter table emp
 add constraint fk_emp_deptno foreign key(deptno)
                                                     references dept(deptno);    
-                                                    
+
+--dept테이블 제약사항 조회                                                    
+select* from user_constraints where table_name='DEPT';                                                    
                                                     
