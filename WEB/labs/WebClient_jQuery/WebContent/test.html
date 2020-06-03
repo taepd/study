@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="text" id="money" onkeyup="numberWithCommas(this.vale)"></input> 
+
+
+
+</body>
+<script>
+function numberWithCommas(x) {
+    x = x.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
+    x = x.replace(/,/g,'');          // ,값 공백처리
+    $("#money").val(x.replace(/\B(?=(\d{3})+(?!\d))/g, ",")); // 정규식을 이용해서 3자리 마다 , 추가 
+  }
+</script>
+</html>

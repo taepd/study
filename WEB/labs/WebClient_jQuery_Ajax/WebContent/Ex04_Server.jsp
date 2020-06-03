@@ -5,5 +5,5 @@
    String name = request.getParameter("name");
    String pwd = request.getParameter("pwd");
 %>
-당신의 이름은:<%= name %>
+당신의 이름은:<%= name %> 
 당신의 비번은:<%= pwd %>    

@@ -16,7 +16,7 @@
 <link rel="Stylesheet" href="<%=request.getContextPath()%>/style/default.css" />
 </head>
 <body>
-	<c:import url="/include/header.jsp" />
+	<c:import url="/include/header.jsp"/>  <!-- include와 같은 역할 -->
 	게시판 목록
 	<br>
 	<%

@@ -107,7 +107,7 @@ select * from board order by idx desc (최신글 위에)
 
 1. 최신 답글을 위로
 규칙 : 원본글 : depth , step >> 0 0
-	 (같은  ref)현재 read 한 글의 step 값다 더 큰 step 값이 있으면 +1  
+	 (같은  ref)현재 read한 글의 step 값보다 더 큰 step 값이 있으면 +1  
           답글 : depth+1  step+1
 
 select * from multiboard order by ref desc , step asc

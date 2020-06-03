@@ -15,10 +15,10 @@
 		  if (this.readyState == 4 && this.status == 200) {
 		    xmlDoc = this.responseXML;
 		    txt = "";
-		    x = xmlDoc.getElementsByTagName("ARTIST");
-		    //console.log(x);
+		    x = xmlDoc.getElementsByTagName("ARTIST");//<ARTIST>태그들 객체
+		    console.log(x);
 		    for (i = 0; i < x.length; i++) {
-		    	console.log(x[i].childNodes[0]); //<ARTIST>Bob Dylan</ARTIST>
+		    	console.log(x[i].childNodes[0]); //"Bob Dylan" <<Object Text임
 		      txt = txt + x[i].childNodes[0].nodeValue + "<br>";
 		    }
 		    document.getElementById("demo").innerHTML = txt;

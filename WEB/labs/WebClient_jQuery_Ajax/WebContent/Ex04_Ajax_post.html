@@ -20,7 +20,7 @@
 				});
 				*/
 				//권장방법 : 두번째 parameter 설정 : {}객체
-				let data = {"name":$('#name').val() , "pwd":$('#pwd').val()}
+				let data = {"name":$('#name').val(), "pwd":$('#pwd').val()}
 				$.post('Ex04_Server.jsp',data,function(responsedata){
 					$('#message').html(responsedata);
 				});

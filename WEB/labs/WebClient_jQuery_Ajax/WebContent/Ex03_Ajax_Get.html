@@ -19,11 +19,10 @@
 					//find() 필터함수 >> return Array [Company, Company]
 
 					//.each(function(){index, element})
-					$(data).find('Company').each(function(){
+					$(data).find('Company').each(function(){ 
 						//console.log(this); //Company 태그
-						let entry = $(this);  // $(this)도 변수로 지정가능
+						let entry = $(this);  // $(this)도 변수로 지정가능. Company태그들의 배열
 						console.log("entry: "+ entry);
-						
 						
 						
 						let html = "<div>" + entry.attr('CompanyType')+"</div>";

@@ -16,7 +16,9 @@ INSERT INTO EMP VALUES
 (7369,'SMITH','CLERK',7902,'1980-12-17',800,null,20);
 INSERT INTO EMP VALUES
 (7499,'ALLEN','SALESMAN',7698,'1981-02-20',1600,300,30);
-INSERT INTO EMP VALUES
+
+
+ INTO EMP VALUES
 (7521,'WARD','SALESMAN',7698,'1981-02-22',1250,200,30);
 INSERT INTO EMP VALUES
 (7566,'JONES','MANAGER',7839,'1981-04-02',2975,30,20);
@@ -2647,7 +2649,7 @@ select rownum as 순번, empno, ename from emp; -- rownum: select한 결과에 순번을 
     select *
     from (select *
              from emp
-             order by sal desc) e;
+             order by sal desc) e;  --e는 별칭 준 것
              
 --2단계
     select rownum as "num", e.*
@@ -3180,6 +3182,8 @@ NOCACHE;
 
 SELECT * FROM jspboard;
 SELECT * FROM reply;
+
+-------------------------------
 
 create table mvcregister(
  id number constraint pk_mvcregister_id primary key,

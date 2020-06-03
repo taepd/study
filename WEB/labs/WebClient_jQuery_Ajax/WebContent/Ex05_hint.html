@@ -5,7 +5,7 @@
 <script>
 $(document).ready(function(){
   $("#b").click(function(){
-     var tag = $("<div><div>").html("<b>Hello world</b>");
+     var tag = $("<div><div>").html("<b>Hello world</b>"); //$("태그"): 해당 태그 요소 생성
      alert(tag);
      $('#a').append(tag);
   });
