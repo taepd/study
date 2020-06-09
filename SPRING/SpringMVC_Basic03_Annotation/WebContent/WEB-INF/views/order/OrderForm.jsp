@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form method="post">
-		상품1<br>
+		상품1<br> 
 		상품ID:<input type="text" name="orderItem[0].itemid"><br>
 		상품수량:<input type="text" name="orderItem[0].number"><br>
 		상품주의사항:<input type="text" name="orderItem[0].remark"><br>

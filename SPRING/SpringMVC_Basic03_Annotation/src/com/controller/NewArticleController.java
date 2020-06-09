@@ -22,7 +22,7 @@ import jdk.nashorn.internal.objects.annotations.Getter;
 
 **요청 주소가 하나의 일때 (그 주소를 가지고 화면 , 처리) 판단
 /article/newArticle.do  하나를 가지고 (전송방식)
-1. 화면 : GET 전송 >> 화면
+1. 화면 : GET 전송 >> 화면 >>    
 2. 처리 : POST 전송 >> 처리  (insert)
 
 
@@ -98,40 +98,27 @@ public class NewArticleController {
 	    2. setter 자동 주입
 	    3. forward 되는 페이지에 자동 전달 (key) >> newArticleCommand
 	    
+	    3. 객체의 이름(key) 자동 생성되는 것이 싫어요
+	    public String submit(@ModelAttribute("Articledata") NewArticleCommand command) 
+	    
+	    @ModelAttribute("Articledata") 가 아래 두줄의 코드를 대체 
+	    
+	    NewArticleCommand Articledata = new NewArticleCommand();
+	    mv.addObject("Articledata",Articledata);
+	    
+	    
 	    */
-	   /*
 	   @RequestMapping(method = RequestMethod.POST) //처리 insert 해주세요
-	   public String submit(NewArticleCommand command) {
+	   public String submit(@ModelAttribute("Articledata") NewArticleCommand command) {
 		   //System.out.println(command.toString());
 		   articleservice.writeArticle(command);
 		   	   
 		   return "article/newArticleSubmitted";
+		   
+		   //    /WEB-INF/views/ + article/newArticleSubmitted + .jsp
 	   }
-	   */
-	   
-	   //객체의 이름(key) 자동 생성되는게 싫어요
-	   
-	   @RequestMapping(method = RequestMethod.POST) //처리 insert 해주세요
-	   public String submit(@ModelAttribute("Articledata")NewArticleCommand command) {
-		   //System.out.println(command.toString());
-		   articleservice.writeArticle(command);
-		   	   
-		   return "article/newArticleSubmitted";
-	   }
-	   
-	   
-	   
+
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
