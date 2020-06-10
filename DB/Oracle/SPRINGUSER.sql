@@ -76,3 +76,43 @@ SELECT * FROM
             ) N
     )
 		WHERE NUM BETWEEN 1 AND 5;
+        
+        
+select * from notices;
+
+
+--SpringMVC_Basic05_JdbcTemplate
+create table usermember(
+ id varchar2(20),
+ name varchar2(20),
+ pwd  varchar2(20),
+ email varchar2(20),
+ age number
+);
+
+
+
+select * from usermember;
+
+
+--SpringMVC_Basic06_WebSite_Annotation_jdbcTemplate
+
+ alter table notices
+     add FileSrc2 varchar2(500);
+     
+select * from notices;
+
+
+--9. DB 컬럼명 1개 수정 : UID 예약에 ... userid 수정
+    alter table member rename column "UID" to userid;      
+
+select * from member;
+
+desc member;
+
+--oracle 한글 한자 3Byte 대한 처리 >> 젠더 타입 크기가 좀 작다 varchar2(10)
+	alter table member
+	modify gender varchar2(20);
+    
+    
+    
