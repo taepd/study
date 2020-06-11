@@ -14,5 +14,7 @@ public class MainClass {
 		Cats myCat = ctx.getBean("myCat",Cats.class);
 		
 		myCat.getCatsInfo();
+
+		
 	}
 }

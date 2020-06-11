@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="D:/tae/Spring자료/Spring_Utils/ConnectorUtils/oracle/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="D:/tae/Spring자료/Spring_Utils/Ibatis_lib/ibatis-2.3.4.726/lib/ibatis-2.3.4.726.jar"/>
+	<classpathentry kind="lib" path="D:/tae/Spring자료/Spring_Utils/Mybatis_lib/mybatis-3.2.8/mybatis-3.2.8/mybatis-3.2.8.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
