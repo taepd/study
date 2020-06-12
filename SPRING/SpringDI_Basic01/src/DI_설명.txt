@@ -33,7 +33,7 @@ class A {
 
 -NewRecordView 클래스가 NewRecord 에 의존한다
 -NewRecordView 클래스가 필요한 객체를 [생성자]통해서 주입
--두객체의 lifecycle 은  같다.
+-두 객체의 lifecycle 은  같다.
 *오류 : DI는 Spring 에서만 존재하는 개념 (x) 
 
 result : 필요하는 객체는 [생성자] 통해서 주입(또는 생성) 사용가능 => 의존관계 (복합연관)

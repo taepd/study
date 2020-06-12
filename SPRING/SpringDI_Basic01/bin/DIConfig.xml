@@ -12,7 +12,7 @@ Spring 자신만의 [컨테이너(Spring 전용 메모리 공간)] 제공 (IOC) 
 또는  Annotation 통해서 컨테이너 자원 구성
 
 :제어의 역전 (프로그램의 제어구조를 바꾼다)
-:작은 단위의 부품을 만들어 놓고 그 것을 조립하는 행위 (레고 블럭 처럼)
+:작은 단위의 부품을 만들어 놓고 그것을 조립하는 행위 (레고 블럭 처럼)
 
 //JavaCode
 NewRecordView view = new NewRecordView(); //객체생성
@@ -45,7 +45,7 @@ public static void main(String[] args) {
 -->
 <!-- NewRecord record = new NewRecord(); -->
 <bean class="Spring_DI4.NewRecord" id="record"></bean>
-<!-- NewRecord record = new NewRecord(); -->
+<!-- NewRecordView view = new NewRecordView(); -->
 <bean class="Spring_DI4.NewRecordView" id="view">
 	<!-- view.setRecord(record); -->
 	<property name="record" ref="record"></property>

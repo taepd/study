@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.NoticeDao">
+
+	<!--  
+		1. parameter 1개 : 생략  >> parameterType="int"
+		2. parameter DTO 객체 >>  parameterType="DTO"
+		3. parameter 1개 이상 >> hashMap (만능 해결사) >>  parameterType="Map"
+		
+		    parameterType 생략 ....
+		4. mybatis parameter 값을 > param1 , param2 , param3  (2개이상)
+		 String field >> param1
+		 String query >> param2
+		^^ getCount(String field) >>  param1 (안되용) >> 생략
+		public int getCount(String field, String query)
+		
+	-->
+	 <select id="getCount"  resultType="int" >
+	 		SELECT COUNT(*) CNT 
+	 		FROM NOTICES 
+	 		WHERE ${param1} LIKE '%${param2}%'
+	 </select>
+	 
+	 <!--
+	 	public List<Notice> getNotices(int page, String field, String query)
+	 	int page parameter 값이 조작된 경우 (고민)
+	 
+	 	int srow = 1 + (page-1)*5;
+        int erow = 5 + (page-1)*5; 
+        
+        param1 , param2 , param3
+        
+        DB아래 연산처리 가능
+        1 + (${param1}-1)*5;
+        5 + (${param1}-1)*5
+	   -->
+	   
+	   <select id="getNotices"  resultType="vo.Notice">
+	   				SELECT * 
+	   				FROM
+  							(
+  									SELECT ROWNUM NUM, N.* 
+  									FROM (
+  														SELECT * 
+  														FROM NOTICES 
+  														WHERE  ${param2} LIKE '%${param3}%' ORDER BY REGDATE DESC
+  											   ) N
+  					        )
+  					WHERE NUM BETWEEN 1 + (${param1}-1)*5 AND 5 + (${param1}-1)*5
+	   </select>
+	   
+	   <!--
+	   	public Notice getNotice(String seq)
+	   	parameter  1개 >> paramger 이름 사용 
+	     -->
+	     <select id="getNotice"    resultType="vo.Notice">
+	     		SELECT seq,title,writer,content,regdate,hit,filesrc,filesrc2 
+	     		FROM NOTICES 
+	     		WHERE SEQ=#{seq}
+	     </select>
+	     
+	     <!-- 
+	      public int delete(String seq)
+	      parameter 1개
+	      -->
+	      <delete id="delete">
+	      		DELETE NOTICES WHERE SEQ=#{seq}
+	      </delete>
+	     
+	     <!--  
+	     	 public int update(Notice notice) 
+	     	 parameter DTO
+	     	 
+	     	 파일 수정 : null , null
+	     	 한개 수정 : 1.jpg , null
+	     	 두개 수정 : 1.jpg , 2jpg
+	     	 값이 넘어오지 않는 경우  null처리 강제
+	     	 jdbcType=VARCHAR 가지고 있는 String 기본값 >> Null
+	     -->
+	     <update id="update"  parameterType="vo.Notice">
+	     		UPDATE NOTICES 
+	     		SET TITLE=#{title}, 
+	     			    CONTENT=#{content}, 
+	     			    FILESRC=#{fileSrc , jdbcType=VARCHAR} , 
+	     			    FILESRC2=#{fileSrc2 , jdbcType=VARCHAR} 
+	     		WHERE SEQ=#{seq}
+	     </update>
+	     
+	     <!-- 
+	     	 public int insert(Notice n)
+	      -->
+	      <!-- <insert id="insert"  parameterType="vo.Notice"  >
+	      		INSERT INTO NOTICES(SEQ, TITLE, CONTENT, WRITER, REGDATE, HIT, FILESRC , FILESRC2) 
+	      		VALUES( (SELECT MAX(TO_NUMBER(SEQ))+1 FROM NOTICES), 
+	      		                #{title}, #{content}, 'bituser', SYSDATE, 0, #{fileSrc},#{fileSrc2})
+	      		
+	      </insert> -->
+	      
+	      <insert id="insert"  parameterType="vo.Notice"  >
+	      		<selectKey order="BEFORE" keyProperty="seq" resultType="String">
+	      				 	SELECT MAX(TO_NUMBER(SEQ))+1 FROM NOTICES
+	      		</selectKey>
+	      		INSERT INTO NOTICES(SEQ, TITLE, CONTENT, WRITER, REGDATE, HIT, FILESRC , FILESRC2) 
+	      		VALUES(#{seq} , #{title}, #{content}, 'bituser', SYSDATE, 0, #{fileSrc},#{fileSrc2})
+	      </insert>
+</mapper>

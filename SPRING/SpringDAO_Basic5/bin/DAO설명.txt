@@ -121,7 +121,7 @@ result : UserDao 추상클래스 (DB연결 메서는 강제 구현 (추상메서
    
    ->Factory 형태로  일관된 작업을 하고 싶어요
    
-   ->Factory 페턴 복습
+   ->Factory 패턴 복습
    
    -> 4가지 과제 .....
 

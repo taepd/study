@@ -123,9 +123,9 @@ result : interface 와 mapper 있으면 실행
  </update>
  
  <update id="createTable" parameterType="kr.co.mycom.model.BoardDTO">
-  <!-- create table ${tname} (id int) -->
-    alter table ttt
-    add ${tname} varchar(20)
+    create table ${tname} (id int)
+    <!-- alter table ttt
+    add ${tname} varchar(20) -->
  
  </update>
  <!-- <![CDATA[varchar2(20)]]>  -->
