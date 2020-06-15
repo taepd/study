@@ -70,7 +70,7 @@
 					 url:"EmpJobSelect.emp",
 					 dataType:"html",
 					 success:function(responsedata){ 
-						$('#jobselect').html(responsedata);			 
+						$('#jobselect').html(responsedata);						
 					 }
 				 });
     	
@@ -101,12 +101,12 @@
 				}	
 			);
     	
-    	//급여, 보너스 자리수 처리
-    	$('#comm, #sal').keyup(function() {
+     	//급여, 보너스 자리수 처리
+    	/* $('#comm, #sal').keyup(function() {
     		var num = $(this).val().toString().replace(/[^0-9]/g,"");
  
     		$(this).val(num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-    	});
+    	});  */
     	
     	
 	});
@@ -179,7 +179,7 @@
                 <div class="row">
                     
                         <div class="card" style="width:60%; margin: 0 auto;">
-                            <form class="form-horizontal" action="EmpInsertOk.emp" enctype="multipart/form-data" method="post">
+                            <form class="form-horizontal" action="EmpInsert.emp" enctype="multipart/form-data" method="post">
                                 <div class="card-body">
                                     <h4 class="card-title">사원 정보 입력</h4>
                                     <div class="form-group row">
@@ -236,7 +236,7 @@
 										class="col-sm-3 text-right control-label col-form-label">이미지</label>
 									<div class="col-sm-9">
 										<label class="btn btn-primary btn-file"> 이미지 설정/변경 
-										<input type="file" name="img" style="display: none;" onchange="readURL(this);">
+										<input type="file" name="files" style="display: none;" onchange="readURL(this);">
 										</label>  <span id="imgFileName">${param.img}</span> 
 										<img id="img" src="upload/${param.img}" alt="your image" />
 									</div>

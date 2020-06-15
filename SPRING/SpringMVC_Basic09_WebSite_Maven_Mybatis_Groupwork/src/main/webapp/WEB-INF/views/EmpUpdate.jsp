@@ -131,6 +131,8 @@
 </head>
 
 <body>
+	<c:set var="emp" value="${requestScope.emp}"></c:set>
+
 	<!-- ============================================================== -->
 	<!-- Preloader - style you can find in spinners.css -->
 	<!-- ============================================================== -->
@@ -192,7 +194,7 @@
 				 <div class="col-md-12">
 					<div class="card" style="width: 60%; margin: 0 auto;">
 						<form class="form-horizontal"
-							action="EmpUpdateOk.emp?cp=${param.cp}&ps=${param.ps}"
+							action="EmpUpdate.emp?cp=${param.cp}&ps=${param.ps}"
 							enctype="multipart/form-data" method="post">
 							<div class="card-body">
 								<h4 class="card-title">사원 정보 입력</h4>
@@ -201,7 +203,7 @@
 										class="col-sm-3 text-right control-label col-form-label">사번</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" id="empno"
-											name="empno" value="${param.empno}" readonly>
+											name="empno" value="${emp.empno}" readonly>
 									</div>
 								</div>
 								<div class="form-group row">
@@ -209,7 +211,7 @@
 										class="col-sm-3 text-right control-label col-form-label">이름</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" id="ename"
-											name="ename" value="${param.ename}">
+											name="ename" value="${emp.ename}">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -226,7 +228,7 @@
 										상관</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" id="mgr" name="mgr"
-											value="${param.mgr}">
+											value="${emp.mgr}">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -234,7 +236,7 @@
 										class="col-sm-3 text-right control-label col-form-label">입사일</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" id="hiredate"
-											name="hiredate" value="${param.hiredate}" readonly style="cursor:default">
+											name="hiredate" value="${emp.hiredate}" readonly style="cursor:default">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -242,7 +244,7 @@
 										class="col-sm-3 text-right control-label col-form-label">급여</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" id="sal" name="sal"
-											value="${param.sal}">
+											value="${emp.sal}">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -250,7 +252,7 @@
 										class="col-sm-3 text-right control-label col-form-label">보너스</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" id="comm" name="comm"
-											value="${param.comm}">
+											value="${emp.comm}">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -266,8 +268,8 @@
 										class="col-sm-3 text-right control-label col-form-label">이미지</label>
 									<div class="col-sm-9">
 										<label class="btn btn-primary btn-file"> 이미지 설정/변경 
-										<input type="file" name="img" style="display: none;" onchange="readURL(this);">
-										</label>  <span id="imgFileName">${param.img}</span> 
+										<input type="file" name="files" style="display: none;" onchange="readURL(this);">
+										</label>  <span id="imgFileName">${emp.img}</span> 
 										<img id="img" style="width:100px; height:100px"src="upload/${param.img}" alt="your image" />
 									</div>
 								</div>
@@ -282,7 +284,7 @@
 						<div class="border-top">
 							<div class="card-body">
 								<button class="btn btn-primary"
-									onclick="location.href='EmpDetail.emp?empno=${param.empno}&cp=${param.cpage}&ps=${param.pagesize}'">뒤로가기</button>
+									onclick="location.href='EmpDetail.emp?empno=${emp.empno}&cp=${param.cp}&ps=${param.ps}'">뒤로가기</button>
 							</div>
 						</div>
 
