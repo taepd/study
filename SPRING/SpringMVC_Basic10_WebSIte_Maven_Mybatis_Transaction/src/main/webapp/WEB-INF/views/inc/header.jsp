@@ -21,7 +21,7 @@
 		<h3 class="hidden">로그인메뉴</h3>
 		<ul id="loginmenu" class="block_hlist">
 			<li><a href="${pageContext.request.contextPath}/index.htm">HOME</a></li>
-			<li><a href="${pageContext.request.contextPath}/joinus/login.htm">로그인</a></li>
+			<li><a href="${pageContext.request.contextPath}/joinus/login.htm">로그인</a></li> 
 			<li><a href="${pageContext.request.contextPath}/joinus/join.htm">회원가입</a></li>
 		</ul>
 		<h3 class="hidden">회원메뉴</h3>

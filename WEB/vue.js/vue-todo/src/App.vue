@@ -18,7 +18,7 @@ export default {
   components:{
     'TodoHeader': TodoHeader,
     'TodoInput' : TodoInput,
-    'TodoList' : TodoInput,
+    'TodoList' : TodoList,
     'TodoFooter' : TodoFooter
   },
   name: 'app',
@@ -31,30 +31,18 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+    text-align: center;
+    background-color: #F6F6F8;
 }
-
-h1, h2 {
-  font-weight: normal;
+input{
+  border-style: groove;
+  width: 200px;
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
+button {
+  border-style: groove;
 }
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+.shadow {
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
 }
 </style>

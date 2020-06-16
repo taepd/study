@@ -239,7 +239,7 @@ BEGIN
       num := num +1;
     END LOOP;
 END;
-
+/
 --for
 --java for(int i = 0 ; i <= 10 ; i++) {}
 BEGIN
@@ -247,7 +247,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE(i);
   END LOOP;
 END;
-
+/
 --위 FOR 문을 사용해서 (1~100까지 합) 구하세요
 DECLARE
 total number :=0;
@@ -257,7 +257,7 @@ BEGIN
   END LOOP;
   DBMS_OUTPUT.PUT_LINE('1~100 총합 : ' || total);
 END;
-
+/
 --11g 이전 (continue (x))
 --11g (continue 추가)
 DECLARE
@@ -270,6 +270,7 @@ BEGIN
   END LOOP;
     DBMS_OUTPUT.PUT_LINE('합계 : ' || total);
 END;
+/
 --------------------------------------------------------------------------------
 --활용
 DECLARE
@@ -295,7 +296,7 @@ BEGIN
   where deptno=v_deptno;
   
   DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || '개의 행이 갱신 되었습니다');
-  
+  --%SQL%ROWCOUNT : 마지막에 실행된 쿼리문의 처리 개수
   --예외처리
   EXCEPTION
     WHEN NO_DATA_FOUND THEN
@@ -305,7 +306,7 @@ BEGIN
     WHEN OTHERS THEN
        DBMS_OUTPUT.PUT_LINE('기타 에러가 발생했습니다');
 END;
-
+/
 SELECT * FROM EMP;
 /*
 질의는 하나의 행만 RETURN 해야 합니다. PL/SQL 블록 내의 SELECT 문장은 다음 규칙을
@@ -318,6 +319,9 @@ select * from emp where ename='SMITH';
 rollback;
 
 -- pl-sql 기본 구문  END
+
+
+
 --------------------------------------------------------------------------------
 -- cursor , procedure , function , Trigger 고급자원 
 
@@ -407,6 +411,7 @@ BEGIN
     END LOOP;
     CLOSE c1;
 END;
+/
 -------------------------------------------------------
 --위 표현을 좀 더 간단하게
 --java (for(emp e : emplist){}
@@ -421,7 +426,7 @@ BEGIN
     END LOOP;
     CLOSE emp_curr;
 END;
-
+/
 --------------------------------------------------------------------------------
 --java (for(emp e : emplist){}
 
@@ -436,9 +441,10 @@ BEGIN
     END LOOP;
     CLOSE emp_curr;
 END;
+/
 -------------------------------------------------
 DECLARE
-  v_sal_total NUMBER(10,2) := 0;
+  v_sal_total NUMBER(10,2) := 0; --number(10,2) : 소수부가 2자리 전체 10자리
   CURSOR emp_cursor
   IS SELECT empno,ename,sal FROM emp
       WHERE deptno = 20 AND job = 'CLERK'
