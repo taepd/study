@@ -156,7 +156,7 @@ csrf >> 사이트 간 요청 위조(CSRF: Cross-Site Request Forgery)
 1. post 방식의 요청만 처리 (하이퍼링크 공격 막기)  : GET 처리 방식 (x)
 2. CSRF 토큰
 사용자 session 에게 UUID 고유값을 만들어서 session 저장
-그 토근 값을 매번 확인하는 방식
+그 토큰 값을 매번 확인하는 방식
 
 2. CSRF Token 사용
 랜덤한 수를 사용자의 세션에 저장하여 사용자의 모든 요청(Request)에 대하여 서버단에서 검증하는 방법.
@@ -435,12 +435,12 @@ FROM member WHERE userid=?
        <security:user name="kglim" password="1004" authorities="ROLE_USER"/>
        <security:user name="admin" password="1004" authorities="ROLE_ADMIN,ROLE_USER"/>
       </security:user-service> 
-     -->
+  -->
  
 수정쿼리
 <!-- JDBC 연동코드 -->
     <security:jdbc-user-service data-source-ref="driverManagerDataSource"
-   users-by-username-query="SELECT USERID, pwd AS PASSWORD, 1 enabled FROM member where userid=?" 
+     users-by-username-query="SELECT USERID, pwd AS PASSWORD, 1 enabled FROM member where userid=?" 
    
    authorities-by-username-query="select m.USERID , r.ROLE_NAME  
            from member m join roll r 

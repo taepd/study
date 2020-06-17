@@ -130,7 +130,7 @@ public class CustomerController {
 	//@RequestMapping(value="noticeReg.htm" , method=RequestMethod.POST)
 	//return "redirect:notice.htm" 
 	@RequestMapping(value="noticeReg.htm",method=RequestMethod.POST)
-	public String noticeReg(Notice n , HttpServletRequest request, Principal principal) throws IOException, ClassNotFoundException, SQLException {
+	public String noticeReg(Notice n , HttpServletRequest request , Principal principal) throws IOException, ClassNotFoundException, SQLException {
 		
 		//Notice DTO
 		//private List<CommonsMultipartFile> files;
@@ -156,9 +156,8 @@ public class CustomerController {
 			}
 			
 		}
-		
-		/*
 		//security 사용한 로그인 ID 를 가져와서 저장하기
+		/*
 		SecurityContext  context =   SecurityContextHolder.getContext();
 		Authentication auth = context.getAuthentication();
 		
@@ -169,10 +168,11 @@ public class CustomerController {
 		System.out.println(userinfo.getPassword() + "....");
 		
 		
-		n.setWriter(userinfo.getUsername()); //사용자 정보 ID
+		//n.setWriter(userinfo.getUsername()); //사용자 정보 ID
+		n.setWriter(userinfo.getUsername());
 		*/
-		n.setWriter(principal.getName());
 		
+		n.setWriter(principal.getName());
 		//DB 파일명 저장
 		n.setFileSrc(filenames.get(0));
 		n.setFileSrc2(filenames.get(1));

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.NoticeDao"> <!-- 패키지명.NoticeDao라는 인터페이스  -->
+	
+	<select id="getCount" resultType="int"> <!-- id=인터페이스 함수명! -->
+		SELECT COUNT(*) CNT
+		FROM NOTICES
+		WHERE ${param1} LIKE '%${param2}%'
+	</select>
+	
+	<!-- 인터페이스의 함수에 파라미터가 있을 때 
+			1) 파라미터가 하나일 때 -> 생략 가능 (쓰게 되면 parameterType="인트" 이런 식으로 쓰면 됨)
+			2) 두 개 이상일 때 -> DTO면 parameterType="DTO"
+			             -> 아니면 [[[hashMap]]]
+			3) MyBatis에선 파라미터 값을 param1, param2, param3 이렇게 받을 수 있음
+				예) String field > param1 / String query > param2
+				ㄴㄴ) 파라미터 하나를 param1으로 받으려 하지 말라. 그냥 생략해...
+				이때는 parameterType을 쓰지 않아도 된다.
+	-->
+	
+	<select id="getNotices" resultType="vo.Notice"> <!-- 여기의 resultType은 dto로. List는 딴데서 만드는 거임 -->
+		SELECT * FROM
+  					( SELECT ROWNUM NUM, N.* 
+  					  FROM (
+  					  		SELECT * FROM NOTICES
+  					  		WHERE ${param2} LIKE '%${param3}%'
+  					  		ORDER BY REGDATE DESC
+  					  		) N
+  					)
+  		WHERE NUM BETWEEN 1+(${param1}-1)*5 AND 5+(${param1}-1)*5
+	</select>
+	<!-- 
+		int srow = 1 + (page-1)*5;
+  		int erow = 5 + (page-1)*5;
+  		이렇게 파라미터 값이 조작된 경우는... 위와 같이 합시다.
+	 -->
+	 
+	<select id="getNotice" resultType="vo.Notice">
+		SELECT seq, title, writer, content, regdate, hit, filesrc, filesrc2
+		FROM NOTICES
+		WHERE SEQ=#{seq} <!-- #을 쓴 이유는 타입을 인정하기 위해서 / 파라미터 하나일 땐 파라미터 이름 그냥 쓰나봄...? -->
+	</select>
+	
+	
+	<delete id="delete"> <!-- <select 아님! -->
+		DELETE NOTICES
+		WHERE SEQ=#{seq}
+	</delete>
+	
+	
+	<update id="update" parameterType="vo.Notice">
+		UPDATE NOTICES
+		SET TITLE=#{title}, <!-- # 다음으로 멤버 필드명 써줌 -->
+			CONTENT=#{content},
+			FILESRC=#{fileSrc, jdbcType=VARCHAR},
+			FILESRC2=#{fileSrc2, jdbcType=VARCHAR}
+		WHERE SEQ=#{seq}
+	</update>
+	<!--
+		값이 넘어오지 않을 때 null 처리를 강제하는 방법: jdbcType=VARCHAR (String의 기본값 null을 강제)
+	 -->
+	
+	
+	<!-- <insert id="insert" parameterType="vo.Notice">
+		INSERT INTO NOTICES
+			(SEQ, TITLE, CONTENT, WRITER, REGDATE, HIT, FILESRC , FILESRC2)
+		VALUES
+			( (SELECT MAX(TO_NUMBER(SEQ))+1 FROM NOTICES), #{title}, #{content}, 'bituser', SYSDATE, 0, #{fileSrc}, #{fileSrc2})
+	</insert>  -->
+	
+	<!-- 위와 같은 결과를 내는 선행 쿼리로 만드는 방법 (아래) -->
+	<insert id="insert" parameterType="vo.Notice">
+		<selectKey order="BEFORE" keyProperty="seq" resultType="String">
+			SELECT MAX(TO_NUMBER(SEQ))+1 FROM NOTICES
+		</selectKey>
+		INSERT INTO NOTICES
+			(SEQ, TITLE, CONTENT, WRITER, REGDATE, HIT, FILESRC , FILESRC2)
+		VALUES
+			( #{seq}, #{title}, #{content}, #{writer}, SYSDATE, 0, #{fileSrc}, #{fileSrc2})
+	</insert>
+	
+</mapper>
