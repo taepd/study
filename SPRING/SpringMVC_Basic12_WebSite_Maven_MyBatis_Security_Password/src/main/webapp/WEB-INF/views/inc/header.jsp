@@ -41,6 +41,7 @@
 
 
 			<!-- Spring 제공 lib 사용하기 -->
+			<!-- 권한에 따라 표시 유무 결정 -->
 			<se:authorize access="!hasRole('ROLE_USER')">
 				<li><a
 					href="${pageContext.request.contextPath}/joinus/login.htm">로그인</a>
