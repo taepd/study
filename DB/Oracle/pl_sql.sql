@@ -462,7 +462,7 @@ BEGIN
       DBMS_OUTPUT.PUT_LINE(RPAD(TO_CHAR(20),2) || '번 부서의 합 ' ||
       LPAD(TO_CHAR(v_sal_total,'$99,999,990.00'),16));
 END;
-
+/
 --------------------------------------------------------------------------------
 select * from emp where deptno=20 and job='CLERK';
 
@@ -515,7 +515,7 @@ DECLARE
         END IF;
      END LOOP;   
   END;
-
+/
 rollback;
 commit;
 
@@ -542,7 +542,7 @@ select * from cursor_table order by deptno;
               DBMS_OUTPUT.PUT_LINE('에러 번호 : ' || TO_CHAR(v_err_code));
               DBMS_OUTPUT.PUT_LINE('에러 내용 : ' || v_err_msg);
       END;
-        
+      /  
 rollback;        
 select* from emp where ename ='JONES';        
         
@@ -579,7 +579,7 @@ is
     set job = 'TTT'
     where deptno=30;
   END;
-
+/
 --실행방법
 execute usp_emplist;
 
@@ -598,7 +598,7 @@ rollback;
 --parameter  사용가능
 --종류 : INPUT  , OUTPUT
 create or replace procedure usp_update_emp
-(vempno emp.empno%TYPE)
+(vempno emp.empno%TYPE) -- 이 부분이 declare에 해당 파라미터로 받는 부분
 is
   BEGIN
     update emp
@@ -606,6 +606,7 @@ is
     where empno = vempno;
     
   END;
+  /
 --실행방법
 exec usp_update_emp(7788);
 
@@ -628,7 +629,7 @@ is
       DBMS_OUTPUT.put_line('이름은 : ' || vname);
       DBMS_OUTPUT.put_line('급여는 : ' || vsal);
   END;
-
+/
 exec usp_getemplist(7902);
 exec usp_getemplist(7788);
 --------------------------------------------------------------------------------
@@ -638,7 +639,7 @@ exec usp_getemplist(7788);
 create or replace procedure app_get_emplist
 (
   vempno IN emp.empno%TYPE,
-  vename OUT emp.ename%TYPE,
+  vename OUT emp.ename%TYPE, --던져주기
   vsal   OUT emp.sal%TYPE
 )
 is
@@ -648,16 +649,16 @@ is
     from emp
     where empno=vempno;
   END;
-
+/
 --오라클 실행 테스트
 DECLARE
-  out_ename emp.ename%TYPE;
+  out_ename emp.ename%TYPE; -- 던진거 받기
   out_sal   emp.sal%TYPE;
 BEGIN
    app_get_emplist(7902,out_ename,out_sal);
    DBMS_OUTPUT.put_line('출력값 : ' || out_ename || '-' || out_sal);
 END;
-
+/
 
 
 
@@ -665,14 +666,14 @@ END;
 CREATE OR REPLACE PROCEDURE usp_EmpList
 (
   p_sal IN number,
-  p_cursor OUT SYS_REFCURSOR --APP 사용하기 위한 타입 (한건이상의 데이터 select 내부적으로 cursor 사용
+  p_cursor OUT SYS_REFCURSOR --APP 사용하기 위한 타입 (한 건이상의 데이터 select는 내부적으로 cursor 사용)
 )
 IS
  BEGIN
      OPEN p_cursor
      FOR  SELECT empno, ename, sal FROM EMP WHERE sal > p_sal;
   END;
-
+/
 
 create table usp_emp
 as
@@ -701,13 +702,14 @@ CREATE OR REPLACE PROCEDURE usp_insert_emp
         p_outmsg := SQLERRM;
         ROLLBACK;
     END;
-
+/
 DECLARE
   out_msg varchar2(200);
 BEGIN
    usp_insert_emp(7902,'홍길동','IT',out_msg);
    DBMS_OUTPUT.put_line('출력값 : ' || out_msg);
 END;
+/
 ---------------------기본 procedure END-----------------------------------------
 --[사용자 정의 함수]
 --to_char() , sum() 오라클에서 제공
@@ -726,7 +728,7 @@ BEGIN
       where deptno = s_deptno;
       return max_sal;
 END;
-
+/
 ---
 select * from emp where sal = f_max_sal(10);
 
@@ -744,7 +746,7 @@ BEGIN
     where empno=vempno;
     return v_name;
 END;
-
+/
 select f_callname(7788) from dual;
 
 select empno, ename , f_callname(7788) , sal
@@ -756,7 +758,7 @@ from emp
 where empno=7788;
 
 --함수 
---parmater  사번을 입력받아서 사번에 해당되는 부서이름을 리턴하는 함수
+--parmater  사번을 입력받아서 사번에 해당되는 부서이름을 리턴하는 함수(기존 join처리하는것을 간소화 가능)
 create or replace function f_get_dname
 (vempno emp.empno%TYPE)
 return varchar2
@@ -769,10 +771,12 @@ is
     where deptno = (select deptno from emp where empno=vempno);
     return v_dname;
   END;
-
+/
 select empno , ename ,deptno, f_get_dname(empno)
 from emp 
 where empno=7788;
+
+--함수 사용 유용한 것: (특히)날짜, 문자열 조작 함수
 --------------------------function END------------------------------------------
 
 --[트리거 : Trigger]
@@ -857,6 +861,7 @@ after insert on tri_emp
 BEGIN -- 자동 동작할 내용
     DBMS_OUTPUT.PUT_LINE('신입사원 입사');
 END;
+/
 
 insert into tri_emp(empno,ename) values(100,'홍길동');
 select * from tri_emp;
@@ -868,9 +873,9 @@ after update on tri_emp
 BEGIN
   DBMS_OUTPUT.PUT_LINE('신입사원 수정');
 END;
+/
 
-
-select * from user_jobs;
+select * from user_jobs; --이건 스케쥴링 관련이라는데 왜 이 위치에 있는지?
 
 
 --테이블에 trigger 정보
@@ -891,7 +896,7 @@ after delete on tri_emp
 BEGIN
   DBMS_OUTPUT.PUT_LINE('신입사원 삭제');
 END;
-
+/
 insert into tri_emp values(200,'홍길동');
 update tri_emp set ename='변경' where empno= 200;
 delete from tri_emp where empno=200;
@@ -930,7 +935,7 @@ as
 
 create or replace trigger emp_audit_tr
  after insert or update or delete on emp2
- --for each row
+-- for each row
 begin
  if inserting then
       insert into emp_audit
@@ -943,13 +948,13 @@ begin
       values(emp_audit_tr.nextval, user, 'deleting', sysdate);
  end if;
 end;
-
+/
 -- for each row 선언 안했을 때 (명령어 한 번에 대하여 한 건으로 기록된다.)
 select * from emp2;
 rollback;
 update emp2 
-set deptno = 20
-where deptno = 10;
+set deptno = 10
+where deptno = 20;
 
 select * from emp_audit;
 
@@ -975,7 +980,7 @@ begin
       values(emp_audit_tr.nextval, user, 'deleting', sysdate);
  end if;
 end;
-
+/
 select * from emp2;
 update emp2 set deptno = 20 where deptno = 10;
 
@@ -1011,7 +1016,7 @@ begin
     values(emp_audit_tr.nextval, user, 'deleting', sysdate, :old.deptno, :new.deptno);
  end if;
 end;
-
+/
 
 select* from emp2;
 
@@ -1046,7 +1051,7 @@ BEGIN
      RAISE_APPLICATION_ERROR(-20002, '허용시간 오류 쉬세요');
   END IF;
 END;
-
+/
 insert into tri_order values(1,'notebook',sysdate);
 select * from tri_order;
 commit;
@@ -1070,7 +1075,7 @@ BEGIN
      RAISE_APPLICATION_ERROR(-20002, '제품코드 오류');
   END IF;
 END;
-
+/
 select * from tri_order;
 
 --오류 (desktop)
@@ -1104,7 +1109,7 @@ BEGIN
   insert into t_02(no, pname)
   values(:NEW.no ,:NEW.pname);
 END;
-
+/
 --입고
 insert into t_01 values(1,'notebook');
 
@@ -1120,7 +1125,7 @@ BEGIN
   set pname = :NEW.pname
   where no = :OLD.no;
 END;
-
+/
 update t_01
 set pname = 'notebook2'
 where no = 1;
@@ -1138,7 +1143,7 @@ BEGIN
   delete from t_02
   where no=:OLD.no;
 END;
-
+/
 delete from t_01 where no=1;
 
 select* from t_01;
