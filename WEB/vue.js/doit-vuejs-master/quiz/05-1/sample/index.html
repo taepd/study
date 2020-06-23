@@ -9,7 +9,7 @@
     <div id="app">
       <header>
         <h3>
-          {{ message }},{{test}}
+          {{ message }},{{test}},{{a}}
           <!-- #1. 새로 추가한 데이터 속성을 아래에 추가 -->
         </h3>
       </header>
@@ -22,7 +22,7 @@
         <!-- <button @click="clickBtn">alert</button> -->
 
         <!-- #3. button 태그를 추가하고 새로 추가한 클릭 메서드를 연결 -->
-        <button v-on:mouseover="mouseover"></button>
+        <button v-on:mouseover="mouseover">마우스오버</button>
 
         <!-- #4. 데이터의 flag 속성 값의 변화에 따라 아래 내용이 어떻게 변하는지 확인 -->
         <ul v-if="flag">
