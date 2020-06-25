@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to 낙서금지 Vue.js App"/>
+    <HelloWorld msg="Welcome to 태영돈바보 Vue.js App"/>
   </div>
 </template>
 
