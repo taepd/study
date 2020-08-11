@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         addTodo(){
-            if(this.newTodoItem !==""){
+            if(this.newTodoItem !==""){   
                 var value = this.newTodoItem && this.newTodoItem.trim(); //&& 연산 중 false가 발생하면 해당값(false나 0)반환. 다 참이면 마지막 값 반환
                 localStorage.setItem(value, value);
                 this.clearInput();

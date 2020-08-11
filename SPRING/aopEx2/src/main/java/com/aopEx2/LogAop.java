@@ -19,7 +19,7 @@ public class LogAop {
 		
 	}*/
 	
-	@Around("within(com.aopEx2.*)")
+	@Around("within(com.aopEx2.*)")	
 	public Object loggerAop(ProceedingJoinPoint joinpoint) throws Throwable{
 		
 		//공통 기능이 적용되는 메서드가 어떤 메서드인지 출력하기 위해 메서드명을 얻어옴
