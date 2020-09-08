@@ -1,12 +1,10 @@
 # naverCartoon.py
-
 from bs4 import BeautifulSoup
 
-# urllib :  URL 작업을 위한 여러 모듈을 모은 패키지. 표준 라이브러리
-# urlopen : 네트워크에 존재하는 주소를 열어주는 함수
+# urlopen : 네트워크에 존재하는 주소를 열어 주는 함수
 from urllib.request import urlopen
 
-myparser = 'html.parser' # html.parser : 간단한 HTML과 XHTML 구문 분석기. 표준 라이브러리
+myparser = 'html.parser'
 myurl = 'https://comic.naver.com/webtoon/weekday.nhn'
 response = urlopen(myurl)
 soup = BeautifulSoup(response, myparser)
@@ -15,11 +13,22 @@ print(type(soup))
 # 요일별 폴더 생성
 weekday_dict = {'mon':'월요일', 'tue':'화요일', 'wed':'수요일', 'thu':'목요일', 'fri':'금요일', 'sat':'토요일', 'sun':'일요일'}
 
-# shutil : shell utility : 고수준 파일 연산. 표준 라이브러리
+# shutil : shell utility
 import os, shutil
-myfolder = 'd:\\imsi\\' # 유닉스 기반은 '/'이 구분자
+myfolder = 'd:\\imsi\\'
 
-try:
+# 각 이미지를 저장해주는 함수
+def saveFile(mysrc, myweekday, mytitle):
+    image_file = urlopen(mysrc)
+    filename = myfolder + weekday_dict[myweekday] + '\\' + mytitle + '.jpg'
+    # print(mysrc)
+    # print(filename)
+
+    myfile = open(filename, mode='wb')
+    myfile.write(image_file.read()) # 바이트 형태로 저장
+    myfile.close()
+
+try :
     if not os.path.exists(myfolder):
         os.mkdir(myfolder)
 
@@ -32,28 +41,18 @@ try:
 
         os.mkdir(mypath)
 
-except FileExistsError as err:
+except FileExistsError as err :
     print(err)
 
-# 각 이미지를 저장해주는 함수
-def saveFile(mysrc, myweekday, mytitle):
-    image_file = urlopen(mysrc)
-    filename = myfolder + weekday_dict[myweekday] + '\\' + mytitle + '.jpg'
-    # print(mysrc)
-    # print(filename)
 
-    myfile = open(filename, mode='wb') # wb : write binary
-    myfile.write(image_file.read()) # 바이트 형태로 저장
-    myfile.close()
-
-mytarget = soup.find_all('div', attrs={'class': 'thumb'})
+mytarget = soup.find_all('div', attrs={'class':'thumb'})
 print(len(mytarget))
 
 mylist = [] # 데이터를 저장할 리스트
 
 for abcd in mytarget:
     myhref = abcd.find('a').attrs['href']
-    myhref = myhref.replace('/webtoon/list.nhn?','')
+    myhref = myhref.replace('/webtoon/list.nhn?', '')
     result = myhref.split('&')
     # print(myhref)
     # print(result)
@@ -64,14 +63,13 @@ for abcd in mytarget:
 
     imgtag = abcd.find('img')
     mytitle = imgtag.attrs['title'].strip()
-    mytitle = mytitle.replace('?','').replace(':','')
+    mytitle = mytitle.replace('?', '').replace(':', '')
     # print(mytitle)
 
     mysrc = imgtag.attrs['src']
     # print(mysrc)
 
-    saveFile(mysrc,myweekday, mytitle)
-
+    saveFile(mysrc, myweekday, mytitle)
     # break
 
     sublist = []
@@ -83,17 +81,11 @@ for abcd in mytarget:
 
 from pandas import DataFrame
 
-mycolumns = ['타이틀 번호', '요일', '제목', '링크']
+mycolumns = ['타이틀번호', '요일', '제목', '링크']
 myframe = DataFrame(mylist, columns=mycolumns)
 
 filename = 'cartoon.csv'
 
 myframe.to_csv(filename, encoding='utf-8', index=False)
-print(filename + '파일로 저장됨')
-
+print(filename + ' 파일로 저장됨')
 print('finished')
-
-
-
-
-

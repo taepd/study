@@ -4,7 +4,12 @@
 http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 2. JAVA_HOME Path 설정 
+cmd 창에서 sysdm.cpl 입력
 JDK가 정상적으로 동작하기 위하여 JAVA_HOME 경로를 설정합니다.
+시스템 변수에 JAVA_HOME, 내용으로 C:\Program Files\Java\jdk1.8.0_251;C:\Program Files\Java\jre1.8.0_261 추가
+
+맥의 경우: https://whitepaek.tistory.com/28
+
 
 3. JPype1(>=0.5.7) 설치
 KoNLPy를 설치할 때 종속 파일인 jpype1도 동시에 설치해야 합니다.
@@ -15,11 +20,28 @@ eclipse를 사용하는 경우 잘 설치가 되지 않는 경우가 많습니다.
 
 cmd 창에서 JPype1 설치
 1. cd 파이썬설치경로\Scripts 엔터 (C:\Anaconda\Scripts 또는 C:\Python38\Scripts)
+나의 경우: C:\Users\taepd\AppData\Local\Programs\Python\Python38-32\Scripts
+
 2. python --version 명령으로 버전을 확인합니다.
+2-1 pip(파이썬 패키지 설치 프로그램)
+pip install --upgrade pip
+
 3. 사이트(http://www.lfd.uci.edu/~gohlke/pythonlibs/#jpype)에서 해당 버전의 jpype 파일을 다운로드 합니다.
 파이썬설치경로\Scripts 폴더에 복사해 둡니다.
-4. pip install jpype 파일이름 엔터
+-사이트에서 파일을 받아서 설치하는 이유는, 여러 에러에서 가장 안전하게 하기 위해서이다
+3.1 pip install jpype 파일이름 엔터
+ex) pip install JPype1-1.0.2-cp37-cp37m-win_amd64.whl
+혹은 python경로 문제가 생기면 python -m pip install JPype1-1.0.2-cp37-cp37m-win_amd64.whl 
+
+맥의 경우: python -m pip install JPype1-py3 로 설치
 
 4. KoNLPy 설치
 코엔엘파이를 설치하도록 합니다.
 간혹 numpy 때문에 진행이 안되는 경우가 발생하면 numpy를 제거후 다시 인스톨하도록 합니다.
+
+pip install konlpy
+
+5. 파이참에서 사용을 위해 3, 4 과정을 파이참 경로에서도 수행
+C:\Users\taepd\PycharmProjects\pythonProject\venv\Scripts
+
+맥의 경우: 파이참 터미널에서 설치하면 경로를 쉽게 찾아 설치 가능

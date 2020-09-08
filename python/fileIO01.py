@@ -1,9 +1,9 @@
 # fileIO01.py
 # 파일 입출력
-# 순서 : open > write > close
+# 순서 : open > write/read > close
 # open() 텍스트/바이너리 파일을 읽거나 쓰기 위한 함수
 # open(file='전체경로+파일이름', mode='w', encoding='utf-8')
-# mode : r(read:기본값)/w(write)/a(append) t(text:기본값)/b(binary)
+# mode : r(read:기본값)/w(write)/a(append)/x(exclusive) t(text:기본값)/b(binary)
 myfile01 = open(file='newfile.txt', mode='w', encoding='utf-8')
 for idx in range(1, 11):
     # 문자열 '\n'은 줄바꿈을 의미
