@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- public Admin getAdmin(String id); -->
-	<select id="getAdmin" resultType="dto.Admin">
+<!-- 	<select id="getAdmin" resultType="dto.Admin">
 		SELECT USERID, PWD FROM ADMINLIST WHERE USERID=#{userid}
-	</select>
+	</select> -->
 
 	<!-- //전체 데이터 read (where 조건절이 없어요) public List<Emp> getEmpList(int cpage, 
 		int pagesize); -->

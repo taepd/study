@@ -24,7 +24,7 @@
 	</beans:bean>
 	
 	<context:annotation-config />
-	<context:component-scan base-package="controller" />
+	<context:component-scan base-package="bit.or.eesotto" />
 	
 	<!-- <beans:bean name="jsonview" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />-->
 	
