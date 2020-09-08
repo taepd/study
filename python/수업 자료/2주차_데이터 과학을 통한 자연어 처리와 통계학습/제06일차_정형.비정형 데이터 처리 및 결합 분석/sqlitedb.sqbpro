@@ -26,8 +26,7 @@ select * from students where id = 'ko';
 
 select * from students order by name desc;
 
+-- like 연산자 : wildcard를 사용한 조회
+-- '_(언더바)'는 1글자 의미, '%'는 0개 이상 의미
+-- 이%, %이, %이% 
 select * from students where name like '%이%';
-
-
-
-

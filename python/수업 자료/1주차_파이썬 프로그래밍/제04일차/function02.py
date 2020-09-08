@@ -3,15 +3,8 @@
 # add(5, 6) -> 11
 # add(100, 200) -> 300
 
-def add(first, second):
-    return first + second
+def add(a, b):
+    return a + b
 
-su1 = 5
-su2 = 6
-result = add(su1, su2)
-print('결과 : {}'.format(result))
-
-su1 = 100
-su2 = 200
-result = add(su1, su2)
-print('결과 : {}'.format(result))
+print(add(5, 6))
+print(add(100, 200))
