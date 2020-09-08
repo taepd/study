@@ -12,6 +12,8 @@ import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
+import org.apache.ibatis.annotations.Select;
+
 import dto.Admin;
 import dto.Emp;
 import net.sf.json.JSONArray;
@@ -19,7 +21,7 @@ import net.sf.json.JSONObject;
 
 
 public interface Empdao {
-	
+	@Select("SELECT USERID, PWD FROM ADMINLIST WHERE USERID=#{userid}")
 	public Admin getAdmin(String id);
 
 	// 전체 데이터 read (where 조건절이 없어요)
