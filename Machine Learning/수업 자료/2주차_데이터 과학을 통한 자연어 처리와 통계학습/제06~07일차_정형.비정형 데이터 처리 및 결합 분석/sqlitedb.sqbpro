@@ -1,5 +1,4 @@
 create table students(id text primary key, name text, birth text);
-
 -- 행 추가
 insert into students(id, name, birth) VALUES ('lee', '이승기', '1989/12/25');
 insert into students(id, name, birth) VALUES ('kang', '강감찬', '1111/11/11');
@@ -17,8 +16,9 @@ delete from students;
 -- commit;
 
 -- 테이블 삭제
-drop table students;
+drop table students;
 
+select * from sungjuk;
 -- 조회 
 select * from students;
 
@@ -30,3 +30,10 @@ select * from students order by name desc;
 -- '_(언더바)'는 1글자 의미, '%'는 0개 이상 의미
 -- 이%, %이, %이% 
 select * from students where name like '%이%';
+
+
+
+
+SELECT * 
+from students st join sungjuk su
+on st.id = su.id;
