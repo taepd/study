@@ -1,0 +1,990 @@
+[
+    {
+        "decideCnt": 0,
+        "stateDt": 20200101
+    },
+    {
+        "decideCnt": 2,
+        "stateDt": 20200202
+    },
+    {
+        "decideCnt": 15,
+        "stateDt": 20200203
+    },
+    {
+        "decideCnt": 0,
+        "stateDt": 20200204
+    },
+    {
+        "decideCnt": 18,
+        "stateDt": 20200205
+    },
+    {
+        "decideCnt": 19,
+        "stateDt": 20200205
+    },
+    {
+        "decideCnt": 23,
+        "stateDt": 20200206
+    },
+    {
+        "decideCnt": 24,
+        "stateDt": 20200207
+    },
+    {
+        "decideCnt": 24,
+        "stateDt": 20200207
+    },
+    {
+        "decideCnt": 24,
+        "stateDt": 20200208
+    },
+    {
+        "decideCnt": 24,
+        "stateDt": 20200208
+    },
+    {
+        "decideCnt": 24,
+        "stateDt": 20200208
+    },
+    {
+        "decideCnt": 24,
+        "stateDt": 20200208
+    },
+    {
+        "decideCnt": 24,
+        "stateDt": 20200208
+    },
+    {
+        "decideCnt": 25,
+        "stateDt": 20200209
+    },
+    {
+        "decideCnt": 27,
+        "stateDt": 20200209
+    },
+    {
+        "decideCnt": 27,
+        "stateDt": 20200210
+    },
+    {
+        "decideCnt": 27,
+        "stateDt": 20200210
+    },
+    {
+        "decideCnt": 28,
+        "stateDt": 20200211
+    },
+    {
+        "decideCnt": 28,
+        "stateDt": 20200211
+    },
+    {
+        "decideCnt": 28,
+        "stateDt": 20200212
+    },
+    {
+        "decideCnt": 28,
+        "stateDt": 20200212
+    },
+    {
+        "decideCnt": 28,
+        "stateDt": 20200213
+    },
+    {
+        "decideCnt": 28,
+        "stateDt": 20200213
+    },
+    {
+        "decideCnt": 28,
+        "stateDt": 20200214
+    },
+    {
+        "decideCnt": 28,
+        "stateDt": 20200214
+    },
+    {
+        "decideCnt": 28,
+        "stateDt": 20200215
+    },
+    {
+        "decideCnt": 28,
+        "stateDt": 20200215
+    },
+    {
+        "decideCnt": 29,
+        "stateDt": 20200216
+    },
+    {
+        "decideCnt": 29,
+        "stateDt": 20200216
+    },
+    {
+        "decideCnt": 30,
+        "stateDt": 20200217
+    },
+    {
+        "decideCnt": 30,
+        "stateDt": 20200217
+    },
+    {
+        "decideCnt": 31,
+        "stateDt": 20200218
+    },
+    {
+        "decideCnt": 31,
+        "stateDt": 20200218
+    },
+    {
+        "decideCnt": 31,
+        "stateDt": 20200218
+    },
+    {
+        "decideCnt": 46,
+        "stateDt": 20200219
+    },
+    {
+        "decideCnt": 51,
+        "stateDt": 20200219
+    },
+    {
+        "decideCnt": 82,
+        "stateDt": 20200220
+    },
+    {
+        "decideCnt": 104,
+        "stateDt": 20200220
+    },
+    {
+        "decideCnt": 156,
+        "stateDt": 20200221
+    },
+    {
+        "decideCnt": 204,
+        "stateDt": 20200221
+    },
+    {
+        "decideCnt": 204,
+        "stateDt": 20200221
+    },
+    {
+        "decideCnt": 346,
+        "stateDt": 20200222
+    },
+    {
+        "decideCnt": 433,
+        "stateDt": 20200222
+    },
+    {
+        "decideCnt": 556,
+        "stateDt": 20200223
+    },
+    {
+        "decideCnt": 602,
+        "stateDt": 20200223
+    },
+    {
+        "decideCnt": 763,
+        "stateDt": 20200224
+    },
+    {
+        "decideCnt": 833,
+        "stateDt": 20200224
+    },
+    {
+        "decideCnt": 893,
+        "stateDt": 20200225
+    },
+    {
+        "decideCnt": 977,
+        "stateDt": 20200225
+    },
+    {
+        "decideCnt": 1146,
+        "stateDt": 20200226
+    },
+    {
+        "decideCnt": 1261,
+        "stateDt": 20200226
+    },
+    {
+        "decideCnt": 1595,
+        "stateDt": 20200227
+    },
+    {
+        "decideCnt": 1766,
+        "stateDt": 20200227
+    },
+    {
+        "decideCnt": 2022,
+        "stateDt": 20200228
+    },
+    {
+        "decideCnt": 2337,
+        "stateDt": 20200228
+    },
+    {
+        "decideCnt": 2931,
+        "stateDt": 20200229
+    },
+    {
+        "decideCnt": 3150,
+        "stateDt": 20200229
+    },
+    {
+        "decideCnt": 3526,
+        "stateDt": 20200301
+    },
+    {
+        "decideCnt": 3736,
+        "stateDt": 20200301
+    },
+    {
+        "decideCnt": 4212,
+        "stateDt": 20200302
+    },
+    {
+        "decideCnt": 4812,
+        "stateDt": 20200303
+    },
+    {
+        "decideCnt": 5328,
+        "stateDt": 20200304
+    },
+    {
+        "decideCnt": 5766,
+        "stateDt": 20200305
+    },
+    {
+        "decideCnt": 6284,
+        "stateDt": 20200306
+    },
+    {
+        "decideCnt": 6767,
+        "stateDt": 20200307
+    },
+    {
+        "decideCnt": 7134,
+        "stateDt": 20200308
+    },
+    {
+        "decideCnt": 7382,
+        "stateDt": 20200309
+    },
+    {
+        "decideCnt": 7513,
+        "stateDt": 20200310
+    },
+    {
+        "decideCnt": 7755,
+        "stateDt": 20200311
+    },
+    {
+        "decideCnt": 7869,
+        "stateDt": 20200312
+    },
+    {
+        "decideCnt": 7979,
+        "stateDt": 20200313
+    },
+    {
+        "decideCnt": 8086,
+        "stateDt": 20200314
+    },
+    {
+        "decideCnt": 8162,
+        "stateDt": 20200315
+    },
+    {
+        "decideCnt": 8236,
+        "stateDt": 20200316
+    },
+    {
+        "decideCnt": 8320,
+        "stateDt": 20200317
+    },
+    {
+        "decideCnt": 8413,
+        "stateDt": 20200318
+    },
+    {
+        "decideCnt": 8565,
+        "stateDt": 20200319
+    },
+    {
+        "decideCnt": 8652,
+        "stateDt": 20200320
+    },
+    {
+        "decideCnt": 8799,
+        "stateDt": 20200321
+    },
+    {
+        "decideCnt": 8897,
+        "stateDt": 20200322
+    },
+    {
+        "decideCnt": 8961,
+        "stateDt": 20200323
+    },
+    {
+        "decideCnt": 9037,
+        "stateDt": 20200324
+    },
+    {
+        "decideCnt": 9037,
+        "stateDt": 20200324
+    },
+    {
+        "decideCnt": 9137,
+        "stateDt": 20200325
+    },
+    {
+        "decideCnt": 9241,
+        "stateDt": 20200326
+    },
+    {
+        "decideCnt": 9332,
+        "stateDt": 20200327
+    },
+    {
+        "decideCnt": 9478,
+        "stateDt": 20200328
+    },
+    {
+        "decideCnt": 9583,
+        "stateDt": 20200329
+    },
+    {
+        "decideCnt": 9661,
+        "stateDt": 20200330
+    },
+    {
+        "decideCnt": 9786,
+        "stateDt": 20200331
+    },
+    {
+        "decideCnt": 9887,
+        "stateDt": 20200401
+    },
+    {
+        "decideCnt": 9976,
+        "stateDt": 20200402
+    },
+    {
+        "decideCnt": 9976,
+        "stateDt": 20200402
+    },
+    {
+        "decideCnt": 10062,
+        "stateDt": 20200403
+    },
+    {
+        "decideCnt": 10156,
+        "stateDt": 20200404
+    },
+    {
+        "decideCnt": 10237,
+        "stateDt": 20200405
+    },
+    {
+        "decideCnt": 10284,
+        "stateDt": 20200406
+    },
+    {
+        "decideCnt": 10331,
+        "stateDt": 20200407
+    },
+    {
+        "decideCnt": 10384,
+        "stateDt": 20200408
+    },
+    {
+        "decideCnt": 10423,
+        "stateDt": 20200409
+    },
+    {
+        "decideCnt": 10450,
+        "stateDt": 20200410
+    },
+    {
+        "decideCnt": 10480,
+        "stateDt": 20200411
+    },
+    {
+        "decideCnt": 10512,
+        "stateDt": 20200412
+    },
+    {
+        "decideCnt": 10537,
+        "stateDt": 20200413
+    },
+    {
+        "decideCnt": 10564,
+        "stateDt": 20200414
+    },
+    {
+        "decideCnt": 10591,
+        "stateDt": 20200415
+    },
+    {
+        "decideCnt": 10613,
+        "stateDt": 20200416
+    },
+    {
+        "decideCnt": 10635,
+        "stateDt": 20200417
+    },
+    {
+        "decideCnt": 10653,
+        "stateDt": 20200418
+    },
+    {
+        "decideCnt": 10661,
+        "stateDt": 20200419
+    },
+    {
+        "decideCnt": 10674,
+        "stateDt": 20200420
+    },
+    {
+        "decideCnt": 10683,
+        "stateDt": 20200421
+    },
+    {
+        "decideCnt": 10694,
+        "stateDt": 20200422
+    },
+    {
+        "decideCnt": 10702,
+        "stateDt": 20200423
+    },
+    {
+        "decideCnt": 10708,
+        "stateDt": 20200424
+    },
+    {
+        "decideCnt": 12801,
+        "stateDt": 20200425
+    },
+    {
+        "decideCnt": 10718,
+        "stateDt": 20200425
+    },
+    {
+        "decideCnt": 10718,
+        "stateDt": 20200425
+    },
+    {
+        "decideCnt": 10728,
+        "stateDt": 20200426
+    },
+    {
+        "decideCnt": 10738,
+        "stateDt": 20200427
+    },
+    {
+        "decideCnt": 10752,
+        "stateDt": 20200428
+    },
+    {
+        "decideCnt": 10761,
+        "stateDt": 20200429
+    },
+    {
+        "decideCnt": 10765,
+        "stateDt": 20200430
+    },
+    {
+        "decideCnt": 10774,
+        "stateDt": 20200501
+    },
+    {
+        "decideCnt": 10780,
+        "stateDt": 20200502
+    },
+    {
+        "decideCnt": 10793,
+        "stateDt": 20200503
+    },
+    {
+        "decideCnt": 10801,
+        "stateDt": 20200504
+    },
+    {
+        "decideCnt": 10804,
+        "stateDt": 20200505
+    },
+    {
+        "decideCnt": 10806,
+        "stateDt": 20200506
+    },
+    {
+        "decideCnt": 10810,
+        "stateDt": 20200507
+    },
+    {
+        "decideCnt": 10822,
+        "stateDt": 20200508
+    },
+    {
+        "decideCnt": 10840,
+        "stateDt": 20200509
+    },
+    {
+        "decideCnt": 10874,
+        "stateDt": 20200510
+    },
+    {
+        "decideCnt": 10909,
+        "stateDt": 20200511
+    },
+    {
+        "decideCnt": 10936,
+        "stateDt": 20200512
+    },
+    {
+        "decideCnt": 10962,
+        "stateDt": 20200513
+    },
+    {
+        "decideCnt": 10991,
+        "stateDt": 20200514
+    },
+    {
+        "decideCnt": 11018,
+        "stateDt": 20200515
+    },
+    {
+        "decideCnt": 11037,
+        "stateDt": 20200516
+    },
+    {
+        "decideCnt": 11050,
+        "stateDt": 20200517
+    },
+    {
+        "decideCnt": 11065,
+        "stateDt": 20200518
+    },
+    {
+        "decideCnt": 11078,
+        "stateDt": 20200519
+    },
+    {
+        "decideCnt": 11110,
+        "stateDt": 20200520
+    },
+    {
+        "decideCnt": 11122,
+        "stateDt": 20200521
+    },
+    {
+        "decideCnt": 11142,
+        "stateDt": 20200522
+    },
+    {
+        "decideCnt": 11165,
+        "stateDt": 20200523
+    },
+    {
+        "decideCnt": 11190,
+        "stateDt": 20200524
+    },
+    {
+        "decideCnt": 11206,
+        "stateDt": 20200525
+    },
+    {
+        "decideCnt": 11225,
+        "stateDt": 20200526
+    },
+    {
+        "decideCnt": 11265,
+        "stateDt": 20200527
+    },
+    {
+        "decideCnt": 11344,
+        "stateDt": 20200528
+    },
+    {
+        "decideCnt": 11402,
+        "stateDt": 20200529
+    },
+    {
+        "decideCnt": 11441,
+        "stateDt": 20200530
+    },
+    {
+        "decideCnt": 11468,
+        "stateDt": 20200531
+    },
+    {
+        "decideCnt": 11503,
+        "stateDt": 20200601
+    },
+    {
+        "decideCnt": 11541,
+        "stateDt": 20200602
+    },
+    {
+        "decideCnt": 11590,
+        "stateDt": 20200603
+    },
+    {
+        "decideCnt": 11629,
+        "stateDt": 20200604
+    },
+    {
+        "decideCnt": 11668,
+        "stateDt": 20200605
+    },
+    {
+        "decideCnt": 11719,
+        "stateDt": 20200606
+    },
+    {
+        "decideCnt": 11776,
+        "stateDt": 20200607
+    },
+    {
+        "decideCnt": 11814,
+        "stateDt": 20200608
+    },
+    {
+        "decideCnt": 11852,
+        "stateDt": 20200609
+    },
+    {
+        "decideCnt": 11902,
+        "stateDt": 20200610
+    },
+    {
+        "decideCnt": 11947,
+        "stateDt": 20200611
+    },
+    {
+        "decideCnt": 12003,
+        "stateDt": 20200612
+    },
+    {
+        "decideCnt": 12051,
+        "stateDt": 20200613
+    },
+    {
+        "decideCnt": 12085,
+        "stateDt": 20200614
+    },
+    {
+        "decideCnt": 12121,
+        "stateDt": 20200615
+    },
+    {
+        "decideCnt": 12155,
+        "stateDt": 20200616
+    },
+    {
+        "decideCnt": 12198,
+        "stateDt": 20200617
+    },
+    {
+        "decideCnt": 12257,
+        "stateDt": 20200618
+    },
+    {
+        "decideCnt": 12306,
+        "stateDt": 20200619
+    },
+    {
+        "decideCnt": 12373,
+        "stateDt": 20200620
+    },
+    {
+        "decideCnt": 12421,
+        "stateDt": 20200621
+    },
+    {
+        "decideCnt": 12438,
+        "stateDt": 20200622
+    },
+    {
+        "decideCnt": 12484,
+        "stateDt": 20200623
+    },
+    {
+        "decideCnt": 12535,
+        "stateDt": 20200624
+    },
+    {
+        "decideCnt": 12563,
+        "stateDt": 20200625
+    },
+    {
+        "decideCnt": 12602,
+        "stateDt": 20200626
+    },
+    {
+        "decideCnt": 12653,
+        "stateDt": 20200627
+    },
+    {
+        "decideCnt": 12715,
+        "stateDt": 20200628
+    },
+    {
+        "decideCnt": 12757,
+        "stateDt": 20200629
+    },
+    {
+        "decideCnt": 12800,
+        "stateDt": 20200630
+    },
+    {
+        "decideCnt": 12850,
+        "stateDt": 20200701
+    },
+    {
+        "decideCnt": 12904,
+        "stateDt": 20200702
+    },
+    {
+        "decideCnt": 12967,
+        "stateDt": 20200703
+    },
+    {
+        "decideCnt": 13030,
+        "stateDt": 20200704
+    },
+    {
+        "decideCnt": 13091,
+        "stateDt": 20200705
+    },
+    {
+        "decideCnt": 13137,
+        "stateDt": 20200706
+    },
+    {
+        "decideCnt": 13181,
+        "stateDt": 20200707
+    },
+    {
+        "decideCnt": 13244,
+        "stateDt": 20200708
+    },
+    {
+        "decideCnt": 13293,
+        "stateDt": 20200709
+    },
+    {
+        "decideCnt": 13338,
+        "stateDt": 20200710
+    },
+    {
+        "decideCnt": 13373,
+        "stateDt": 20200711
+    },
+    {
+        "decideCnt": 13417,
+        "stateDt": 20200712
+    },
+    {
+        "decideCnt": 13479,
+        "stateDt": 20200713
+    },
+    {
+        "decideCnt": 13512,
+        "stateDt": 20200714
+    },
+    {
+        "decideCnt": 13551,
+        "stateDt": 20200715
+    },
+    {
+        "decideCnt": 13612,
+        "stateDt": 20200716
+    },
+    {
+        "decideCnt": 13672,
+        "stateDt": 20200717
+    },
+    {
+        "decideCnt": 13711,
+        "stateDt": 20200718
+    },
+    {
+        "decideCnt": 13745,
+        "stateDt": 20200719
+    },
+    {
+        "decideCnt": 13771,
+        "stateDt": 20200720
+    },
+    {
+        "decideCnt": 13816,
+        "stateDt": 20200721
+    },
+    {
+        "decideCnt": 13879,
+        "stateDt": 20200722
+    },
+    {
+        "decideCnt": 13938,
+        "stateDt": 20200723
+    },
+    {
+        "decideCnt": 13979,
+        "stateDt": 20200724
+    },
+    {
+        "decideCnt": 14092,
+        "stateDt": 20200725
+    },
+    {
+        "decideCnt": 14150,
+        "stateDt": 20200726
+    },
+    {
+        "decideCnt": 14175,
+        "stateDt": 20200727
+    },
+    {
+        "decideCnt": 14203,
+        "stateDt": 20200728
+    },
+    {
+        "decideCnt": 14251,
+        "stateDt": 20200729
+    },
+    {
+        "decideCnt": 14269,
+        "stateDt": 20200730
+    },
+    {
+        "decideCnt": 14305,
+        "stateDt": 20200731
+    },
+    {
+        "decideCnt": 14336,
+        "stateDt": 20200801
+    },
+    {
+        "decideCnt": 14366,
+        "stateDt": 20200802
+    },
+    {
+        "decideCnt": 14389,
+        "stateDt": 20200803
+    },
+    {
+        "decideCnt": 14423,
+        "stateDt": 20200804
+    },
+    {
+        "decideCnt": 14456,
+        "stateDt": 20200805
+    },
+    {
+        "decideCnt": 14499,
+        "stateDt": 20200806
+    },
+    {
+        "decideCnt": 14519,
+        "stateDt": 20200807
+    },
+    {
+        "decideCnt": 14562,
+        "stateDt": 20200808
+    },
+    {
+        "decideCnt": 14598,
+        "stateDt": 20200809
+    },
+    {
+        "decideCnt": 14626,
+        "stateDt": 20200810
+    },
+    {
+        "decideCnt": 14660,
+        "stateDt": 20200811
+    },
+    {
+        "decideCnt": 14714,
+        "stateDt": 20200812
+    },
+    {
+        "decideCnt": 14770,
+        "stateDt": 20200813
+    },
+    {
+        "decideCnt": 14873,
+        "stateDt": 20200814
+    },
+    {
+        "decideCnt": 15039,
+        "stateDt": 20200815
+    },
+    {
+        "decideCnt": 15318,
+        "stateDt": 20200816
+    },
+    {
+        "decideCnt": 15515,
+        "stateDt": 20200817
+    },
+    {
+        "decideCnt": 15761,
+        "stateDt": 20200818
+    },
+    {
+        "decideCnt": 16058,
+        "stateDt": 20200819
+    },
+    {
+        "decideCnt": 16346,
+        "stateDt": 20200820
+    },
+    {
+        "decideCnt": 16670,
+        "stateDt": 20200821
+    },
+    {
+        "decideCnt": 17002,
+        "stateDt": 20200822
+    },
+    {
+        "decideCnt": 17399,
+        "stateDt": 20200823
+    },
+    {
+        "decideCnt": 17665,
+        "stateDt": 20200824
+    },
+    {
+        "decideCnt": 17945,
+        "stateDt": 20200825
+    },
+    {
+        "decideCnt": 18265,
+        "stateDt": 20200826
+    },
+    {
+        "decideCnt": 18706,
+        "stateDt": 20200827
+    },
+    {
+        "decideCnt": 19077,
+        "stateDt": 20200828
+    },
+    {
+        "decideCnt": 19400,
+        "stateDt": 20200829
+    },
+    {
+        "decideCnt": 19699,
+        "stateDt": 20200830
+    },
+    {
+        "decideCnt": 19947,
+        "stateDt": 20200831
+    }
+]

@@ -1,0 +1,39 @@
+create table students(id text primary key, name text, birth text);
+-- 행 추가
+insert into students(id, name, birth) VALUES ('lee', '이승기', '1989/12/25');
+insert into students(id, name, birth) VALUES ('kang', '강감찬', '1111/11/11');
+
+-- 행 추가, 수정, 삭제 등은 반드시 commit 해줘야 반영됨
+commit;
+
+-- 행 정보 수정
+update students set name = '이순신' where id = 'lee';
+commit;
+update students set birth = '1000/10/10' where id = 'kang';
+
+-- 모든 행 삭제
+delete from students;
+-- commit;
+
+-- 테이블 삭제
+drop table students;
+
+select * from sungjuk;
+-- 조회 
+select * from students;
+
+select * from students where id = 'ko';
+
+select * from students order by name desc;
+
+-- like 연산자 : wildcard를 사용한 조회
+-- '_(언더바)'는 1글자 의미, '%'는 0개 이상 의미
+-- 이%, %이, %이% 
+select * from students where name like '%이%';
+
+
+
+
+SELECT * 
+from students st join sungjuk su
+on st.id = su.id;
