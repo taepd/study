@@ -28,8 +28,9 @@ model = Sequential()
 # one-hot encoding 이후 이므로 컬럼수로 정답수 계산. np.unique()하면 2 나옴(0,1뿐이므로)
 NB_CLASSES = y_train.shape[1]
 print('nb: ', NB_CLASSES)
-
-model.add(Dense(units=NB_CLASSES, input_shape=(image_dim,), activation='softmax'))
+HIDDEN_LAYER_1 = 512
+model.add(Dense(units=HIDDEN_LAYER_1, input_shape=(image_dim,), activation='relu'))
+model.add(Dense(units=NB_CLASSES, activation='softmax'))
 
 model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
 
@@ -55,40 +56,40 @@ print('-'*30)
 print(f'test_loss: {score[0]: .4f}')
 print('-'*30)
 
-# 모델의 정확도에 대한 히스토리를 시각화
-plt.title('model accuracy')
-plt.xlabel('epoch')
-plt.ylabel('accuracy')
-
-accuracy = hist.history['accuracy']
-val_accuracy = hist.history['val_accuracy']
-
-plt.plot(accuracy)
-plt.plot(val_accuracy)
-
-# plot 이후에 legend 설정해야 한다?
-plt.legend(['train', 'test'], loc='upper left')
-
-filename = 'mnistNeuralNet01_01.png'
-plt.savefig(filename)
-print(filename + ' 파일 저장됨')
-
-# 모델의 손실(비용)함수에 대한 히스토리를 시각화
-
-plt.figure()
-plt.title('model loss')
-plt.xlabel('epoch')
-plt.ylabel('loss')
-
-accuracy = hist.history['loss']
-val_accuracy = hist.history['val_loss']
-
-plt.plot(accuracy)
-plt.plot(val_accuracy)
-
-# plot 이후에 legend 설정해야 한다?
-plt.legend(['train', 'test'], loc='best')
-
-filename = 'mnistNeuralNet01_02.png'
-plt.savefig(filename)
-print(filename + ' 파일 저장됨')
+# # 모델의 정확도에 대한 히스토리를 시각화
+# plt.title('model accuracy')
+# plt.xlabel('epoch')
+# plt.ylabel('accuracy')
+#
+# accuracy = hist.history['accuracy']
+# val_accuracy = hist.history['val_accuracy']
+#
+# plt.plot(accuracy)
+# plt.plot(val_accuracy)
+#
+# # plot 이후에 legend 설정해야 한다?
+# plt.legend(['train', 'test'], loc='upper left')
+#
+# filename = 'mnistNeuralNet01_01.png'
+# plt.savefig(filename)
+# print(filename + ' 파일 저장됨')
+#
+# # 모델의 손실(비용)함수에 대한 히스토리를 시각화
+#
+# plt.figure()
+# plt.title('model loss')
+# plt.xlabel('epoch')
+# plt.ylabel('loss')
+#
+# accuracy = hist.history['loss']
+# val_accuracy = hist.history['val_loss']
+#
+# plt.plot(accuracy)
+# plt.plot(val_accuracy)
+#
+# # plot 이후에 legend 설정해야 한다?
+# plt.legend(['train', 'test'], loc='best')
+#
+# filename = 'mnistNeuralNet01_02.png'
+# plt.savefig(filename)
+# print(filename + ' 파일 저장됨')

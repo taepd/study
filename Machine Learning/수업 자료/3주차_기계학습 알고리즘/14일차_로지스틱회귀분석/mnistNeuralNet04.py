@@ -30,6 +30,7 @@ NB_CLASSES = y_train.shape[1]
 print('nb: ', NB_CLASSES)
 HIDDEN_LAYER_1 = 512
 model.add(Dense(units=HIDDEN_LAYER_1, input_shape=(image_dim,), activation='relu'))
+model.add(Dense(units=HIDDEN_LAYER_1, activation='relu'))
 model.add(Dense(units=NB_CLASSES, activation='softmax'))
 
 model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])

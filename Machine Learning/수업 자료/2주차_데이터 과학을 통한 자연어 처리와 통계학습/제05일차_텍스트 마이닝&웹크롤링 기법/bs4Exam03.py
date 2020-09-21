@@ -26,8 +26,8 @@ print('-'*30)
 mytrs = soup.find_all('tr')
 print(len(mytrs))
 
-no = 0 # 순서를 의미하는 번호
-totallist = [] # 전체를 저장할 리스트
+no = 0  # 순서를 의미하는 번호
+totallist = []  # 전체를 저장할 리스트
 
 for one_tr in mytrs:
     # print(one_tr)
@@ -37,7 +37,7 @@ for one_tr in mytrs:
     up_down = '' # 순위 변동 설명 문구
 
     mytd = one_tr.find('td', attrs={'class': 'title'})
-    if(mytd !=None):
+    if mytd is not None:
         no += 1
         newno = str(no).zfill(2)
 
@@ -45,9 +45,9 @@ for one_tr in mytrs:
         title = mytag.a['title'] # title 속성에도 위의 a.string과 마찬가지로 제목이 담겨있다
 
         # 순위 변동 부분 파싱
-        mytd = one_tr.select_one('td:nth-of-type(3)') # 세 번째 td를 선택
+        mytd = one_tr.select_one('td:nth-of-type(3)')  # 세 번째 td를 선택
         myimg = mytd.find('img')
-        if myimg.attrs['alt'] == 'up' :
+        if myimg.attrs['alt'] == 'up':
             up_down = '상승'
         elif myimg.attrs['alt'] == 'down':
             up_down = '강등'
@@ -55,12 +55,15 @@ for one_tr in mytrs:
             up_down = '불변'
 
         change = one_tr.find('td', attrs={'class': 'range ac'})
-        change = change.string
+        if change is None:
+            change = '신규 진입'
+        else:
+            change = change.string
 
         # print(newno + '/' + title + '/' + up_down + '/' + change)
 
         # csv로 저장
-        totallist.append((newno, title, up_down,change))
+        totallist.append((newno, title, up_down, change))
 
 mycolumns = ['순위', '제목', '변동', '변동폭']
 myframe = DataFrame(totallist, columns=mycolumns)

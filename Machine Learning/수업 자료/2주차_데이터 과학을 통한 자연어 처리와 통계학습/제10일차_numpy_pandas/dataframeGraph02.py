@@ -1,7 +1,7 @@
 # dataframeGraph02.py
 import pandas as pd
 import matplotlib.pyplot as plt
-filename = './첨부(2주차)/ex802.csv'
+filename = '../첨부(2주차)/ex802.csv'
 
 plt.rc('font', family='Malgun Gothic')
 
@@ -12,7 +12,7 @@ myframe.index.name = '자동차 유형'
 myframe.columns.name = '도시(city)'
 
 myframe.plot(kind='bar', rot=0, title='차량 유형별 지역 등록 대수', legend=True)
-# plt.legend(loc='best')
+plt.legend(loc='best')
 # plt.legend(loc=4)
 
 
@@ -20,7 +20,7 @@ filename = 'graph02.png'
 plt.savefig(filename)
 print(filename + ' 파일 저장')
 
-# 전치 활용
+# 전치 활용: T
 myframeT = myframe.T
 print(myframeT)
 

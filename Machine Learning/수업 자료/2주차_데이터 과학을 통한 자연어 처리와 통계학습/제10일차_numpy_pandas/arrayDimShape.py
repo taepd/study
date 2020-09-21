@@ -40,5 +40,4 @@ print(data ** 0.5)
 print('-'*30)
 
 
-
 print('finished')

@@ -1,5 +1,5 @@
 # exception01.py
-'''
+"""
 예외 처리 : 예외가 발생하지 않도록 사전에 막음 조치를 취하는 것
 
 예외 처리 방법
@@ -12,7 +12,7 @@ else:
 finally:
     예외 발생 여부와 상관없이 하고자 하는 내용 기록
     주로 마감 작업(파일 닫기, 데이터베이스 접속 종료 등)
-'''
+"""
 
 try:
     x = 4
@@ -23,9 +23,9 @@ try:
     print(mydict['b'])
 
     mylist = [1, 2, 3]
-    print((mylist[4])) # IndexError: list index out of range
+    print((mylist[4]))  # IndexError: list index out of range
 
-    z = x / y # ZeroDivisionError
+    z = x / y  # ZeroDivisionError
 
 except ZeroDivisionError as err:
     # err이란 이름은 임의의 이름이여도 됨

@@ -48,13 +48,13 @@ my = np.mean(y)
 print('x 평균 :', mx)
 print('y 평균 :', my)
 
-denominator = sum([(mx-val)**2 for val in x])  # 분모
+denominator = sum([(mx - val) ** 2 for val in x])  # 분모
 
 
 def calc(x, mx, y, my):
     result = 0
     for i in range(len(x)):
-        result += (x[i]-mx)*(y[i]-my)
+        result += (x[i] - mx) * (y[i] - my)
     return result
 
 
@@ -62,8 +62,8 @@ numerator = calc(x, mx, y, my)  # 분자
 print('분자 :', numerator)
 print('분모 :', denominator)
 
-w = numerator/denominator
-b = my - (w*mx)
+w = numerator / denominator
+b = my - (w * mx)
 
 print('기울기 w :', w)
 print('y절편 b :', b)
@@ -97,6 +97,7 @@ filename = 'imageTest02.png'
 plt.savefig(filename)
 print(filename + ' 파일 저장됨')
 
+
 # 가장 이상적인 w와 b는 다음과 같다 (위 계산에 의한 값)
 # 기울기 w : 27.5
 # y절편 b : 7.5
@@ -106,7 +107,8 @@ print(filename + ' 파일 저장됨')
 
 
 def myfunction(w, x, b=7.5):
-    return w*x+b
+    return w * x + b
+
 
 b = 10
 slope1, slope2, slope3 = 25, 30, 35
@@ -116,10 +118,13 @@ answer1 = myfunction(slope1, x, b)
 answer2 = myfunction(slope2, x, b)
 answer3 = myfunction(slope3, x, b)
 
-rmse0 = np.sum((best-y)**2)
-rmse1 = np.sum((answer1-y)**2)
-rmse2 = np.sum((answer2-y)**2)
-rmse3 = np.sum((answer3-y)**2)
+# 평균 제곱근 편차(Root Mean Square Deviation; RMSD) 또는 평균 제곱근 오차(Root Mean Square Error; RMSE)
+# 추정 값 또는 모델이 예측한 값과 실제 환경에서 관찰되는 값의 차이를 다룰 때 흔히 사용하는 측도
+
+rmse0 = np.sum((best - y) ** 2)
+rmse1 = np.sum((answer1 - y) ** 2)
+rmse2 = np.sum((answer2 - y) ** 2)
+rmse3 = np.sum((answer3 - y) ** 2)
 
 plt.figure()
 
@@ -138,8 +143,6 @@ plt.plot(x, answer3, color='b', linestyle='solid', marker='o', label=mylabel)
 plt.title('기울기별 시각화')
 plt.legend(loc='best')
 plt.ylim(20, 160)
-
-
 filename = 'imageTest03.png'
 plt.savefig(filename)
 print(filename + ' 파일 저장됨')
@@ -151,10 +154,12 @@ print(filename + ' 파일 저장됨')
 # w를 20이상 35이하의 범위에서 w에 따른 비용 함수를 시각화 해봅니다.
 cost = []  # 비용 함수 리스트
 
+# 오차(error) = 모집단의 회귀식에서 예측된 값 - 실제 관측값
+# 잔차(residual; res) = 표본집단의 회귀식에서 예측된 값 - 실제 관측값
 for idx in range(2000, 3501, 1):
-    res01 = myfunction(0.01*idx, x)
-    res02 = np.sum((res01-y)**2)
-    cost.append((0.01*idx, res02))
+    res01 = myfunction(0.01 * idx, x)
+    res02 = np.sum((res01 - y) ** 2)
+    cost.append((0.01 * idx, res02))
 
 print(cost)
 
@@ -163,15 +168,12 @@ xdata = [data[0] for data in cost]
 ydata = [data[1] for data in cost]
 
 plt.figure()
-plt.plot(xdata, xdata, 'b-')
-plt.plot(w, min(ydata), 'bo')  # 극소점
-
+plt.plot(xdata, ydata, 'b-') # 'b-' : blue, soild
+plt.plot(w, min(ydata), 'bo')  # 극소점 # 'bo' : color: blue, marker: 0
 
 plt.title('w에 따른 cost의 변화')
-
 filename = 'imageTest04.png'
 plt.savefig(filename)
 print(filename + ' 파일 저장됨')
-
 
 print('finished')

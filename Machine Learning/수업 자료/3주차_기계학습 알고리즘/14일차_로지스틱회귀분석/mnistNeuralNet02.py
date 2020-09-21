@@ -31,7 +31,7 @@ print('nb: ', NB_CLASSES)
 
 model.add(Dense(units=NB_CLASSES, input_shape=(image_dim,), activation='softmax'))
 
-model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 print('model.fit() 중입니다.')
 
@@ -69,7 +69,7 @@ plt.plot(val_accuracy)
 # plot 이후에 legend 설정해야 한다?
 plt.legend(['train', 'test'], loc='upper left')
 
-filename = 'mnistNeuralNet01_01.png'
+filename = 'mnistNeuralNet02_01.png'
 plt.savefig(filename)
 print(filename + ' 파일 저장됨')
 
@@ -89,6 +89,6 @@ plt.plot(val_accuracy)
 # plot 이후에 legend 설정해야 한다?
 plt.legend(['train', 'test'], loc='best')
 
-filename = 'mnistNeuralNet01_02.png'
+filename = 'mnistNeuralNet02_02.png'
 plt.savefig(filename)
 print(filename + ' 파일 저장됨')

@@ -33,7 +33,7 @@ model.add(Dense(units=HIDDEN_LAYER_1, input_shape=(image_dim,), activation='relu
 model.add(Dense(units=HIDDEN_LAYER_1, activation='relu'))
 model.add(Dense(units=NB_CLASSES, activation='softmax'))
 
-model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 print('model.fit() 중입니다.')
 

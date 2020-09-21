@@ -13,6 +13,8 @@ myseries = Series(data=mylist, index=myindex)
 print(myseries)
 print(type(myseries))
 
+# Pandas의 시리즈나 데이터프레임은 plot이라는 시각화 메서드를 내장
+# plot은 matplotlib를 내부에서 임포트하여 사용
 myseries.plot(title='한국 지역별 방문객 지수')
 # plt.title('한국 지역별 방문객 지수')
 

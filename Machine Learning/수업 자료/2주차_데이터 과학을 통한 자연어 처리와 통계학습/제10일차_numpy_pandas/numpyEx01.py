@@ -3,6 +3,7 @@ import numpy as np
 
 data = np.array([[10, 20], [30, 40]])
 print(data)
+print(data.ndim)
 
 # sum(): 모든 요소의 합
 result = np.sum(data)

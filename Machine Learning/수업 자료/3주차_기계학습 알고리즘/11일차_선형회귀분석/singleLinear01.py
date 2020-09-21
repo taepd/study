@@ -14,7 +14,7 @@ from tensorflow.python.keras.models import Sequential
 테스트 데이터를 이용하여 결과를 예측
 """
 
-filename = './첨부(3주차)/회귀분석예제파일/singleLinear01.csv'
+filename = '../첨부(3주차)/회귀분석예제파일/singleLinear01.csv'
 data = np.loadtxt(filename, delimiter=',')
 print(type(data))
 

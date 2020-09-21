@@ -4,7 +4,7 @@ import numpy as np
 
 print('임의의 값으로 채워진 행렬 생성')
 # random : 최소 0이상, 1미만의 숫자
-result = np.random.random((2, 2))
+result = np.random.random((2, 2))  # 인자로 튜플을 받음
 print(result)
 print(type(result))
 print('-'*30)
@@ -16,7 +16,7 @@ print(result)
 print('-'*30)
 
 print('임의의 값으로 채워진 배열 생성')
-result = np.random.rand(4, 4)
+result = np.random.rand(4, 4)  # np.random.random과 동일하게 작동하지만 인자로 dimension을 받음
 print(result)
 print(type(result))
 print('-'*30)
@@ -53,7 +53,7 @@ print()
 seed = 12345
 # np.random.seed(seed)  # 랜덤 값에 시드 배정
 
-# np.random.permutation: 지정한 길이만큼 수를 임의로 섞어줌
+# np.random.permutation: 지정한 길이만큼 수를 임의로 섞어줌(순열)
 length = 10
 result = np.random.permutation(length)
 print(result)
@@ -64,6 +64,7 @@ result = np.random.choice(5, 3)
 print(result)
 print('-'*30)
 
+# p: 확률값 지정 리스트
 result = np.random.choice(5, 3, p=[0.1, 0, 0.3, 0.6, 0])
 print(result)
 print('-'*30)

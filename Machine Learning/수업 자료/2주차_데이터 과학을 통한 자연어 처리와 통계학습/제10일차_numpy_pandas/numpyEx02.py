@@ -9,7 +9,7 @@ print(a)
 print(a.ndim)
 print(a.shape)
 
-A = np.reshape(a, [2,2])
+A = np.reshape(a, [2, 2])
 print(A)
 print(A.ndim)
 print(A.shape)

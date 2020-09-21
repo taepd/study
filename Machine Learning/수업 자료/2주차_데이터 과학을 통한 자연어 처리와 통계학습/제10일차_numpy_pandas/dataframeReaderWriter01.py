@@ -36,6 +36,7 @@ print('-' * 30)
 
 # loc
 result = myframe.loc['이순신']
+print(type(result))
 print(result)
 print('-' * 30)
 

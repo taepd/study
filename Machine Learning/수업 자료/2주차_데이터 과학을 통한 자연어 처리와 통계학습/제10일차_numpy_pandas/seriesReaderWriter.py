@@ -2,18 +2,19 @@
 
 from pandas import Series
 
-
 myindex = ['서울', '부산', '광주', '대구', '울산', '목포', '여수']
 mylist = [50, 60, 40, 80, 70, 30, 20]
 myseries = Series(data=mylist, index=myindex)
 print(myseries)
 print('-'*30)
 
-print(myseries['대구'])
+# numpy 타입으로 반환
+print('myserises["대구"]:', myseries['대구'])
 print(type(myseries['대구']))
 print('-'*30)
 
-print(myseries[['대구']])
+# Series 타입으로 반환
+print('myserises[["대구"]]:', myseries[['대구']])
 print(type(myseries[['대구']]))
 print('-'*30)
 

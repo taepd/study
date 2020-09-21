@@ -27,6 +27,7 @@ plt.ylabel('점수')
 
 # series 요소 각각에 연산됨
 ratio = 100 * members / members.sum()
+print(type(ratio))
 print(ratio)
 
 for idx in range(members.size):

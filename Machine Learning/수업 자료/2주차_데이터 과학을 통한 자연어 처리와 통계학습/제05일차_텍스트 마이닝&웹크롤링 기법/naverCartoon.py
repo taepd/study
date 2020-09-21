@@ -13,7 +13,7 @@ soup = BeautifulSoup(response, myparser)
 print(type(soup))
 
 # 요일별 폴더 생성
-weekday_dict = {'mon':'월요일', 'tue':'화요일', 'wed':'수요일', 'thu':'목요일', 'fri':'금요일', 'sat':'토요일', 'sun':'일요일'}
+weekday_dict = {'mon': '월요일', 'tue': '화요일', 'wed': '수요일', 'thu': '목요일', 'fri': '금요일', 'sat': '토요일', 'sun': '일요일'}
 
 # shutil : shell utility : 고수준 파일 연산. 표준 라이브러리
 import os, shutil
@@ -35,6 +35,7 @@ try:
 except FileExistsError as err:
     print(err)
 
+
 # 각 이미지를 저장해주는 함수
 def saveFile(mysrc, myweekday, mytitle):
     image_file = urlopen(mysrc)
@@ -46,14 +47,15 @@ def saveFile(mysrc, myweekday, mytitle):
     myfile.write(image_file.read()) # 바이트 형태로 저장
     myfile.close()
 
+
 mytarget = soup.find_all('div', attrs={'class': 'thumb'})
 print(len(mytarget))
 
-mylist = [] # 데이터를 저장할 리스트
+mylist = []  # 데이터를 저장할 리스트
 
 for abcd in mytarget:
     myhref = abcd.find('a').attrs['href']
-    myhref = myhref.replace('/webtoon/list.nhn?','')
+    myhref = myhref.replace('/webtoon/list.nhn?', '')
     result = myhref.split('&')
     # print(myhref)
     # print(result)

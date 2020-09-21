@@ -1,6 +1,7 @@
 # 외부 패키지를 사용하는 방법 1
 # import 패키지경로.모듈이름
-import somefolder.mymath.mathMod
+
+import somefoler.mymath.mathMod
 
 su = 4
 result = somefolder.mymath.mathMod.square_root(su)

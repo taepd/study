@@ -17,6 +17,7 @@ myfile02 = open(file='newfile.txt', mode='a', encoding='utf-8' )
 for idx in range(11, 101):
     data = '%3d번째 줄입니다\n' % (idx)
     myfile02.write(data)
+myfile02.close()
 
 print('여러 개 파일 만들기')
 for idx in range(1, 11):
