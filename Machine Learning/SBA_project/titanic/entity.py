@@ -12,5 +12,6 @@ class Entity:
     test: object = None
     id : str = ''
     lable : str = ''
+    
 
    
