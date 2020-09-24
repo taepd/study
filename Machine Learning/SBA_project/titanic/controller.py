@@ -2,7 +2,8 @@ import sys
 sys.path.insert(0, 'E:/Dropbox/Dropbox/Programming/Git/Machine Learning/SBA_project')
 from titanic.entity import Entity
 from titanic.service import Service
-
+from sklearn.ensemble import RandomForestClassifier
+import pandas as pd
 """
 PassengerId  고객ID,
 Survived 생존여부,
@@ -23,13 +24,6 @@ class Controller:
         self.entity = Entity()
         self.service = Service()
     
-    def modeling(self, train, test):
-        service = self.service
-        this = self.preprocessing(train, test)
-        print(f'훈련 컬럼 : {this.train.columns}')
-        this.label = service.create_label(this)
-        this.train = service.create_train(this)
-        return this
 
     def preprocessing(self, train, test):
         service = self.service
@@ -38,7 +32,7 @@ class Controller:
         this.test = service.new_model(test) # payload
         this.id = this.test['PassengerId']
         print(f'드롭 전 변수 :  {this.train.columns}')
-        this = service.drop_feature(this, 'Cabin') 
+        this = service.drop_feature(this, 'Cabin')
         this = service.drop_feature(this, 'Ticket')
         print(f'드롭 후 변수 :  {this.train.columns}')
         this = service.embarked_nominal(this)
@@ -60,11 +54,15 @@ class Controller:
         print(f'train na체크: \n {this.train.isnull().sum()}')
         print(f'test na체크: \n {this.test.isnull().sum()}')
 
-
-
-        
         return this
 
+    def modeling(self, train, test):
+        service = self.service
+        this = self.preprocessing(train, test)
+        print(f'훈련 컬럼 : {this.train.columns}')
+        this.label = service.create_label(this)
+        this.train = service.create_train(this)
+        return this
 
     def learning(self, train, test):
         service = self.service
@@ -76,10 +74,18 @@ class Controller:
         print(f'KNN 검증결과: {service.accuracy_by_knn(this)}')
         print(f'SVM 검증결과: {service.accuracy_by_svm(this)}')
 
-    def submit(self):
-        pass
+        return this 
+
+
+    def submit(self, train, test):  # machine이 된다. 이 단계는 캐글에게 내 머신을 보내서 평가받게 하는 것
+        this = self.learning(train, test)
+        clf = RandomForestClassifier()
+        clf.fit(this.train, this.label)
+        prediction = clf.predict(this.test)
+        pd.DataFrame(
+            {'PassengerId': this.id, 'Survived': prediction}
+        ).to_csv(this.context + 'submission.csv', index=False)
 
 if __name__ == '__main__':
     ctrl = Controller()
-    # ctrl.preprocessing('train.csv', 'test.csv')
-    ctrl.learning('train.csv', 'test.csv')
+    ctrl.submit('train.csv', 'test.csv')
