@@ -4,7 +4,7 @@ context_path: E:/Dropbox/Dropbox/Programming/Git/Machine Learning/SBA_project/
 module_path: cabbage/data/
 """
 @dataclass
-class Filereader:
+class FileReader:
     # def __init__(self, context, fname, train, test, id, label):
     #     self._context = context  # _ 1개는 default 접근, _ 2개는 private 접근
 

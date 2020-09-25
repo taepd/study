@@ -1,0 +1,2 @@
+model_checkpoint_path: "E:/Dropbox/Dropbox/Programming/Git/Machine Learning/SBA_project/price_prediction/data/saved_model.ckpt"
+all_model_checkpoint_paths: "E:/Dropbox/Dropbox/Programming/Git/Machine Learning/SBA_project/price_prediction/data/saved_model.ckpt"
