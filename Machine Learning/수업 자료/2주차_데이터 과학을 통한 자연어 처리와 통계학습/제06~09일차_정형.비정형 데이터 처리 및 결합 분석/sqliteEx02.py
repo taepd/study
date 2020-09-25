@@ -1,6 +1,6 @@
 import sqlite3
 
-def getAllInfo( mycursor ):
+def getAllInfo(mycursor):
     for onetuple in mycursor :
         print( '아이디 : ' + onetuple[0], end='')
         print( ', 과목 : ' + onetuple[1], end='')
@@ -36,7 +36,7 @@ getAllInfo( mycursor ) # 함수 형태로 구현
 
 print('-' * 40)
 sql = 'select * from sungjuk order by id, subject'
-for row in mycursor.execute(sql ):
+for row in mycursor.execute(sql):
     print(row)
 print('-' * 40)
 

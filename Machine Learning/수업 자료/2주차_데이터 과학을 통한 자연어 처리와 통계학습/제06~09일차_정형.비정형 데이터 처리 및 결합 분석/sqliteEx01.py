@@ -68,7 +68,7 @@ mycursor.execute(sql % (newname, pid))
 print(mycursor.rowcount) # 성공 여부
 conn.commit()
 
-# 'id'가 'sim'인 치눅의 데이터를 삭제하세요.
+# 'id'가 'sim'인 친구의 데이터를 삭제하세요.
 pid = 'sim'
 sql = "delete from students where id = '%s'"
 mycursor.execute(sql % (pid))
