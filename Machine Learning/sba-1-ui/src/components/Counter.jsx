@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 const Counter = () => {
-    let [count, setCount] = useState(0)
+    cosnt [count, setCount] = useState(0)
     const addClick = () => {
         setCount(count + 1)
     }

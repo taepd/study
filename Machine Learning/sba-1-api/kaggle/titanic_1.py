@@ -1,10 +1,13 @@
+import os
 import sys
-sys.path.insert(0, 'E:/Dropbox/Dropbox/Programming/Git/Machine Learning/sba-1-api')
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
 from util.file_handler import FileReader
-from sklearn.ensemble import RandomForestClassifier # rforest
 import pandas as pd
 import numpy as np
+from config import basedir
 # sklearn algorithm : classification, regression, clustring, reduction
+from sklearn.ensemble import RandomForestClassifier # rforest
 from sklearn.tree import DecisionTreeClassifier # dtree
 from sklearn.ensemble import RandomForestClassifier # rforest
 from sklearn.naive_bayes import GaussianNB # nb
@@ -13,10 +16,13 @@ from sklearn.svm import SVC # svm
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold  # k값은 count 로 의미로 이해
 from sklearn.model_selection import cross_val_score
+
 # dtree, rforest, nb, knn, svm,  
 
 
 """
+context: /Users/bitcamp/SbaProjects
+fname: 
 PassengerId  고객ID,
 Survived 생존여부,  --> 머신러닝 모델이 맞춰야 할 답 
 Pclass 승선권 1 = 1등석, 2 = 2등석, 3 = 3등석,
@@ -32,14 +38,15 @@ Embarked 승선한 항구명 C = 쉐브루, Q = 퀸즈타운, S = 사우스햄�
 """
 class Service:
     def __init__(self):
-        self.entity = FileReader()  
-        pass
-
+        self.fileReader = FileReader()  
+        self.kaggle = os.path.join(basedir, 'kaggle')
+        self.data = os.path.join(self.kaggle, 'data')
     
     def new_model(self, payload) -> object:
-        this = self.entity
+        this = self.fileReader
+        this.data = self.data
         this.fname = payload
-        return pd.read_csv(this.context + this.fname) # p.139  df = tensor
+        return pd.read_csv(os.path.join(self.data, this.fname)) # p.139  df = tensor
 
     @staticmethod
     def create_train(this) -> object:
@@ -62,7 +69,6 @@ class Service:
 
     @staticmethod
     def sex_norminal(this) -> object:
-        # male = 0, female = 1
         combine = [this.train, this.test] # train과 test 가 묶입니다. 
         sex_mapping = {'male':0, 'female':1}
         for dataset in combine:
@@ -204,7 +210,9 @@ class Service:
 
 class Controller:
     def __init__(self):
-        self.entity = FileReader()
+        self.fileReader = FileReader()  
+        self.kaggle = os.path.join(basedir, 'kaggle')
+        self.data = os.path.join(self.kaggle, 'data')
         self.service = Service()
 
     def modeling(self, train, test):
@@ -218,7 +226,7 @@ class Controller:
 
     def preprocessing(self, train, test):
         service = self.service
-        this = self.entity
+        this = self.fileReader
         this.train = service.new_model(train) # payload
         this.test = service.new_model(test) # payload
         this.id = this.test['PassengerId'] # machine 이에게는 이것이 question 이 됩니다. 
@@ -271,11 +279,11 @@ class Controller:
         prediction = clf.predict(this.test)
         pd.DataFrame(
             {'PassengerId' : this.id, 'Survived' : prediction}
-        ).to_csv(this.context+'submission.csv', index=False)
+        ).to_csv(os.path.join(self.data, 'submission.csv'), index=False)
 
 
 
 if __name__ == '__main__':
+    print(f'********* {basedir} *********')
     ctrl = Controller()
     ctrl.submit('train.csv','test.csv')
-    
