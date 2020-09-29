@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import uuid from 'uuid/v4'
-import {} from 'react-redux'
+import {useDispatch} from 'react-redux'
+import {addTodoAction} from '../store/todoReducers'
 
 const TodoInput = () => {
     // todo가 crud 대상(object)입니다. -> 속성이 된다.
@@ -11,7 +12,8 @@ const TodoInput = () => {
     // JSON = Javascript Object Notation
     // object {}, array [] 두 가지 형태
     
-    const [todo, setTodo] = useState("")
+    const [todo, setTodo] = useState("")  // Redux를 사용하는 중
+    const dispatch = useDispatch()
     const submitForm = e => {
         e.preventDefault()  // default 기능은 막고, 내가 정의한 기능을 구현
         const newTodo = {
