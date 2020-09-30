@@ -1,5 +1,5 @@
-export const addTodoAction = todo => ({
-    type : "ADD_TODO",
+export const addTodoAction = todo => ({ // action creator
+    type : "ADD_TODO",  // action 객체(type + payload)
     payload : todo
 })
 export const toggleTodoAction = todoId => ({
@@ -11,8 +11,10 @@ export const deleteTodoAction = todoId => ({
     payload : todoId
 })
 
+// Initial State
 const initialState = {todos: []}
 
+// Reducer
 const todoReducer = (state = initialState, action) => {
     switch(action.type){
         case "ADD_TODO" : 
