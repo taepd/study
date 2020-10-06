@@ -1,9 +1,9 @@
-import numpy as np
-
-a = [[1, 2], [2, 1]]
-b = [[4, 1], [2, 2]]
-
-print(np.cross(a,b))
+# import numpy as np
+#
+# a = [[1, 2], [2, 1]]
+# b = [[4, 1], [2, 2]]
+#
+# print(np.cross(a,b))
 
 # progresses = [93, 30, 55]
 # speeds = [1, 30, 5]
