@@ -3,6 +3,7 @@
 # sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 from iris_model import IrisModel
+from model.police import Police
 
 
 if __name__ == '__main__':
