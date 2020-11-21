@@ -18,15 +18,17 @@
     <div id="blue"></div>
     <div id="green"></div>
     <script>
-        function reducer(state, action){
+        // dispatch가 실행되면 이전 state와, 
+        // dispatch의 action 객체(type과 새 state값)이 전달되어 reducer가 호출됨
+        function reducer(state, action){  
             console.log(state, action);
             // init
-            if(state === undefined){
+            if(state === undefined){  // 초기화를 위한 최초 실행
                 return {color:'yellow'}
             }
             var newState;
             if(action.type === 'CHANGE_COLOR'){
-                newState = Object.assign({}, state, {color: action.color});
+                newState = Object.assign({}, state, {color: action.color});  // state 객체 복제 (immutability)
             }
             console.log(action.type, action, state, newState);  // 이런 식으로 로그를 손쉽게 볼 수 있음
             return newState;
@@ -43,11 +45,11 @@
                 <h1>red</h1>
                 <input type="button" value="fire" onclick="
                     store.dispatch({type:'CHANGE_COLOR', color:'red'});
-                ">
+                "> 
             </div>    
         `;
         }
-        store.subscribe(red);
+        store.subscribe(red);  // state의 값이 바뀔 때마다 red 함수가 호출됨
         red();
         function blue() {
             var state = store.getState();

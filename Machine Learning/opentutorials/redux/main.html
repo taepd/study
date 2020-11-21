@@ -146,7 +146,7 @@
                  });
             } else if (action.type === 'CREATE') {
                 let newMaxId = state.max_id + 1;
-                let newContents = state.contents.concat();
+                let newContents = state.contents.concat();  // 배열 복제
                 newContents.push({ id: newMaxId, title: action.title, desc: action.desc })
 
                 newState = Object.assign({}, state, {
@@ -178,7 +178,7 @@
             return newState;
         }
 
-        let store = Redux.createStore(reducer);
+        let store = Redux.createStore(reducer); 
         store.subscribe(article);
         store.subscribe(TOC);
         subject();
