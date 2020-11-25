@@ -1,5 +1,4 @@
-import React from 'react';
-import { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import AddNumberRoot from './components/AddNumberRoot'
 import DisplayNumberRoot from './components/DisplayNumberRoot'
@@ -21,3 +20,4 @@ class App extends Component {
 }
 
 export default App;
+        

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import DisplayNumber from "./DisplayNumber"
+import DisplayNumber from "../containers/DisplayNumber"
 
 export default class DisplayNumberRoot extends Component{
   
@@ -7,7 +7,7 @@ export default class DisplayNumberRoot extends Component{
     return (
       <div>
         <h1>Display Number Root</h1>
-        <DisplayNumber></DisplayNumber>
+        <DisplayNumber unit="kg"></DisplayNumber>
       </div>
     );
   }
