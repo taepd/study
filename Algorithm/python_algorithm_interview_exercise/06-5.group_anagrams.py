@@ -15,6 +15,7 @@ def groupAnagrams(strs: List[str]) -> List[List[str]]:
 
     for word in strs:
         # 정렬하여 딕셔너리에 추가
+        # Delimiter.join(): 리스트를 구분자를 기준으로 string으로 반환. cf) split() : 리스트로 반환
         # ''.join(sorted(word))를 통해 정렬하여 애너그램끼리 같은 key로 그룹핑하고
         # list 형식의 value에 해당 word를 append하는 전략
         anagrams[''.join(sorted(word))].append(word)
@@ -22,4 +23,8 @@ def groupAnagrams(strs: List[str]) -> List[List[str]]:
     return list(anagrams.values())
 
 print(groupAnagrams(strs))
+
+anagrams = collections.defaultdict(list)
+
+
 

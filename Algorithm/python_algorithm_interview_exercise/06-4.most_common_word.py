@@ -16,7 +16,7 @@ import re
 # 정규식: ^는 not, \w는 단어 문자(Word Character)를 의미
 # paragraph에서 단어가 아닌 것은 공백으로 처리해서 list화
 # split()을 적용하지 않으면 각 알파벳이 요소가 되어 리스트가 되는데,
-# spili()을 적용함으로써 공백을 기준으로 나눠서 리스트화. 즉, 단어별로 리스트가 됨
+# spilt()을 적용함으로써 공백을 기준으로 나눠서 리스트화. 즉, 단어별로 리스트가 됨
 words = [word for word in re.sub(r'[^\w]', ' ', paragraph)
          .lower().split() if word not in banned]
 
@@ -32,7 +32,7 @@ for word in words:
 
 print(counts)
 
-# dict에서 get(ket)는 value를 리턴한다
+# dict에서 get(key)는 value를 리턴한다
 # max 함수에 key로 get함수를 지정해서 카운트가 가장 큰 것을 반환하도록 함
 print(max(counts, key=counts.get))
 
