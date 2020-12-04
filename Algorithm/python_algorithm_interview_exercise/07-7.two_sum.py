@@ -44,7 +44,7 @@ def twoSum(nums: List[int], target: int) -> List[int]:
 
     # 타겟에서 첫 번째 수를 뺀 결과를 키로 조회
     for i, num in enumerate(nums):
-        if target - num in nums_map and i != nums_map[target - num]:  # 후건은 addhoc 느낌
+        if target - num in nums_map and i != nums_map[target - num]:  # 후건은 동일 숫자합일 경우 자신은 제외하기 위해(페어를 만들어야 하므로)
             return [i, nums_map[target - num]]
 
 # 조회 구조 개선
