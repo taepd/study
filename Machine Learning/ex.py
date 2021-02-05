@@ -40,3 +40,7 @@
 #
 # print(solution(progresses, speeds))
 #
+
+
+
+
