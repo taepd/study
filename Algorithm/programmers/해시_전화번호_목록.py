@@ -29,25 +29,25 @@ phone_book	return
 
 phone_book = [119, 97674223, 1195524421]
 
-def solution(phone_book):
-    answer = True
-    phone_book_ = [str(e) for e in sorted(phone_book)]
-    for i in range(len(phone_book)-1):
-        for j in range(i+1, len(phone_book)):
-            if phone_book_[i] in phone_book_[j]:
-                return False
-    return answer
-
-
-
 """
 startwith 활용
 """
 
-def solution(phoneBook):
-    phoneBook = sorted(phoneBook)
 
-    for p1, p2 in zip(phoneBook, phoneBook[1:]):
+def solution(phone_book):
+    # phone_book = sorted(phone_book, key=lambda x: len(x))
+    phone_book = sorted(phone_book, key=len)
+
+    for i in range(len(phone_book) - 1):
+        for j in range(i + 1, len(phone_book)):
+            if phone_book[j].startswith(phone_book[i]):
+                return False
+    return True
+
+def solution(phone_book):
+    phone_book = sorted(phone_book)
+
+    for p1, p2 in zip(phone_book, phone_book[1:]):
         if p2.startswith(p1):
             return False
     return True
