@@ -42,21 +42,19 @@ def trap(height: List[int]) -> int:
         while stack and height[i] > height[stack[-1]]:
             # 스택에서 꺼낸다
             top = stack.pop()
-            print('top', top)
 
             if not len(stack):
                 break
-            print('s', stack[-1],'top', top)
+
             # 이전과의 차이만큼 물 높이 처리
             distance = i - stack[-1] - 1
             # distance = i - top
-            print('distance', distance)
             waters = min(height[i], height[stack[-1]]) - height[top]
-            print('waters', waters)
+
             volume += distance * waters
-            print('volume', volume)
+
         stack.append(i)
-        print(stack)
+
     return volume
 
 print(trap(height))
