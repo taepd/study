@@ -1,9 +1,12 @@
 def solution(scores):
     answer = ''
-    for i, v in enumerate(scores):
-        if v[i] == (max(v) or min(v)) and v.count(v[i]) > 1:
-            v[i](v[i])
-        answer += get_grade(sum(v)/len(v))
+    # scores = list(map(list, zip(*scores)))
+    for i, v in enumerate(zip(*scores)):
+        myself = v[i]
+        if (myself == max(v) or myself == min(v)) and v.count(myself) == 1:
+            answer += get_grade((sum(v)-myself)/(len(v)-1))
+        else:
+            answer += get_grade(sum(v)/len(v))
     return answer
 
 def get_grade(score):
