@@ -1,7 +1,3 @@
-a = int(input())
-b = int(input())
-c = int(input())
-d = int(input())
-p = int(input())
+a,b,c,d,p=[int(input()) for i in range(5)]
 
-print(min(a*p, b*(min(p,c)) + d*(max(0,p-c))))
+print(min(a*p, b + d*(max(0,p-c))))
